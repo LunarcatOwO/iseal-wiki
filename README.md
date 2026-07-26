@@ -5,7 +5,7 @@ Minecraft plugins. Readers switch between wikis using the **sidebar docs switche
 
 Currently included:
 
-- **Powergems** — custom ability gems (`content/docs/powergems`)
+- **PowerGems** — custom ability gems (`content/docs/powergems`)
 - **Parkour Project** — movement & flow-scoring plugin (`content/docs/parkour`)
 
 ## How the multi-wiki switcher works

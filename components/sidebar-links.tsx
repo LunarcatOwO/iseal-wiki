@@ -9,7 +9,7 @@ const linkClass =
 
 /**
  * A download link that only renders when the current route is under one of the
- * given path prefixes (e.g. show the Powergems download only on /powergems pages).
+ * given path prefixes (e.g. show the PowerGems download only on /powergems pages).
  */
 export function ScopedDownloadLink({
   href,

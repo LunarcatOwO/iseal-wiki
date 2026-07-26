@@ -10,15 +10,15 @@ Parkour Project turns any Minecraft server into a free-running playground. Playe
 smooth, creative movement with a **style-scoring system** inspired by character-action games.
 
 <Callout type="info">
-  Parkour Project depends on **SealLib** and optionally hooks into **PlaceholderAPI**. It supports
-  both **Paper** and **Folia** servers (API version 1.21+).
+  Parkour Project depends on **SealLib** and supports both **Paper** and **Folia** servers. It
+  requires **1.21.11+**.
 </Callout>
 
 ## The two halves of the plugin
 
 <Cards>
   <Card title="Moves" href="/parkour/moves" description="Eight physics-driven movement abilities — wall run, wall jump, wall cling, climb vault, quick vault, slide, roll, and tic tac." />
-  <Card title="Style System" href="/parkour/style-system" description="Earn points for stylish play, climb the flow ranks from D to MAX, and trigger named bonuses across four categories." />
+  <Card title="Style System" href="/parkour/style-system" description="Earn points for stylish play, climb the flow ranks from D up to Flow State, and trigger named bonuses across four categories." />
 </Cards>
 
 ## How it works
@@ -34,8 +34,9 @@ Chaining moves keeps a **combo** alive. The longer and more varied your movement
 **flow score** grows.
 
 ### Score raises your flow rank
-Your live score maps to a **flow rank** — from **D** all the way up to **MAX** — shown on your
-scoreboard. Score decays over time, so you have to keep moving to keep your rank.
+Your live score maps to a **flow rank** — from **D** up to **Flow State** (the top rank, called `MAX`
+internally) — shown on your scoreboard. Score decays over time, so you have to keep moving to keep
+your rank.
 
 ### Stylish play triggers bonuses
 Specific tricks and situations award named **bonuses** (like `+NICE DROP` or `+LEAP OF FAITH`),

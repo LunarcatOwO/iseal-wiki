@@ -48,7 +48,6 @@ booleans (`true` / `false`) unless noted otherwise.
 | `gemCreationAttempts` | Attempts to generate a valid gem before giving up (raise if many gems are disabled and users get none). |
 | `blockedReplacingBlocks` | [Materials](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html) that abilities are not allowed to overwrite. |
 | `allowMovingGems` | Enable moving gems between containers (experimental). |
-| `doDebuffForTemperature` | Apply debuffs when a gem's element clashes with environment temperature (e.g. ice in the Nether). |
 
 ## Progression & unlocks
 
@@ -60,13 +59,12 @@ booleans (`true` / `false`) unless noted otherwise.
 | `unlockShiftAbilityOnLevelX` | If true, unlock the Shift ability at the configured unlock level. |
 | `upgradeGemOnKill` | If true, killing entities can upgrade/level up your gem. |
 
-## Cosmetics & caching
+## Cosmetics
 
 | Option | Description |
 | --- | --- |
 | `allowCosmeticParticleEffects` | If true, show ambient particles related to held gems. |
 | `cosmeticParticleEffectInterval` | Ticks between cosmetic particle spawns (lower = more frequent, heavier). |
-| `gemCacheExpireTime` | How long to keep computed gem data cached (balance CPU vs. RAM usage). |
 
 ## Integrations
 
@@ -91,3 +89,10 @@ booleans (`true` / `false`) unless noted otherwise.
 | `countryCode` | Two-letter country/region code (e.g. `US`). |
 | `debugMode` | If true, enables extra logging to help diagnose issues (may be noisy). |
 | `attemptFixOldGems` | If true, attempts to auto-fix or migrate gems created by older plugin versions. |
+
+## Misc
+
+| Option | Description |
+| --- | --- |
+| `doDebuffForTemperature` | Apply debuffs when a gem's element clashes with environment temperature (e.g. ice in the Nether). |
+| `gemCacheExpireTime` | How long to keep computed gem data cached (balance CPU vs. RAM usage). |

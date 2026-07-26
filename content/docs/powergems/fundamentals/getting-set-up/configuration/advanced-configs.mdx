@@ -20,12 +20,16 @@ description: Files for recipes, cooldowns, enabled gems, lore, and materials.
 | `recipes.yml` | Shaped crafting recipes for gems (see details below). |
 | `cooldown.yml` | Base cooldown (seconds) for each ability at level 1. |
 | `activeGems.yml` | Enable or disable specific gems server-wide. |
-| `GemLore.yml` | The lore text applied to newly created gems. |
+| `GemLore.yml` | The lore text applied to newly created gems. Supports MiniMessage formatting. |
 | `gemMaterials.yml` | The visual item/[material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html) used for each gem. |
-| `GemColors.yml` | The color of each gem (name only). |
 | `GemPermanentEffects.yml` | The permanent (passive) effect of each gem. |
 | `GemPermanentEffectLevels.yml` | The level of each gem's permanent effect. |
 | `GemParticles.yml` | The particles a gem emits around the player. |
+
+<Callout title="Names & lore support MiniMessage" type="idea">
+  Gem **names** and **lore** support [MiniMessage](https://docs.advntr.dev/minimessage/format.html)
+  formatting — use tags like `<gradient:#ff5555:#55ff55>`, `<bold>`, and color names to style them.
+</Callout>
 
 ## recipes.yml
 

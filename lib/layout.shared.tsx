@@ -16,7 +16,7 @@ export function baseOptions(): BaseLayoutProps {
         children: (
           <ScopedDownloadLink
             href="https://modrinth.com/plugin/powergems"
-            label="Download Powergems"
+            label="Download PowerGems"
             prefixes={['/powergems']}
           />
         ),
