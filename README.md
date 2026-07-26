@@ -1,4 +1,4 @@
-# ISeal Wikis
+# ISeal Wiki
 
 A unified [Fumadocs](https://fumadocs.dev) documentation site hosting multiple wikis for ISeal's
 Minecraft plugins. Readers switch between wikis using the **sidebar docs switcher**.

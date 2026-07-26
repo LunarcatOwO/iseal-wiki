@@ -35,9 +35,11 @@ jobs:
       - name: Build Next.js (standalone)
         run: npm run build
 
-      - name: Compute lowercase owner
+      - name: Compute image metadata
         id: repo
-        run: echo "owner_lc=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "owner_lc=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_OUTPUT"
+          echo "short_sha=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR
         uses: docker/login-action@v4
@@ -62,8 +64,13 @@ jobs:
           file: ./Dockerfile.runtime
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64
+          # Each build pushes a fresh, unique tag so Dokploy auto-deploys on it:
+          #   - build-<run_number>: monotonic counter, the "newest tag" to pick up
+          #   - sha-<short_sha>:    traceable back to the exact commit
+          #   - latest:             rolling convenience tag
           tags: |
-            ghcr.io/${{ steps.repo.outputs.owner_lc }}/iseal-wikis:latest
-            ghcr.io/${{ steps.repo.outputs.owner_lc }}/iseal-wikis:${{ github.sha }}
+            ghcr.io/${{ steps.repo.outputs.owner_lc }}/iseal-wiki:latest
+            ghcr.io/${{ steps.repo.outputs.owner_lc }}/iseal-wiki:build-${{ github.run_number }}
+            ghcr.io/${{ steps.repo.outputs.owner_lc }}/iseal-wiki:sha-${{ steps.repo.outputs.short_sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/lunarcatowo/iseal-wikis:latest
+    image: ghcr.io/lunarcatowo/iseal-wiki:latest
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: '1'
