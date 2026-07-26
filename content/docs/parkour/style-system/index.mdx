@@ -1,0 +1,68 @@
+---
+title: Style System
+description: Flow score, combos, flow ranks, and the four categories of style bonuses.
+---
+
+Moving is only half of Parkour Project. The other half is **style** — a live scoring system that
+rewards smooth, varied, risky movement and punishes standing still. It's the reason a run *feels*
+like a character-action game.
+
+## Flow score & decay
+
+As you move, you build a **flow score**. Every move you chain and every bonus you trigger adds to it.
+But the score **decays over time** — stop moving and it bleeds away. To keep a high score you have to
+keep flowing.
+
+<Callout type="info">
+  Score is driven by background tasks that **sample** your movement, **decay** your score, and apply
+  **flow effects**. The faster and more varied your movement, the faster your score climbs.
+</Callout>
+
+## Combos
+
+Chaining moves without a break keeps a **combo** alive. Combos are what many bonuses measure — e.g.
+"end a 10+ move combo with a perfect roll." Let the chain lapse and the combo resets. Keeping a long,
+clean combo going is the key to the biggest mythic bonuses.
+
+## Flow ranks
+
+Your current score maps to a **flow rank**, shown on your scoreboard. Ranks climb as your score rises
+and fall as it decays. From lowest to highest:
+
+| Rank | Feel |
+| --- | --- |
+| **D** | Just getting going. |
+| **C** | Basic flow established. |
+| **B** | Consistent movement. |
+| **A** | Strong, varied routing. |
+| **S** | Stylish — unlocks rank-gated bonuses like **+HIGH PROFILE**. |
+| **SS** | Excellent. |
+| **SSS** | Elite. |
+| **MAX** | Peak flow. Hold it to earn **+FLOW STATE**. |
+
+<Callout type="info">
+  Each rank has its own animated color gradient on the scoreboard (grey at **D**, rising through
+  green, gold and orange to a purple **S**, and shifting cyan/pink gradients at **SS**, **SSS** and
+  **MAX**). The exact score thresholds are defined by the plugin and rise with each rank.
+</Callout>
+
+## Bonuses
+
+Beyond raw score, specific tricks award named **bonuses** — a burst of points and a flashy on-screen
+callout like `+NICE DROP` or `+LEAP OF FAITH`. Every bonus lives in `bonuses.yml`, where you can set
+its point value, toggle it on/off, and (for many) tune its thresholds.
+
+Bonuses are grouped into **four categories** of rising difficulty:
+
+<Cards>
+  <Card title="Bread & Butter" href="/parkour/style-system/filler" description="Low-scoring, highly repeatable actions that keep your score alive and set up bigger tricks. (FILLER)" />
+  <Card title="Advanced Movement" href="/parkour/style-system/advanced" description="Precision routing, high-speed lines and clean timing chains. (ADVANCED)" />
+  <Card title="Combat Hybrid" href="/parkour/style-system/combat" description="Style that demands you engage, evade or eliminate enemies while moving. (COMBAT)" />
+  <Card title="Mythic & Clutch" href="/parkour/style-system/mythic" description="The highest tier — mechanical precision, luck, and near-death heroics. (MYTHIC)" />
+</Cards>
+
+<Callout title="Points are configurable" type="warn">
+  The point values on the following pages are the **shipped defaults** from `bonuses.yml`. Server
+  owners can rebalance every value, disable individual bonuses, or adjust their trigger thresholds.
+  See the [`bonuses.yml` reference](/parkour/reference/bonuses-yml).
+</Callout>

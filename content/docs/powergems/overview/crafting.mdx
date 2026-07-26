@@ -1,0 +1,35 @@
+---
+title: Crafting The gems
+description: How to craft new gems and upgrade existing ones.
+---
+
+The following recipes are the defaults and can be customized by server owners. For details on changing them, see [Configuration](/powergems/fundamentals/getting-set-up/configuration).
+
+## Crafting a New Gem
+
+Follow the default recipe shown below (or your customized variant in `recipes.yml`).
+
+<figure>
+	<img src="/images/new_gem.png" alt="Default New Gem recipe diagram (Default)" />
+	<figcaption>Default New Gem Recipe. Update this image if you customize recipes.</figcaption>
+</figure>
+
+<Callout type="idea">
+  If you change the shape or materials in `recipes.yml`, share the updated recipe with your players
+  (for example, by replacing the image above) so they know how to craft it.
+</Callout>
+
+## Upgrading Gems
+
+Gems can be upgraded using a universal pattern by level. The exact materials per level are configurable.
+
+<Callout type="warn">
+  The Emerald in the middle is the gem you are upgrading, not an emerald.
+</Callout>
+
+<figure>
+	<img src="/images/gem_upgrade.png" alt="Gem Upgrade recipe diagram (Default)" />
+	<figcaption>Gem Upgrade Recipe (Default). Adjust based on your server’s settings. The emerald in the middle is a gem</figcaption>
+</figure>
+
+Hint: Base cooldowns decrease with levels (see `cooldown.yml`) and `cooldownBoostPerLevelInSeconds`.

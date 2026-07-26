@@ -1,0 +1,179 @@
+---
+title: moves.yml
+description: The complete moves.yml file with every field for all eight movement abilities.
+---
+
+`moves.yml` tunes the eight movement abilities. Each move shares a common `bossbar` block plus its own
+physics fields. For a gameplay-focused explanation of each value, see the individual
+[move pages](/parkour/moves).
+
+## Shared fields
+
+| Field | Meaning |
+| --- | --- |
+| `enabled` | Whether the move exists on the server. |
+| `default_unlocked` | Whether new players start with the move unlocked. |
+| `cooldown` | Cooldown after use, in ticks (20 ticks = 1s). Roll uses a nested cooldown block instead. |
+| `bossbar.name` | Boss-bar title (MiniMessage supported). |
+| `bossbar.color` | Boss-bar color: `PINK`, `BLUE`, `RED`, `GREEN`, `YELLOW`, `PURPLE`, `WHITE`. |
+| `bossbar.overlay` | Boss-bar style: `PROGRESS`, `NOTCHED_6`, `NOTCHED_10`, `NOTCHED_12`, `NOTCHED_20`. |
+| `bossbar.flags` | Extra flags, e.g. `PLAY_BOSS_MUSIC`, `DARKEN_SCREEN`, `CREATE_WORLD_FOG`. |
+
+## Full default file
+
+```yaml
+wall_run:
+   bossbar:
+      name: Wall Run
+      color: PURPLE
+      overlay: PROGRESS
+      flags: []
+   initial_speed: 0.6
+   decay_rate: 0.05
+   max_fall_speed: 0.18
+   max_duration: 100
+   grace_period_ticks: 6
+   cooldown: 20
+   vertical_booster: 0.05
+   enabled: true
+   default_unlocked: true
+wall_jump:
+   bossbar:
+      name: Wall Jump
+      color: GREEN
+      overlay: PROGRESS
+      flags: []
+   max_angle: 90.0
+   jump_y: 0.45
+   jump_multiplier: 0.7
+   cooldown: 60
+   particle_count: 12
+   enabled: true
+   default_unlocked: true
+quick_vault:
+   bossbar:
+      name: Quick Vault
+      color: GREEN
+      overlay: PROGRESS
+      flags: []
+   speed_threshold: 0.05
+   interaction_range: 3.0
+   quick_vault_up: 0.5
+   quick_vault_forward: 0.45
+   cooldown: 10
+   dir_velocity_weight: 0.7
+   dir_look_weight: 0.3
+   enabled: true
+   default_unlocked: true
+climb_vault:
+   bossbar:
+      name: <green>TODO
+      color: YELLOW
+      overlay: PROGRESS
+      flags:
+      - PLAY_BOSS_MUSIC
+   interaction_range: 1.0
+   vault_up: 0.5
+   vault_forward: 0.5
+   max_ticks: 10
+   cooldown: 50
+   enabled: true
+   default_unlocked: true
+wall_cling:
+   bossbar:
+      name: Wall Cling
+      color: GREEN
+      overlay: PROGRESS
+      flags: []
+   interaction_range: 1.5
+   lateral_speed: 0.18
+   gravity_drift: 0.005
+   max_cling_ticks: 100
+   cooldown_ticks: 60
+   corner_threshold: 0.35
+   wall_offset: 0.9
+   initial_height_offset: 0.6
+   cling_walk_speed: 0.05
+   enabled: true
+   default_unlocked: true
+slide:
+   bossbar:
+      name: Slide
+      color: BLUE
+      overlay: PROGRESS
+      flags: []
+   min_start_speed: 0.05
+   min_slide_speed: 0.1
+   slide_boost: 0.3
+   slide_tick_boost: 0.2
+   slide_boost_decay: 0.75
+   down_force: 0.1
+   flat_friction: 0.97
+   jump_cancel_force: 0.095
+   tap_window_ticks: 5
+   cooldown: 40
+   max_distance_from_ground: 1.0
+   max_breach_distance: 1.5
+   min_slide_speed_wooden_door: 0.2
+   min_slide_speed_iron_door: 0.2
+   min_slide_speed_wooden_trapdoor: 0.2
+   min_slide_speed_iron_trapdoor: 0.2
+   min_slide_speed_fence_gate: 0.2
+   door_open_time: 20
+   tackle_damage: 3.0
+   tackle_radius_x: 1.5
+   tackle_radius_y: 1.0
+   tackle_radius_z: 1.5
+   tackle_min_speed: 0.15
+   wooden_door_breach_sound: minecraft:entity.zombie.attack_wooden_door
+   wooden_door_close_sound: minecraft:block.wooden_door.close
+   iron_door_breach_sound: minecraft:entity.iron_golem.hurt
+   iron_door_close_sound: minecraft:block.iron_door.close
+   wooden_trapdoor_breach_sound: minecraft:item.shield.break
+   wooden_trapdoor_close_sound: minecraft:block.wooden_trapdoor.close
+   iron_trapdoor_breach_sound: minecraft:item.shield.break
+   iron_trapdoor_close_sound: minecraft:block.iron_trapdoor.close
+   fence_gate_breach_sound: minecraft:entity.zombie.attack_wooden_door
+   fence_gate_close_sound: minecraft:block.fence_gate.close
+   enabled: true
+   default_unlocked: true
+roll:
+   bossbar:
+      name: Roll
+      color: WHITE
+      overlay: PROGRESS
+      flags: []
+   sneak_window_ticks: 10
+   cooldown:
+      perfect: 10
+      imperfect: 60
+      miss: 200
+   boost_y: 0.2
+   boost_mult: 0.5
+   min_damage: 1.0
+   crush_base_damage: 4.0
+   crush_radius: 1.75
+   enabled: true
+   default_unlocked: true
+tic_tac:
+   bossbar:
+      name: Tic Tac
+      color: GREEN
+      overlay: PROGRESS
+      flags: []
+   upward_force: 0.5
+   push_away_force: 0.6
+   forward_force: 0.4
+   max_distance_squared: 4.0
+   cooldown: 40
+   mob_push_multiplier: 0.6
+   mob_impact_damage: 2.0
+   enabled: true
+   default_unlocked: true
+```
+
+<Callout title="Breach sounds" type="info">
+  The `slide` block maps each breakable obstacle to a **breach** sound (played when you smash through)
+  and a **close** sound (played when it swings shut). Any Minecraft sound key works — swap them for
+  your own flavor.
+</Callout>

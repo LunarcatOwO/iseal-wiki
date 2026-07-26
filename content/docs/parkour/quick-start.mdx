@@ -1,0 +1,63 @@
+---
+title: Quick Start
+description: Install Parkour Project on a Paper or Folia server and perform first-time setup.
+---
+
+<Callout type="warn">
+  Parkour Project requires a plugin-capable server. We recommend [PaperMC](https://papermc.io/downloads/paper)
+  (1.21+). [Folia](https://papermc.io/software/folia) is also supported.
+</Callout>
+
+<div className='fd-steps [&_h3]:fd-step'>
+
+### Install the dependency
+Parkour Project depends on **SealLib**. Download it from the official source on
+[Modrinth](https://modrinth.com/plugin/seallib) and place it in your `~/plugins/` folder.
+
+<Callout type="info">
+  Want placeholders on scoreboards, chat, or other plugins? Install
+  [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) too — it is an optional
+  soft-dependency.
+</Callout>
+
+### Install Parkour Project
+Download `ParkourProject-x.x.x.x.jar`, upload it to `~/plugins/`, and make sure SealLib is present
+alongside it.
+
+### Start the server
+Boot the server once. Parkour Project will generate its configuration files under
+`~/plugins/ParkourProject/`:
+
+- `config.yml` — core plugin settings (database, tokens, metrics).
+- `moves.yml` — tuning for each movement ability.
+- `bonuses.yml` — tuning for every style bonus.
+
+### Configure (optional)
+The defaults are playable out of the box. To customize anything, stop the server, edit the files,
+and either restart or run `/parkour reload`. See [Configuration](/parkour/configuration) for a full
+breakdown.
+
+### Try it in-game
+Join the server and start moving:
+
+- **Sprint** into a wall and hold toward it to **wall run**.
+- **Sneak** just before you hit the ground from a fall to **roll**.
+- **Sprint + sneak** on flat ground to **slide**.
+
+Run `/parkour moves list` to see which moves you currently have unlocked.
+
+</div>
+
+## Verify the install
+
+```text
+/parkour moves list
+```
+
+You should see the list of unlocked moves. If the command isn't found, check the server console for
+a SealLib version mismatch or a missing dependency.
+
+<Cards>
+  <Card title="Configuration" href="/parkour/configuration" description="Every option in config.yml explained." />
+  <Card title="Commands & Permissions" href="/parkour/commands" description="Admin tools for managing moves and cooldowns." />
+</Cards>

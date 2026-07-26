@@ -1,0 +1,43 @@
+---
+title: Bread & Butter
+description: The FILLER category — low-scoring, highly repeatable bonuses that keep your score alive.
+---
+
+**Category:** `FILLER` · **Design name:** "Bread & Butter"
+
+These are the bread-and-butter bonuses: low-value, highly repeatable actions you weave between bigger
+tricks to **freeze your score decay** and keep a combo alive. Individually small, they add up fast.
+
+| Bonus | Points | How to earn | Config key |
+| --- | ---: | --- | --- |
+| `+KEEP UP` | 30 | Chain any two different moves together within the streak window (~1.3s). | `keep_up` |
+| `+NICE DROP` | 60 | Fall 4+ blocks and transition straight into a sprint without losing speed. | `nice_drop` |
+| `+SOFT LANDING` | 75 | Land any successful roll from a non-lethal height. | `soft_landing` |
+| `+CHECKPOINT` | 100 | Wall cling to rest for ≤1 second, then continue the combo. | `checkpoint` |
+| `+SMOOTH TRANSITION` | 100 | Slide immediately out of a climb vault. | `smooth_transition` |
+| `+TOUCH AND GO` | 100 | Touch a wall with a cling for under half a second before leaping off. | `touch_and_go` |
+| `+MOMENTUM CONSERVATION` | 100 | Get the perfect speed boost on a quick vault. | `momentum_conservation` |
+| `+WALL TO WALL` | 120 | Cling on one wall directly into a cling on another wall. | `wall_to_wall` |
+| `+STAYING AIRBORNE` | 150 | Spend ~3 seconds off the ground using any combination of moves. | `staying_airborne` |
+| `+WAVEDASH` | 150 | End a slide the instant after starting it (jump-cancel). | `wavedash` |
+| `+CONVEYOR BELT` | 150 | Maintain a single continuous slide for more than 5 blocks down an incline. | `conveyor_belt` |
+
+## Key tunables
+
+| Config key | Field | Default |
+| --- | --- | --- |
+| `keep_up` | `max_streak_time_millis` | `1300` |
+| `nice_drop` | `min_blocks_fallen` | `4` |
+| `checkpoint` | `max_cling_time_millis` | `1000` |
+| `smooth_transition` | `max_cling_time_millis` | `1000` |
+| `touch_and_go` | `max_cling_time_millis` | `500` |
+| `momentum_conservation` | `speed_match_threshold` / `delay_ticks` | `1.2` / `10` |
+| `wall_to_wall` | `max_chain_time_millis` | `10000` |
+| `staying_airborne` | `required_airborne_ticks` | `60` |
+| `wavedash` | `max_chain_time_millis` / `min_y` | `50` / `0.2` |
+| `conveyor_belt` | `min_downhill_distance` | `5.0` |
+
+<Callout type="info">
+  See the [`bonuses.yml` reference](/parkour/reference/bonuses-yml) for the complete field list and
+  the exact MiniMessage display names.
+</Callout>

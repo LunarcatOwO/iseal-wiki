@@ -1,0 +1,93 @@
+---
+title: General Config
+description: Key configuration options in config.yml and what they do.
+---
+
+<Callout title="Where to find the file" type="idea">
+  Open your server's file manager, go to `~/plugins/PowerGems`, and open `config.yml` — this file
+  holds the general configuration below.
+</Callout>
+
+<Callout title="Restart after editing" type="warn">
+  After changing any option, **fully restart your server**. `/reloadconfig` (`/rc`) does not reliably
+  apply config changes, so don't count on it.
+</Callout>
+
+These are the core gameplay toggles and values. Each option is listed with its effect; most are
+booleans (`true` / `false`) unless noted otherwise.
+
+## Basics
+
+| Option | Description |
+| --- | --- |
+| `allowOnlyOneGem` | If true, restrict each player to a single gem. |
+| `canDropGems` | If false, players cannot drop gems. |
+| `giveGemOnFirstLogin` | If true, first-time players receive a random gem on their first join. |
+| `canUpgradeGems` | If false, gem upgrading is disabled. |
+| `canCraftGems` | If false, crafting new gems is disabled. |
+| `keepGemsOnDeath` | If false, gems drop when a player dies. |
+| `gemsHaveDescriptions` | If true, new gems include descriptive lore. |
+
+## Gameplay & safety
+
+| Option | Description |
+| --- | --- |
+| `explosionDamageAllowed` | If false, destructive abilities are softened (reduced block damage). |
+| `preventGemPowerTampering` | If true, players can't interact with projectiles or entities spawned by gems (e.g. no fireball deflects). |
+| `doGemDecay` | If true, when a player dies their gem(s) lose 1 level. |
+| `doGemDecayOnLevel1` | When `doGemDecay` is true, allow decay from level 1 (this destroys the gem). |
+| `dragonEggHalfCooldown` | If true, carrying a dragon egg halves gem cooldowns. |
+| `randomizedColors` | If true, a gem's displayed name color may be randomized (visual only). |
+
+## Timing & performance
+
+| Option | Description |
+| --- | --- |
+| `cooldownBoostPerLevelInSeconds` | Time reduced from ability cooldown per gem level. |
+| `delayToUseGemsOnJoin` | Seconds to wait before allowing gem use after login. |
+| `gemCreationAttempts` | Attempts to generate a valid gem before giving up (raise if many gems are disabled and users get none). |
+| `blockedReplacingBlocks` | [Materials](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html) that abilities are not allowed to overwrite. |
+| `allowMovingGems` | Enable moving gems between containers (experimental). |
+| `doDebuffForTemperature` | Apply debuffs when a gem's element clashes with environment temperature (e.g. ice in the Nether). |
+
+## Progression & unlocks
+
+| Option | Description |
+| --- | --- |
+| `maxGemLevel` | Maximum level reachable via upgrades. |
+| `unlockNewAbilitiesOnLevelX` | The level at which new abilities become available for a gem. |
+| `giveGemPermanentEffectOnLevelX` | If true, grants the gem's permanent effect once the unlock level is reached. |
+| `unlockShiftAbilityOnLevelX` | If true, unlock the Shift ability at the configured unlock level. |
+| `upgradeGemOnKill` | If true, killing entities can upgrade/level up your gem. |
+
+## Cosmetics & caching
+
+| Option | Description |
+| --- | --- |
+| `allowCosmeticParticleEffects` | If true, show ambient particles related to held gems. |
+| `cosmeticParticleEffectInterval` | Ticks between cosmetic particle spawns (lower = more frequent, heavier). |
+| `gemCacheExpireTime` | How long to keep computed gem data cached (balance CPU vs. RAM usage). |
+
+## Integrations
+
+| Option | Description |
+| --- | --- |
+| `isWorldGuardSupportEnabled` | If true, respects WorldGuard region flags for abilities. |
+| `isCombatLogXSupportEnabled` | If true, integrates with CombatLogX to prevent abuse during combat. |
+
+## Telemetry & updates
+
+| Option | Description |
+| --- | --- |
+| `allowMetrics` | If true, sends anonymous usage stats to help improve the plugin. |
+| `runUpdater` | If true, notifies admins when updates are available. |
+| `AA-ID` | Analytics identifier used for telemetry; do not change unless instructed. |
+
+## Localization & diagnostics
+
+| Option | Description |
+| --- | --- |
+| `languageCode` | Two-letter language code (e.g. `en`). |
+| `countryCode` | Two-letter country/region code (e.g. `US`). |
+| `debugMode` | If true, enables extra logging to help diagnose issues (may be noisy). |
+| `attemptFixOldGems` | If true, attempts to auto-fix or migrate gems created by older plugin versions. |

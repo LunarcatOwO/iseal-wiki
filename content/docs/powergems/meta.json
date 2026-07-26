@@ -1,0 +1,14 @@
+{
+  "title": "Powergems",
+  "description": "Custom ability gems for Paper servers",
+  "root": true,
+  "pages": [
+    "index",
+    "quick-start",
+    "overview",
+    "commands",
+    "fundamentals",
+    "api-usage",
+    "faq"
+  ]
+}

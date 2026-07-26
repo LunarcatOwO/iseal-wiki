@@ -1,0 +1,82 @@
+---
+title: Commands & Permissions
+description: The /parkour command tree, every subcommand, and the permissions that gate them.
+---
+
+Parkour Project is driven by a single root command: **`/parkour`** (alias **`/pk`**). Running it with
+no arguments opens the in-game help menu.
+
+<Callout type="info">
+  Arguments in `<angle brackets>` are required; `[square brackets]` are optional. Where a `[player]`
+  argument is accepted, omitting it targets **yourself**; targeting someone else requires the
+  `parkourproject.parkour.other` permission.
+</Callout>
+
+## Moves
+
+Manage which movement abilities a player can use. **Move IDs** are: `wall_run`, `wall_jump`,
+`wall_cling`, `climb_vault`, `quick_vault`, `slide`, `roll`, `tic_tac`.
+
+| Command | Description | Permission |
+| --- | --- | --- |
+| `/parkour moves list [player]` | List the player's unlocked moves and their cooldown status. | base |
+| `/parkour moves enable [move] [player]` | Enable a move (opens a clickable picker if no move is given). | base |
+| `/parkour moves disable [move] [player]` | Disable a move. | base |
+| `/parkour moves enableall <player>` | Enable every move for a player. | admin |
+| `/parkour moves disableall <player>` | Disable every move for a player. | admin |
+| `/parkour moves unlock [move] [player]` | Unlock a move for a player. | admin |
+| `/parkour moves lock [move] [player]` | Lock (remove) a move from a player. | admin |
+
+<Callout title="Enable/disable vs. unlock/lock" type="info">
+  **Unlock / lock** controls whether a player *has* a move at all. **Enable / disable** toggles an
+  already-unlocked move on or off (e.g. a player temporarily turning off a move they own).
+</Callout>
+
+## Cooldowns
+
+Inspect and adjust move cooldowns. Cooldown amounts are measured in **ticks** (20 ticks = 1 second).
+
+| Command | Description | Permission |
+| --- | --- | --- |
+| `/parkour cooldowns get [player]` | View a player's active cooldowns. Each entry is clickable to clear it. | base |
+| `/parkour cooldowns add <move> <amount> [player]` | Add an `amount`-tick cooldown to a move. | admin |
+| `/parkour cooldowns clear [player]` | Clear all active cooldowns for a player. | admin |
+
+```text
+# Put a 10-second (200-tick) cooldown on the slide for Steve
+/parkour cooldowns add slide 200 Steve
+```
+
+<Callout type="info">
+  Tab-completion suggests common tick values — `100`, `200`, `600`, `1200` (5s, 10s, 30s, 60s).
+</Callout>
+
+## Cooldown UIs
+
+Choose how remaining cooldowns are displayed to a player. Available UI names are **`BOSSBAR`**,
+**`CHAT`**, and **`TOOLBAR`** (the action-bar above the hotbar). More than one can be active at once.
+
+| Command | Description | Permission |
+| --- | --- | --- |
+| `/parkour ui cooldowns list` | List the available cooldown UIs and which are enabled. | base |
+| `/parkour ui cooldowns enable <ui_name>` | Turn on a cooldown UI (`BOSSBAR`, `CHAT`, or `TOOLBAR`). | base |
+| `/parkour ui cooldowns disable <ui_name>` | Turn off a cooldown UI. | base |
+
+## Utility
+
+| Command | Description | Permission |
+| --- | --- | --- |
+| `/parkour reload` | Reload `config.yml`, `moves.yml` and `bonuses.yml`. | admin |
+| `/parkour reset [player]` | Force-reset a player's state and physics (gravity, flight, walk speed) back to vanilla defaults. Useful if a player gets stuck mid-move. | admin |
+
+## Permissions
+
+| Permission | Default | Grants |
+| --- | --- | --- |
+| `parkourproject.parkour.other` | `op` | Ability to run `/parkour` subcommands **targeting other players** (the `[player]` argument). |
+| `parkourproject.parkour.admin` | `op` | Access to **admin** subcommands: `moves enableall/disableall/unlock/lock`, `cooldowns add/clear`, `reload`, and `reset`. |
+
+<Callout type="warn">
+  Both permissions default to **op**. On a public server, grant them explicitly to trusted staff via
+  your permissions plugin rather than handing out operator status.
+</Callout>

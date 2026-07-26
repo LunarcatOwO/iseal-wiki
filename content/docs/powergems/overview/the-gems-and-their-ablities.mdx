@@ -1,0 +1,132 @@
+---
+title: The Gems and Their abilities
+description: Overview of every gem and what each of its abilities does.
+---
+
+Every gem has four abilities: a **Right Click**, a **Left Click**, a **Shift Click**, and a **Passive**
+effect that is always active while the gem is held.
+
+<Callout title="How to use Shift Click abilities" type="idea">
+  A gem's **Shift Click** ability is used by holding **sneak** and pressing either mouse button.
+</Callout>
+
+export const GemArt = ({ gem, name }) => (
+  <figure style={{ margin: '0.5rem 0' }}>
+    <div style={{ display: 'inline-flex', gap: '32px', alignItems: 'center' }}>
+      <img src={`/images/${gem}D.png`} alt={`${name} — Default resource pack`} style={{ width: '64px', height: 'auto' }} className="pixelated" />
+      <img src={`/images/${gem}HQ.png`} alt={`${name} — HQ resource pack`} style={{ width: '64px', height: 'auto' }} className="pixelated" />
+      <img src={`/images/${gem}M.png`} alt={`${name} — Magic resource pack`} style={{ width: '64px', height: 'auto' }} className="pixelated" />
+    </div>
+    <figcaption>Default · HQ · Magic resource packs</figcaption>
+  </figure>
+);
+
+## Strength Gem
+
+<GemArt gem="strengthgem" name="Strength Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Provides Saturation, Strength and Resistance potion effects. |
+| **Left Click** | A shockwave that sends nearby entities flying and damages them. |
+| **Shift Click** | Creates an area around the user that prevents anyone from entering it. |
+| **Passive** | Haste. |
+
+## Healing Gem
+
+<GemArt gem="healgem" name="Healing Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Parry attacks. |
+| **Left Click** | Slowly regenerate with 1 minute of Regeneration II. |
+| **Shift Click** | Instantly heals the user. |
+| **Passive** | Regeneration. |
+
+## Air Gem
+
+<GemArt gem="airgem" name="Air Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Creates a wind that pulls the target toward the user. |
+| **Left Click** | Unleashes a burst of wind, launching everything nearby into the air. |
+| **Shift Click** | Creates a smoke cloud, granting temporary invisibility and propelling the user forward. Also works with elytras. |
+| **Passive** | Slow Falling. |
+
+## Fire Gem
+
+<GemArt gem="firegem" name="Fire Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Creates a fiery aura around the user, granting temporary fire resistance and setting nearby blocks on fire. |
+| **Left Click** | Launches a fireball after a charge-up in the direction faced, causing a powerful explosion on impact. |
+| **Shift Click** | Creates an explosion around the user, damaging nearby entities and setting them on fire. |
+| **Passive** | Fire Resistance. |
+
+## Iron Gem
+
+<GemArt gem="irongem" name="Iron Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Temporarily grants increased absorption and knockback resistance. |
+| **Left Click** | Fires a barrage of spectral arrows in a circle. |
+| **Shift Click** | Temporarily increases the player's armor and armor toughness. |
+| **Passive** | Resistance. |
+
+## Lightning Gem
+
+<GemArt gem="lightgem" name="Lightning Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Strikes lightning at the aimed position and any nearby entities, damaging them. |
+| **Left Click** | Launches the user forward in the direction they are looking. Also works with elytras. |
+| **Shift Click** | Emits a thunder sound and applies Glowing to nearby entities, excluding the user. |
+| **Passive** | Speed. |
+
+## Sand Gem
+
+<GemArt gem="sandgem" name="Sand Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Gives the target player Weakness. |
+| **Left Click** | Temporarily creates a sand block that slows anything passing over it. |
+| **Shift Click** | Gives the target player a temporary Blindness effect. |
+| **Passive** | Haste. |
+
+## Ice Gem
+
+<GemArt gem="icegem" name="Ice Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Throws an ice block, dealing damage to anything it hits. |
+| **Left Click** | Gives the target player a temporary Slowness effect. |
+| **Shift Click** | Spawns snow golems to fight for the user. |
+| **Passive** | Instant Health. |
+
+## Lava Gem
+
+<GemArt gem="lavagem" name="Lava Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Creates a ring of lava around the user. |
+| **Left Click** | Provides the user with temporary Fire Resistance. |
+| **Shift Click** | Spawns blazes to fight for the user. |
+| **Passive** | Fire Resistance. |
+
+## Water Gem
+
+<GemArt gem="watergem" name="Water Gem" />
+
+| Trigger | Effect |
+| --- | --- |
+| **Right Click** | Propel yourself forward in water, creating bubbles. |
+| **Left Click** | Moisturize farmland blocks around you. |
+| **Shift Click** | Create a temporary water cube around you, granting Dolphin's Grace. |
+| **Passive** | Conduit Power. |

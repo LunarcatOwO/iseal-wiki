@@ -1,0 +1,16 @@
+{
+  "title": "Moves",
+  "icon": "Move",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "wall-run",
+    "wall-jump",
+    "wall-cling",
+    "climb-vault",
+    "quick-vault",
+    "slide",
+    "roll",
+    "tic-tac"
+  ]
+}

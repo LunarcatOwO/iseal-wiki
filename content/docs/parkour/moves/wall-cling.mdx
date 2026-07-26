@@ -1,0 +1,38 @@
+---
+title: Wall Cling
+description: Grab and hang on a wall, shimmy sideways, then leap off when you're ready.
+---
+
+The **Wall Cling** lets you grab a wall and hang there instead of falling. From a cling you can
+shimmy sideways, catch your breath mid-combo, and then push off with a
+[Wall Jump](/parkour/moves/wall-jump). It's the "pause and reposition" tool of the move set.
+
+## How to perform
+
+1. Approach a **wall** while airborne and press toward it (within interaction range).
+2. You latch on. While clinging you slowly drift downward and can move **laterally** along the wall.
+3. Release by jumping off, or let the cling time out.
+
+A cling can be ended early by admins or by the [`/parkour reset`](/parkour/commands) command if a
+player ever gets stuck.
+
+## Tuning (`moves.yml` → `wall_cling`)
+
+| Key | Default | Meaning |
+| --- | --- | --- |
+| `interaction_range` | `1.5` | How close to a wall you must be to grab it. |
+| `lateral_speed` | `0.18` | Sideways shimmy speed along the wall. |
+| `gravity_drift` | `0.005` | Slow downward drift while clinging. |
+| `max_cling_ticks` | `100` | Maximum cling duration, in ticks (5 seconds). |
+| `corner_threshold` | `0.35` | Sensitivity for detecting and handling wall corners. |
+| `wall_offset` | `0.9` | Distance the player is held from the wall face. |
+| `initial_height_offset` | `0.6` | Vertical offset applied when the cling begins. |
+| `cling_walk_speed` | `0.05` | Movement speed while walking during a cling. |
+| `cooldown_ticks` | `60` | Cooldown after releasing, in ticks (3 seconds). |
+| `bossbar` | Wall Cling / `GREEN` | Boss bar name, color and overlay shown while active. |
+
+<Callout title="Related bonuses" type="info">
+  Short, deliberate clings drive **+CHECKPOINT**, **+TOUCH AND GO**, **+SMOOTH TRANSITION** and
+  **+REBOUND CLING**. Dropping from a cling into a fight feeds combat bonuses like **+CRITICAL DROP**
+  and **+EMERGENCY MEETING**.
+</Callout>

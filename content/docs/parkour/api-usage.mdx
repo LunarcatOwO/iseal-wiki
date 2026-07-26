@@ -1,0 +1,143 @@
+---
+title: API & Addons
+description: Extend Parkour Project with your own moves, bonuses and cooldown UIs using the addon API.
+---
+
+Parkour Project exposes a small **addon API** so other plugins can contribute their own **moves**,
+**style bonuses**, and **cooldown UIs**. The two types you work with are:
+
+- `dev.iseal.parkour.api.ApiManager` — the entry point (a singleton).
+- `dev.iseal.parkour.api.types.ParkourProjectAddon` — the base class your addon extends.
+
+<Callout type="info">
+  Addons require **SealLib** and **ParkourProject** at runtime, and target the same server versions
+  (Paper/Folia, API 1.21+). Build against Java 21 to match the plugin.
+</Callout>
+
+## The addon contract
+
+Extend `ParkourProjectAddon` and override the pieces you want to contribute. Every method returns a
+list, so return an empty list for anything you don't add.
+
+| Method | Returns | Purpose |
+| --- | --- | --- |
+| `getName()` | `String` | Display name used in logs. |
+| `getPlugin()` | `JavaPlugin` | Your plugin instance. |
+| `getMoves()` | `List<ParkourMove>` | Custom movement abilities. |
+| `getBonuses()` | `List<FlowBonus>` | Custom style bonuses. |
+| `getCooldownUIs()` | `List<AbstractCooldownUI>` | Custom cooldown display UIs. |
+| `getDependencies()` | `List<ParkourProjectAddon>` | Other addons yours depends on. |
+
+## The `api-enabled` feature flag
+
+The API is guarded by a **feature flag** (`api-enabled`). `ApiManager` waits for the flag to become
+ready before accepting registrations. If the flag isn't enabled, registration is refused with a log
+warning.
+
+<Callout title="early-bird" type="warn">
+  To opt into the API before it is generally rolled out, set **`early-bird: true`** in
+  [`config.yml`](/parkour/configuration). Without early-bird access, an addon that registers too early
+  is told to wait until access is granted.
+</Callout>
+
+## Example addon
+
+<div className='fd-steps [&_h3]:fd-step'>
+
+### plugin.yml
+
+```yaml
+name: MyParkourAddon
+main: dev.yourname.myparkouraddon.AddonMain
+version: 1.0.0
+api-version: '1.21'
+depend: [SealLib, ParkourProject]
+```
+
+### Extend `ParkourProjectAddon`
+
+```java
+package dev.yourname.myparkouraddon;
+
+import dev.iseal.parkour.api.types.ParkourProjectAddon;
+import dev.iseal.parkour.moves.ParkourMove;
+import dev.iseal.parkour.flow.bonus.types.FlowBonus;
+import dev.iseal.parkour.cooldown.ui.AbstractCooldownUI;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.List;
+
+public class MyAddon extends ParkourProjectAddon {
+
+    private final JavaPlugin plugin;
+
+    public MyAddon(JavaPlugin plugin) {
+        this.plugin = plugin;
+    }
+
+    @Override
+    public String getName() {
+        return "MyParkourAddon";
+    }
+
+    @Override
+    public JavaPlugin getPlugin() {
+        return plugin;
+    }
+
+    @Override
+    public List<ParkourMove> getMoves() {
+        // return your custom ParkourMove implementations here
+        return List.of();
+    }
+
+    @Override
+    public List<FlowBonus> getBonuses() {
+        // return your custom FlowBonus implementations here
+        return List.of();
+    }
+
+    @Override
+    public List<AbstractCooldownUI> getCooldownUIs() {
+        return List.of();
+    }
+
+    @Override
+    public List<ParkourProjectAddon> getDependencies() {
+        return List.of();
+    }
+}
+```
+
+### Register it in `onEnable`
+
+```java
+package dev.yourname.myparkouraddon;
+
+import dev.iseal.parkour.api.ApiManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class AddonMain extends JavaPlugin {
+    @Override
+    public void onEnable() {
+        ApiManager.getInstance().registerAddon(new MyAddon(this));
+    }
+}
+```
+
+</div>
+
+## Notes
+
+- **Match versions.** Compile against the same SealLib and ParkourProject versions running on your
+  server.
+- **Register once.** `ApiManager` rejects a second registration of the same addon (`Already loaded`).
+- **Bonuses** extend the type hierarchy in `dev.iseal.parkour.flow.bonus.types` (`FlowBonus`,
+  `AdvancedFlowBonus`, `CombatBonus`, `MythicFlowBonus`) — pick the category base that fits.
+- **Cooldown UIs** extend `AbstractCooldownUI`, alongside the built-in `BOSSBAR`, `CHAT` and
+  `TOOLBAR` implementations.
+
+<Callout type="info">
+  The public API is young and evolving. If a method or type changes between versions, prefer the
+  shapes exposed under `dev.iseal.parkour.api` and ask on the community Discord for current patterns.
+</Callout>

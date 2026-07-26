@@ -1,0 +1,52 @@
+---
+title: Advanced Movement
+description: The ADVANCED category — precision routing, high-speed lines, and clean timing chains.
+---
+
+**Category:** `ADVANCED` · **Design name:** "Advanced Movement"
+
+Advanced bonuses reward **precision map navigation, high-speed routing, and clean timing structures**.
+These are the tricks that separate a competent runner from a stylish one.
+
+| Bonus | Points | How to earn | Config key |
+| --- | ---: | --- | --- |
+| `+FICSIT APPROVED` | 250 | Execute 3 perfect-timed quick vaults or slides across identical block heights back-to-back. | `ficsit_approved` |
+| `+CATAPULT` | 250 | Quick vault directly after a climb vault. | `catapult` |
+| `+OVER THE RAILS` | 300 | Land a perfect roll immediately after a vault (over a fence). | `over_the_rails` |
+| `+BREACH` | 300 | Smash through a door, trapdoor or gate with a slide. | `breach` |
+| `+HIGH PROFILE` | 300 | Perform a loud/explosive move (like breaking a door) while at **S rank** or higher. | `high_profile` |
+| `+DEALMAKER` | 350 | Land a roll on top of a villager's workstation or a loot chest. | `dealmaker` |
+| `+REBOUND CLING` | 350 | Tic tac into a wall cling without ever touching the ground. | `rebound_cling` |
+| `+EFFICIENCY BUMP` | 350 | Get the perfect speed boost on two consecutive quick vaults. | `efficiency_bump` |
+| `+LONG WAY DOWN` | 400 | Maintain a single continuous wall run for more than 10 blocks. | `long_way_down` |
+| `+VENTED` | 400 | Use a full-speed slide to pass through an iron trapdoor. | `vented` |
+| `+DOUBLE DOWN` | 400 | Execute two perfect-timed rolls within 10 seconds of each other. | `double_down` |
+| `+DEALER'S CHOICE` | 450 | Slide into wall run into tic tac. | `dealers_choice` |
+| `+GHOST RUN` | 500 | Complete a long sequence of moves (default 30) without taking any damage. | `ghost_run` |
+| `+SKYLINE` | 500 | Chain three wall runs together without any other move (except wall jump) or touching the ground. | `skyline` |
+| `+CHAOS, CHAOS!` | 600 | Trigger several distinct moves (default 5) within 5 seconds. | `chaos_chaos` |
+
+## Key tunables
+
+| Config key | Field | Default |
+| --- | --- | --- |
+| `ficsit_approved` | `required_streak` / `max_time_millis` | `3` / `5000` |
+| `catapult` | `max_chain_time_millis` | `1200` |
+| `over_the_rails` | `max_chain_time_millis` / `allow_extra_moves` | `5000` / `false` |
+| `high_profile` | `minimum_rank` | `s` |
+| `dealmaker` | `workstation_materials` / `loot_materials` | lists (see reference) |
+| `rebound_cling` | `max_window_ticks` | `40` |
+| `efficiency_bump` | `speed_match_threshold` / `delay_ticks` | `1.1` / `2` |
+| `long_way_down` | `min_wallrun_distance` | `12.0` |
+| `vented` | `min_speed` | `0.32` |
+| `double_down` | `max_window_millis` | `10000` |
+| `dealers_choice` | `max_chain_time_millis` | `3000` |
+| `ghost_run` | `required_moves` | `30` |
+| `skyline` | `required_streak` | `3` |
+| `chaos_chaos` | `window_millis` / `required_distinct_moves` | `5000` / `5` |
+
+<Callout title="Design vs. shipped values" type="info">
+  A few bonuses were tuned after the original design doc — e.g. `ghost_run` requires **30** moves in
+  `bonuses.yml` (the design note said 5), and `chaos_chaos` asks for **5** distinct moves. The values
+  above reflect the shipped `bonuses.yml`, which is what the plugin actually awards.
+</Callout>

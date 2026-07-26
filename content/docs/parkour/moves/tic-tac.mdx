@@ -1,0 +1,37 @@
+---
+title: Tic Tac
+description: Kick off a nearby wall in mid-air to redirect your momentum on the fly.
+---
+
+The **Tic Tac** is a mid-air redirect. Kick off a nearby wall while airborne to instantly change your
+horizontal direction — dodge a projectile, snake around a corner, or set up the next wall contact. It
+can also shove and damage mobs you push off of.
+
+## How to perform
+
+1. While **airborne**, be near a wall (within the max distance).
+2. Trigger the tic tac — you push **off and away** from the wall, gaining a burst up, away, and
+   forward.
+
+Because it works off any nearby surface, the tic tac is the glue between other moves: wall run →
+tic tac → [Wall Cling](/parkour/moves/wall-cling), or slide → wallrun → tic tac for **+DEALER'S
+CHOICE**.
+
+## Tuning (`moves.yml` → `tic_tac`)
+
+| Key | Default | Meaning |
+| --- | --- | --- |
+| `upward_force` | `0.5` | Upward velocity applied by the kick. |
+| `push_away_force` | `0.6` | Velocity pushing you away from the wall. |
+| `forward_force` | `0.4` | Forward velocity applied in your travel direction. |
+| `max_distance_squared` | `4.0` | Max squared distance to a usable wall (√4 = 2 blocks). |
+| `mob_push_multiplier` | `0.6` | Knockback multiplier when kicking off a mob. |
+| `mob_impact_damage` | `2.0` | Damage dealt to a mob you tic-tac off of. |
+| `cooldown` | `40` | Cooldown after a tic tac, in ticks (2 seconds). |
+| `bossbar` | Tic Tac / `GREEN` | Boss bar name, color and overlay shown while active. |
+
+<Callout title="Related bonuses" type="info">
+  Tic tacs enable **+REBOUND CLING**, **+DEALER'S CHOICE**, and combat plays like **+HIT &amp; RUN**
+  (killing with a tic tac) and **+BLUE HEART** (redirecting to dodge a projectile). See the
+  [Style System](/parkour/style-system).
+</Callout>

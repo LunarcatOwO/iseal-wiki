@@ -1,0 +1,9 @@
+{
+  "title": "Reference",
+  "icon": "FileCode",
+  "pages": [
+    "index",
+    "moves-yml",
+    "bonuses-yml"
+  ]
+}

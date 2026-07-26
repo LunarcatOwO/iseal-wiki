@@ -1,0 +1,60 @@
+---
+title: Frequently Asked Questions
+description: Common questions about the Parkour Project plugin and quick answers.
+---
+
+### What server software do I need?
+
+A Paper (or Folia) server on **1.21+**, with **SealLib** installed. **PlaceholderAPI** is an optional
+soft-dependency. See [Quick Start](/parkour/quick-start).
+
+### Does it work on Folia?
+
+Yes — Parkour Project declares Folia support. It runs on both Paper and Folia.
+
+### How do players unlock moves?
+
+By default every move has `default_unlocked: true`, so new players start with the full move set.
+Admins can change this per player with `/parkour moves unlock|lock` and per move in
+[`moves.yml`](/parkour/reference/moves-yml). See [Commands](/parkour/commands).
+
+### A player is stuck flying or has weird physics. How do I fix it?
+
+Run `/parkour reset [player]`. It force-resets their state and physical attributes (gravity, flight,
+walk speed) back to vanilla defaults.
+
+### How do I see remaining cooldowns?
+
+Toggle a cooldown UI with `/parkour ui cooldowns enable <BOSSBAR|CHAT|TOOLBAR>`. You can enable more
+than one at a time. `/parkour cooldowns get` also lists active cooldowns.
+
+### Can I change how many points a trick is worth?
+
+Yes. Every bonus's `bonus` value lives in [`bonuses.yml`](/parkour/reference/bonuses-yml). You can
+also disable individual bonuses or retune their thresholds, then `/parkour reload`.
+
+### The `+SUSPICIOUS ACTIVITY` bonus never triggers.
+
+In the shipped `bonuses.yml` that entry is missing its `enabled` / `bonus` / `category` /
+`display_name` fields. Add them (category `MYTHIC`, bonus `1250`) and reload. See
+[Mythic & Clutch](/parkour/style-system/mythic).
+
+### The Climb Vault boss bar says "TODO" and plays boss music.
+
+That's the placeholder default in `moves.yml`. Set `climb_vault.bossbar.name` to your own text, and
+remove `PLAY_BOSS_MUSIC` from its `flags` if you don't want the soundtrack. See
+[Climb Vault](/parkour/moves/climb-vault).
+
+### How do I add my own moves or bonuses?
+
+Use the addon API — extend `ParkourProjectAddon` and register it through `ApiManager`. See
+[API & Addons](/parkour/api-usage).
+
+### Does the plugin collect data?
+
+It can send **anonymous** usage metrics, controlled by `allow-metrics` in
+[`config.yml`](/parkour/configuration). Set it to `false` to opt out.
+
+### Where can I get help?
+
+Join the community [Discord](https://discord.iseal.dev).

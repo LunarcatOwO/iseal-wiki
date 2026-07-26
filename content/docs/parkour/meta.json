@@ -1,0 +1,18 @@
+{
+  "title": "Parkour Project",
+  "description": "Movement, flow & style scoring",
+  "root": true,
+  "pages": [
+    "index",
+    "quick-start",
+    "configuration",
+    "commands",
+    "---Gameplay---",
+    "moves",
+    "style-system",
+    "---Reference---",
+    "reference",
+    "api-usage",
+    "faq"
+  ]
+}

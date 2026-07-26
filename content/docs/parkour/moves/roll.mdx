@@ -1,0 +1,49 @@
+---
+title: Roll
+description: Roll on landing to cancel fall damage — and crush whatever you land on.
+---
+
+The **Roll** is your landing tool. Time a sneak just before you hit the ground and you tuck into a
+roll that **negates fall damage** and carries your momentum forward. Land *on* a mob and you can crush
+it. The roll is the single most important move for surviving big drops — and it's the gateway to the
+game's highest-scoring bonuses.
+
+## How to perform
+
+1. While falling, **sneak** within the timing window just before you land.
+2. A well-timed roll cancels the fall damage and gives a small forward/upward boost out of the
+   landing.
+
+The quality of your timing determines the cooldown:
+
+| Timing | Result | Cooldown |
+| --- | --- | --- |
+| **Perfect** | Frame-perfect roll — no damage, full momentum. | `10` ticks (0.5s) |
+| **Imperfect** | Roll landed, but slightly off. | `60` ticks (3s) |
+| **Miss** | Missed the window — you take the fall normally. | `200` ticks (10s) |
+
+<Callout type="warn">
+  Because a missed roll has a long cooldown, spamming sneak on the way down is punished — the roll
+  rewards *timing*, not mashing.
+</Callout>
+
+## Tuning (`moves.yml` → `roll`)
+
+| Key | Default | Meaning |
+| --- | --- | --- |
+| `sneak_window_ticks` | `10` | Size of the input window (ticks) before landing to trigger a roll. |
+| `cooldown.perfect` | `10` | Cooldown after a perfectly-timed roll. |
+| `cooldown.imperfect` | `60` | Cooldown after an imperfect roll. |
+| `cooldown.miss` | `200` | Cooldown after a missed roll. |
+| `boost_y` | `0.2` | Upward boost coming out of the roll. |
+| `boost_mult` | `0.5` | Multiplier on the forward momentum preserved. |
+| `min_damage` | `1.0` | Minimum fall damage threshold for a roll to matter. |
+| `crush_base_damage` | `4.0` | Base damage dealt to mobs you land on. |
+| `crush_radius` | `1.75` | Radius of the landing crush effect. |
+| `bossbar` | Roll / `WHITE` | Boss bar name, color and overlay shown while active. |
+
+<Callout title="Related bonuses" type="info">
+  The roll powers the biggest scores in the game — **+SOFT LANDING**, **+CLOSE CALL**,
+  **+PARRY THE EARTH** (a perfect, 0-tick roll), **+DEATH DEFIED**, **+RECONSTRUCT WHAT?** and the
+  combat crush **+SPLATTERED**. See [Mythic &amp; Clutch](/parkour/style-system/mythic).
+</Callout>

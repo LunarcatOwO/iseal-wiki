@@ -1,0 +1,66 @@
+---
+title: Configuration
+description: Every option in config.yml — database connection, dev token, metrics and effects.
+---
+
+<Callout title="Where to find the file" type="info">
+  Open your server's file manager, go to `~/plugins/ParkourProject/`, and open `config.yml`. This
+  file holds core plugin settings. Movement tuning lives in `moves.yml` and style bonuses live in
+  `bonuses.yml` — both covered under [Reference](/parkour/reference).
+</Callout>
+
+## Full default `config.yml`
+
+```yaml
+database:
+   table:
+      prefix: parkour_project
+   username: root
+   password: password
+early-bird: false
+dev-token: none
+allow-metrics: true
+external-effects: true
+```
+
+## Database
+
+Parkour Project persists player data — such as which moves are unlocked and which cooldown UIs are
+enabled — in an SQL database. It ships with an **embedded database** so it works with zero setup;
+these settings control the connection.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `database.table.prefix` | `parkour_project` | Prefix applied to every table the plugin creates. Change this if multiple plugins or instances share one database. |
+| `database.username` | `root` | Username for the database connection. |
+| `database.password` | `password` | Password for the database connection. |
+
+<Callout type="warn">
+  The defaults (`root` / `password`) are placeholders. If you point Parkour Project at a real
+  external database, set proper credentials and **never** reuse a production root password here.
+</Callout>
+
+## Plugin behavior
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `early-bird` | `false` | Opts into **early access** to feature-flagged functionality before it is generally rolled out — notably the [addon API](/parkour/api-usage). Leave `false` for normal play. |
+| `dev-token` | `none` | Developer token for development builds / privileged features. Keep `none` for normal use. |
+| `allow-metrics` | `true` | Sends **anonymous** usage statistics that help improve the plugin. Set to `false` to opt out. |
+| `external-effects` | `true` | Allows Parkour Project to apply external effects tied to movement and flow (e.g. potion / visual / audio feedback). Set to `false` for purely mechanical movement. |
+
+## Applying changes
+
+After editing any config file you can reload without a full restart:
+
+```text
+/parkour reload
+```
+
+This re-reads `config.yml`, `moves.yml` and `bonuses.yml`. See
+[Commands & Permissions](/parkour/commands) for details.
+
+<Callout type="info">
+  Some database-connection changes may only take effect on a full server **restart**. Reload is best
+  for gameplay tuning in `moves.yml` and `bonuses.yml`.
+</Callout>

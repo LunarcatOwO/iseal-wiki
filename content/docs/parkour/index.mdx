@@ -1,0 +1,53 @@
+---
+title: Welcome
+description: An overview of the Parkour Project plugin — free-running movement and a stylish flow-scoring system for Paper and Folia servers.
+---
+
+Welcome to the **Parkour Project** wiki!
+
+Parkour Project turns any Minecraft server into a free-running playground. Players chain together
+**wall runs, vaults, slides, rolls and tic-tacs** to flow through the world — and the plugin rewards
+smooth, creative movement with a **style-scoring system** inspired by character-action games.
+
+<Callout type="info">
+  Parkour Project depends on **SealLib** and optionally hooks into **PlaceholderAPI**. It supports
+  both **Paper** and **Folia** servers (API version 1.21+).
+</Callout>
+
+## The two halves of the plugin
+
+<Cards>
+  <Card title="Moves" href="/parkour/moves" description="Eight physics-driven movement abilities — wall run, wall jump, wall cling, climb vault, quick vault, slide, roll, and tic tac." />
+  <Card title="Style System" href="/parkour/style-system" description="Earn points for stylish play, climb the flow ranks from D to MAX, and trigger named bonuses across four categories." />
+</Cards>
+
+## How it works
+
+<div className='fd-steps [&_h3]:fd-step'>
+
+### Players unlock moves
+Each ability is a **move** that can be enabled, disabled, unlocked or locked per player. Moves are
+performed with natural inputs — sprinting into a wall, sneaking to roll, and so on.
+
+### Movement builds a combo
+Chaining moves keeps a **combo** alive. The longer and more varied your movement, the more your
+**flow score** grows.
+
+### Score raises your flow rank
+Your live score maps to a **flow rank** — from **D** all the way up to **MAX** — shown on your
+scoreboard. Score decays over time, so you have to keep moving to keep your rank.
+
+### Stylish play triggers bonuses
+Specific tricks and situations award named **bonuses** (like `+NICE DROP` or `+LEAP OF FAITH`),
+each worth a burst of points. Bonuses are grouped into four categories of increasing difficulty.
+
+</div>
+
+## Where to next?
+
+<Cards>
+  <Card title="Quick Start" href="/parkour/quick-start" description="Install the plugin and get running in a few minutes." />
+  <Card title="Configuration" href="/parkour/configuration" description="Understand config.yml — database, tokens, metrics and effects." />
+  <Card title="Commands & Permissions" href="/parkour/commands" description="Every /parkour subcommand and the permissions that gate them." />
+  <Card title="Download" href="https://iseal.dev" description="Get Parkour Project and SealLib." />
+</Cards>

@@ -1,0 +1,42 @@
+---
+title: Combat Hybrid
+description: The COMBAT category — style that demands you engage, evade or eliminate enemies in motion.
+---
+
+**Category:** `COMBAT` · **Design name:** "Combat Hybrid"
+
+Combat bonuses are style variants that require you to **actively engage, evade, or eliminate enemies
+while maintaining motion**. Fighting isn't a pause in your run — it's part of the flow.
+
+| Bonus | Points | How to earn | Config key |
+| --- | ---: | --- | --- |
+| `+CLOSE QUARTERS` | 300 | Wall jump off a surface within 2 blocks of a hostile mob. | `close_quarters` |
+| `+SWEEP THE LEG` | 350 | Knock back or damage a mob by sliding directly into it. | `sweep_the_leg` |
+| `+DISRESPECT` | 400 | Punch a mob with an empty hand while sliding or clinging. | `disrespect` |
+| `+EMERGENCY MEETING` | 400 | Drop from a wall cling or roll into the middle of a group of mobs. | `emergency_meeting` |
+| `+CRITICAL DROP` | 400 | Land a critical melee hit immediately after releasing a wall cling. | `critical_drop` |
+| `+SPLATTERED` | 450 | Crush a mob with a roll. | `splattered` |
+| `+BIG SHOT` | 500 | Land a bow shot while sliding. | `big_shot` |
+| `+HIT & RUN` | 500 | Kill an enemy with a tic tac. | `hit_and_run` |
+| `+FROM ABOVE` | 500 | Kill an enemy while dropping out of a climb vault. | `from_above` |
+| `+FLYBY` | 600 | Kill something while in a wall run. | `flyby` |
+| `+BLUE HEART` | 650 | Instantly change horizontal direction with a tic tac to dodge an incoming projectile. | `blue_heart` |
+| `+NEO` | 700 | Dodge or slide under 3 projectiles within 10 seconds. | `neo` |
+
+## Key tunables
+
+| Config key | Field | Default |
+| --- | --- | --- |
+| `close_quarters` | `mob_radius` | `2.0` |
+| `disrespect` | `tackle_guard_window_ticks` | `4` |
+| `emergency_meeting` | `mob_radius` / `min_mobs` | `3.0` / `3` |
+| `critical_drop` | `window_ticks` | `20` |
+| `hit_and_run` | `window_ticks` | `20` |
+| `from_above` | `window_ticks` | `20` |
+| `blue_heart` | `opposite_direction_threshold` | `-0.3` |
+| `neo` | `window_millis` / `required_dodges` / `slide_poll_interval_ticks` | `10000` / `3` / `4` |
+
+<Callout type="info">
+  `sweep_the_leg`, `splattered` and `big_shot` have no extra thresholds — they fire on the action
+  itself. See the [`bonuses.yml` reference](/parkour/reference/bonuses-yml) for every field.
+</Callout>

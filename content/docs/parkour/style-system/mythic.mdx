@@ -1,0 +1,46 @@
+---
+title: Mythic & Clutch
+description: The MYTHIC category — the highest-tier bonuses, demanding precision, luck, and near-death heroics.
+---
+
+**Category:** `MYTHIC` · **Design name:** "Mythic & Clutch"
+
+The highest tier. These bonuses require **incredible mechanical precision, absolute timing, or
+near-death scenarios** — and they pay out accordingly, from 800 points up to a staggering 1,500.
+
+| Bonus | Points | How to earn | Config key |
+| --- | ---: | --- | --- |
+| `+CLOSE CALL` | 800 | Roll from a height that would otherwise have killed you. | `close_call` |
+| `+BUT IT REFUSED` | 900 | Survive on half a heart after any roll. | `but_it_refused` |
+| `+PARRY THE EARTH` | 1000 | Land a perfect (0-tick) roll. | `parry_the_earth` |
+| `+FLOW STATE` | 1000 | Hold your highest style rank for more than 30 seconds. | `flow_state` |
+| `+STILL ALIVE` | 1100 | End a 10+ move combo with a perfect roll. | `still_alive` |
+| `+NEWTON` | 1200 | Spend 10 full seconds in the air while performing at least 5 moves. | `newton` |
+| `+DEATH DEFIED` | 1200 | Achieve a 90% roll reduction with only half a heart to spare. | `death_defied` |
+| `+SUSPICIOUS ACTIVITY` | 1250 | Wall run and slide through a deep dark biome without setting off a single sculk sensor. | `suspicious_activity` |
+| `+LEAP OF FAITH` | 1300 | Wall jump into a fall of more than 30 blocks, then land without taking any damage. | `leap_of_faith` |
+| `+RECONSTRUCT WHAT?` | 1500 | Land a perfect roll cancelling over 100 points of potential damage. | `reconstruct_what` |
+
+## Key tunables
+
+| Config key | Field | Default |
+| --- | --- | --- |
+| `but_it_refused` | `health_threshold` | `1.0` |
+| `flow_state` | `required_ticks` | `600` |
+| `still_alive` | `required_move_count` | `10` |
+| `newton` | `required_airborne_ticks` / `required_move_count` | `200` / `5` |
+| `death_defied` | `required_reduction` / `health_threshold` | `0.9` / `1.0` |
+| `suspicious_activity` | `min_traversal_distance` / `sensor_trigger_radius` | `20.0` / `16.0` |
+| `leap_of_faith` | `min_fall_distance` / `max_track_ticks` | `30.0` / `400` |
+| `reconstruct_what` | `min_potential_damage` | `100.0` |
+
+<Callout title="Suspicious Activity" type="warn">
+  In the shipped `bonuses.yml`, `suspicious_activity` only lists its two thresholds and is missing the
+  `enabled` / `bonus` / `category` / `display_name` fields present on every other bonus. If it doesn't
+  fire on your server, add those fields (category `MYTHIC`, bonus `1250`) to enable it.
+</Callout>
+
+<Callout type="info">
+  `close_call` and `parry_the_earth` have no extra thresholds — they trigger purely on the feat
+  itself. Full field list in the [`bonuses.yml` reference](/parkour/reference/bonuses-yml).
+</Callout>

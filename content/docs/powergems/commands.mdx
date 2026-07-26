@@ -1,0 +1,57 @@
+---
+title: Commands & Permissions
+description: Every PowerGems command, its usage and aliases, and the permission nodes that gate them.
+---
+
+PowerGems adds a small set of admin/utility commands for handing out gems, clearing them, and
+managing the plugin. Every command is gated by its own permission node (all default to **op**).
+
+<Callout type="info">
+  The `<gem>` argument is a gem's element name — e.g. `strength`, `healing`, `air`, `fire`, `iron`,
+  `lightning`, `sand`, `ice`, `lava`, `water`. See [The Gems and Their abilities](/powergems/overview/the-gems-and-their-ablities).
+</Callout>
+
+## Commands
+
+| Command | Description | Aliases | Permission |
+| --- | --- | --- | --- |
+| `/getallgems` | Give yourself one of every gem. | — | `powergems.getallgems` |
+| `/givegem <gem>` | Give yourself a specific gem. | — | `powergems.givegem` |
+| `/giveallplayersgem <gem>` | Give every online player a gem. | — | `powergems.giveallplayersgem` |
+| `/cleargems [player] [gem/level] [level]` | Clear gems from a player's inventory (optionally filtered). | `cg` | `powergems.cleargems` |
+| `/reloadconfig` | Attempts to reload the config files (see the warning below — a restart is recommended). | `rc` | `powergems.reloadconfig` |
+| `/checkupdates` | Check for plugin updates. | — | `powergems.checkupdates` |
+| `/pgDebug` | Debug command for diagnostics. | `pgd`, `pgdb` | `powergems.debug` |
+
+```text
+# Give yourself a fire gem
+/givegem fire
+```
+
+<Callout title="Editing config? Restart the server" type="warn">
+  `/reloadconfig` (`/rc`) does **not** reliably apply changes to the config files. After editing any
+  configuration, **fully restart your server** to be sure your changes actually take effect — don't
+  rely on the reload command.
+</Callout>
+
+## Permissions
+
+| Permission | Grants | Default |
+| --- | --- | --- |
+| `powergems.getallgems` | Use `/getallgems`. | op |
+| `powergems.givegem` | Use `/givegem`. | op |
+| `powergems.giveallplayersgem` | Use `/giveallplayersgem`. | op |
+| `powergems.cleargems` | Use `/cleargems`. | op |
+| `powergems.reloadconfig` | Use `/reloadconfig`. | op |
+| `powergems.checkupdates` | Use `/checkupdates`. | op |
+| `powergems.debug` | Use `/pgDebug`. | op |
+| `powergems.movegems` | Move gems between inventory slots / containers. | op |
+| `powergems.admin` | Receive admin messages (e.g. update notifications). | op |
+| `powergems.*` | All of the above. | op |
+
+<Callout type="warn">
+  Every node defaults to **op**. On a public server, grant these explicitly to trusted staff through
+  your permissions plugin instead of handing out operator status. `powergems.movegems` controls
+  whether normal players may move gems around — see `allowMovingGems` in
+  [General Config](/powergems/fundamentals/getting-set-up/configuration/general-config).
+</Callout>

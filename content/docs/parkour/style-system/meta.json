@@ -1,0 +1,12 @@
+{
+  "title": "Style System",
+  "icon": "Trophy",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "filler",
+    "advanced",
+    "combat",
+    "mythic"
+  ]
+}

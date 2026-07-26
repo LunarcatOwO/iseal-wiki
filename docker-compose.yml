@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  web:
+    image: ghcr.io/lunarcatowo/iseal-wikis:latest
+    ports:
+      - "8084:8084"
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: '1'
+      PORT: '8084'
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "com.centurylinklabs.watchtower.scope=iseal-wikis"
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 60 --cleanup --rolling-restart --scope iseal-wikis --label-enable
+    restart: always
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=60
