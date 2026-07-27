@@ -1,42 +1,99 @@
 ---
 title: Combat Hybrid
-description: The COMBAT category — style that demands you engage, evade or eliminate enemies in motion.
+description: The COMBAT bonuses — fighting without ever dropping out of your run.
 ---
 
-**Category:** `COMBAT` · **Design name:** "Combat Hybrid"
+Combat bonuses only pay out if you engage, evade or kill *while still moving*. Stopping to fight
+scores nothing; the whole category exists to make a fight part of the route instead of a break in it.
 
-Combat bonuses are style variants that require you to **actively engage, evade, or eliminate enemies
-while maintaining motion**. Fighting isn't a pause in your run — it's part of the flow.
+They use `category: COMBAT` in [`bonuses.yml`](/parkour/reference/bonuses-yml).
 
-| Bonus | Points | How to earn | Config key |
-| --- | ---: | --- | --- |
-| `+CLOSE QUARTERS` | 300 | Wall jump off a surface within 2 blocks of a hostile mob. | `close_quarters` |
-| `+SWEEP THE LEG` | 350 | Knock back or damage a mob by sliding directly into it. | `sweep_the_leg` |
-| `+DISRESPECT` | 400 | Punch a mob with an empty hand while sliding or clinging. | `disrespect` |
-| `+EMERGENCY MEETING` | 400 | Drop from a wall cling or roll into the middle of a group of mobs. | `emergency_meeting` |
-| `+CRITICAL DROP` | 400 | Land a critical melee hit immediately after releasing a wall cling. | `critical_drop` |
-| `+SPLATTERED` | 450 | Crush a mob with a roll. | `splattered` |
-| `+BIG SHOT` | 500 | Land a bow shot while sliding. | `big_shot` |
-| `+HIT & RUN` | 500 | Kill an enemy with a tic tac. | `hit_and_run` |
-| `+FROM ABOVE` | 500 | Kill an enemy while dropping out of a climb vault. | `from_above` |
-| `+FLYBY` | 600 | Kill something while in a wall run. | `flyby` |
-| `+BLUE HEART` | 650 | Instantly change horizontal direction with a tic tac to dodge an incoming projectile. | `blue_heart` |
-| `+NEO` | 700 | Dodge or slide under 3 projectiles within 10 seconds. | `neo` |
+## `+CLOSE QUARTERS` — 300 pts
 
-## Key tunables
+`close_quarters` — [wall jump](/parkour/moves/wall-jump) off a surface right next to a hostile mob.
 
-| Config key | Field | Default |
+| Field | Default | Meaning |
 | --- | --- | --- |
-| `close_quarters` | `mob_radius` | `2.0` |
-| `disrespect` | `tackle_guard_window_ticks` | `4` |
-| `emergency_meeting` | `mob_radius` / `min_mobs` | `3.0` / `3` |
-| `critical_drop` | `window_ticks` | `20` |
-| `hit_and_run` | `window_ticks` | `20` |
-| `from_above` | `window_ticks` | `20` |
-| `blue_heart` | `opposite_direction_threshold` | `-0.3` |
-| `neo` | `window_millis` / `required_dodges` / `slide_poll_interval_ticks` | `10000` / `3` / `4` |
+| `mob_radius` | `2.0` | How close a hostile mob has to be to the wall, in blocks. |
 
-<Callout type="info">
-  `sweep_the_leg`, `splattered` and `big_shot` have no extra thresholds — they fire on the action
-  itself. See the [`bonuses.yml` reference](/parkour/reference/bonuses-yml) for every field.
-</Callout>
+## `+SWEEP THE LEG` — 350 pts
+
+`sweep_the_leg` — knock back or damage a mob by [sliding](/parkour/moves/slide) straight into it. No
+thresholds; it fires on the tackle itself.
+
+## `+DISRESPECT` — 400 pts
+
+`disrespect` — punch a mob with an empty hand while sliding or clinging.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `tackle_guard_window_ticks` | `4` | Hits landed this soon after a slide tackle are ignored, so the tackle itself can't count as the punch. |
+
+## `+EMERGENCY MEETING` — 400 pts
+
+`emergency_meeting` — drop out of a [wall cling](/parkour/moves/wall-cling) or a
+[roll](/parkour/moves/roll) into the middle of a pack of mobs.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `mob_radius` | `3.0` | How far around your landing point mobs are counted, in blocks. |
+| `min_mobs` | `3` | How many have to be in that radius. |
+
+## `+CRITICAL DROP` — 400 pts
+
+`critical_drop` — land a critical melee hit right after releasing a
+[wall cling](/parkour/moves/wall-cling).
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `window_ticks` | `20` | How long after letting go of the wall the hit still counts. |
+
+## `+SPLATTERED` — 450 pts
+
+`splattered` — crush a mob with a [roll](/parkour/moves/roll). No thresholds; it fires on the crush
+itself.
+
+## `+BIG SHOT` — 500 pts
+
+`big_shot` — land a bow shot while [sliding](/parkour/moves/slide). No thresholds; it fires on the
+hit itself.
+
+## `+HIT & RUN` — 500 pts
+
+`hit_and_run` — kill an enemy with a [tic tac](/parkour/moves/tic-tac).
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `window_ticks` | `20` | How long after the tic tac the kill still counts. |
+
+## `+FROM ABOVE` — 500 pts
+
+`from_above` — kill an enemy while dropping out of a [climb vault](/parkour/moves/climb-vault).
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `window_ticks` | `20` | How long after the vault the kill still counts. |
+
+## `+FLYBY` — 600 pts
+
+`flyby` — kill something mid [wall run](/parkour/moves/wall-run). No thresholds; it fires on the kill
+itself.
+
+## `+BLUE HEART` — 650 pts
+
+`blue_heart` — [tic tac](/parkour/moves/tic-tac) to reverse your horizontal direction and dodge an
+incoming projectile.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `opposite_direction_threshold` | `-0.3` | How sharp the reversal has to be, as a dot product of your direction before and after. More negative = a harder turn is required. |
+
+## `+NEO` — 700 pts
+
+`neo` — dodge or slide under several projectiles in quick succession.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `required_dodges` | `3` | How many projectiles you have to evade. |
+| `window_millis` | `10000` | How long you have to evade them all. |
+| `slide_poll_interval_ticks` | `4` | How often a slide is checked against nearby projectiles. |

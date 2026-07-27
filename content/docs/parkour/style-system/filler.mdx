@@ -1,43 +1,100 @@
 ---
-title: Bread & Butter
-description: The FILLER category — low-scoring, highly repeatable bonuses that keep your score alive.
+title: Basic
+description: The FILLER bonuses — small, constant payouts that keep you ahead of score decay.
 ---
 
-**Category:** `FILLER` · **Design name:** "Bread & Butter"
+These are the bonuses you hit over and over. Individually they're worth little, but they fire often
+enough to outpace your score decay between the bigger tricks — and most of them are the setup for
+those bigger tricks anyway.
 
-These are the bread-and-butter bonuses: low-value, highly repeatable actions you weave between bigger
-tricks to **freeze your score decay** and keep a combo alive. Individually small, they add up fast.
+They use `category: FILLER` in [`bonuses.yml`](/parkour/reference/bonuses-yml).
 
-| Bonus | Points | How to earn | Config key |
-| --- | ---: | --- | --- |
-| `+KEEP UP` | 30 | Chain any two different moves together within the streak window (~1.3s). | `keep_up` |
-| `+NICE DROP` | 60 | Fall 4+ blocks and transition straight into a sprint without losing speed. | `nice_drop` |
-| `+SOFT LANDING` | 75 | Land any successful roll from a non-lethal height. | `soft_landing` |
-| `+CHECKPOINT` | 100 | Wall cling to rest for ≤1 second, then continue the combo. | `checkpoint` |
-| `+SMOOTH TRANSITION` | 100 | Slide immediately out of a climb vault. | `smooth_transition` |
-| `+TOUCH AND GO` | 100 | Touch a wall with a cling for under half a second before leaping off. | `touch_and_go` |
-| `+MOMENTUM CONSERVATION` | 100 | Get the perfect speed boost on a quick vault. | `momentum_conservation` |
-| `+WALL TO WALL` | 120 | Cling on one wall directly into a cling on another wall. | `wall_to_wall` |
-| `+STAYING AIRBORNE` | 150 | Spend ~3 seconds off the ground using any combination of moves. | `staying_airborne` |
-| `+WAVEDASH` | 150 | End a slide the instant after starting it (jump-cancel). | `wavedash` |
-| `+CONVEYOR BELT` | 150 | Maintain a single continuous slide for more than 5 blocks down an incline. | `conveyor_belt` |
+## `+KEEP UP` — 30 pts
 
-## Key tunables
+`keep_up` — chain any two *different* moves together inside the streak window.
 
-| Config key | Field | Default |
+| Field | Default | Meaning |
 | --- | --- | --- |
-| `keep_up` | `max_streak_time_millis` | `1300` |
-| `nice_drop` | `min_blocks_fallen` | `4` |
-| `checkpoint` | `max_cling_time_millis` | `1000` |
-| `smooth_transition` | `max_cling_time_millis` | `1000` |
-| `touch_and_go` | `max_cling_time_millis` | `500` |
-| `momentum_conservation` | `speed_match_threshold` / `delay_ticks` | `1.2` / `10` |
-| `wall_to_wall` | `max_chain_time_millis` | `10000` |
-| `staying_airborne` | `required_airborne_ticks` | `60` |
-| `wavedash` | `max_chain_time_millis` / `min_y` | `50` / `0.2` |
-| `conveyor_belt` | `min_downhill_distance` | `5.0` |
+| `max_streak_time_millis` | `1300` | How long you have between the two moves. |
 
-<Callout type="info">
-  See the [`bonuses.yml` reference](/parkour/reference/bonuses-yml) for the complete field list and
-  the exact MiniMessage display names.
-</Callout>
+## `+NICE DROP` — 60 pts
+
+`nice_drop` — fall far enough, then transition straight into a sprint without losing speed.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `min_blocks_fallen` | `4` | How far you have to fall before the landing counts. |
+
+## `+SOFT LANDING` — 75 pts
+
+`soft_landing` — land any successful [roll](/parkour/moves/roll) from a non-lethal height. No
+thresholds; it fires on the roll itself.
+
+## `+CHECKPOINT` — 100 pts
+
+`checkpoint` — [wall cling](/parkour/moves/wall-cling) briefly to catch your breath, then carry on
+with the combo.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `max_cling_time_millis` | `1000` | The longest cling that still counts as a pause rather than a stop. |
+
+## `+SMOOTH TRANSITION` — 100 pts
+
+`smooth_transition` — drop straight into a [slide](/parkour/moves/slide) coming out of a
+[climb vault](/parkour/moves/climb-vault).
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `max_cling_time_millis` | `1000` | How long after the vault ends the slide still counts. |
+
+## `+TOUCH AND GO` — 100 pts
+
+`touch_and_go` — touch a wall with a cling and leap off almost immediately.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `max_cling_time_millis` | `500` | The longest cling that still counts as a touch. |
+
+## `+MOMENTUM CONSERVATION` — 100 pts
+
+`momentum_conservation` — get the perfect speed boost out of a
+[quick vault](/parkour/moves/quick-vault).
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `speed_match_threshold` | `1.2` | How much speed you must carry out of the vault relative to what you went in with. Above `1.0` means you have to come out *faster*. |
+| `delay_ticks` | `10` | How long after the vault your speed is measured. |
+
+## `+WALL TO WALL` — 120 pts
+
+`wall_to_wall` — cling on one wall and go directly into a cling on another one.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `max_chain_time_millis` | `10000` | The gap allowed between leaving the first wall and catching the second. |
+
+## `+STAYING AIRBORNE` — 150 pts
+
+`staying_airborne` — keep yourself off the ground using any combination of moves.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `required_airborne_ticks` | `60` | How long you have to stay in the air. |
+
+## `+WAVEDASH` — 150 pts
+
+`wavedash` — jump-cancel a [slide](/parkour/moves/slide) the instant it starts.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `max_chain_time_millis` | `50` | How soon after the slide begins the jump has to come. |
+| `min_y` | `0.2` | How much upward velocity the jump-cancel needs to produce. |
+
+## `+CONVEYOR BELT` — 150 pts
+
+`conveyor_belt` — hold a single unbroken slide down an incline.
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `min_downhill_distance` | `5.0` | How far downhill the slide has to carry you, in blocks. |

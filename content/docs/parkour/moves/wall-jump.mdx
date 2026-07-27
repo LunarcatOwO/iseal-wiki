@@ -11,8 +11,9 @@ gap.
 
 1. Be in contact with a wall — mid [Wall Run](/parkour/moves/wall-run) or
    [Wall Cling](/parkour/moves/wall-cling).
-2. **Jump.** You launch up and away from the wall, along the direction you're facing (within the
-   allowed angle).
+2. **Jump.** You launch up and away from the wall, along the direction you're facing.
+
+Out of a wall run you also have to be looking within `max_angle` of the wall; out of a cling you don't.
 
 Alternate wall jumps between two close walls to climb a shaft, or jump straight into another wall run.
 
@@ -20,7 +21,7 @@ Alternate wall jumps between two close walls to climb a shaft, or jump straight 
 
 | Key | Default | Meaning |
 | --- | --- | --- |
-| `max_angle` | `90.0` | Maximum angle (degrees) between your look direction and the wall for the jump to trigger. |
+| `max_angle` | `90.0` | Maximum angle (degrees) between your look direction and the wall for the jump to trigger. Only applies while you are in the **wall run** state. |
 | `jump_y` | `0.45` | Upward velocity applied by the jump. |
 | `jump_multiplier` | `0.7` | Multiplier on the horizontal push away from the wall. |
 | `particle_count` | `12` | Number of particles spawned at the kick-off point. |

@@ -32,18 +32,6 @@ than one at a time. `/parkour cooldowns get` also lists active cooldowns.
 Yes. Every bonus's `bonus` value lives in [`bonuses.yml`](/parkour/reference/bonuses-yml). You can
 also disable individual bonuses or retune their thresholds, then `/parkour reload`.
 
-### The `+SUSPICIOUS ACTIVITY` bonus never triggers.
-
-In the shipped `bonuses.yml` that entry is missing its `enabled` / `bonus` / `category` /
-`display_name` fields. Add them (category `MYTHIC`, bonus `1250`) and reload. See
-[Mythic & Clutch](/parkour/style-system/mythic).
-
-### The Climb Vault boss bar says "TODO" and plays boss music.
-
-That's the placeholder default in `moves.yml`. Set `climb_vault.bossbar.name` to your own text, and
-remove `PLAY_BOSS_MUSIC` from its `flags` if you don't want the soundtrack. See
-[Climb Vault](/parkour/moves/climb-vault).
-
 ### How do I add my own moves or bonuses?
 
 Use the addon API — extend `ParkourProjectAddon` and register it through `ApiManager`. See

@@ -18,12 +18,6 @@ description: The complete bonuses.yml file — every style bonus, its points, ca
 Any remaining fields on a bonus are its **trigger thresholds** (time windows, distances, radii, move
 counts). Those are documented per-bonus on the [Style System](/parkour/style-system) pages.
 
-<Callout title="Note on suspicious_activity" type="warn">
-  In the shipped file, `suspicious_activity` lists only its two thresholds and is missing
-  `enabled` / `bonus` / `category` / `display_name`. Add those (category `MYTHIC`, bonus `1250`) if
-  you want it to fire.
-</Callout>
-
 ## Full default file
 
 ```yaml
@@ -157,6 +151,10 @@ reconstruct_what:
 suspicious_activity:
    min_traversal_distance: 20.0
    sensor_trigger_radius: 16.0
+   enabled: true
+   bonus: 1250
+   category: MYTHIC
+   display_name: <bold><gradient:#ffd700:#ffffff>+SUSPICIOUS ACTIVITY</gradient></bold>
 wavedash:
    max_chain_time_millis: 50
    min_y: 0.2

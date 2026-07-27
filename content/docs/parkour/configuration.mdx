@@ -59,7 +59,8 @@ After editing any config file you can reload without a full restart:
 This re-reads `config.yml`, `moves.yml` and `bonuses.yml`. See
 [Commands & Permissions](/parkour/commands) for details.
 
-<Callout type="info">
-  Some database-connection changes may only take effect on a full server **restart**. Reload is best
-  for gameplay tuning in `moves.yml` and `bonuses.yml`.
+<Callout title="Not everything reloads" type="warn">
+  A reload does not re-apply every value. Database-connection settings need a full **restart**, and
+  so do some move and bonus settings — including all the `max_streak_time` values. If a change
+  doesn't seem to take effect, restart the server.
 </Callout>

@@ -3,66 +3,72 @@ title: Style System
 description: Flow score, combos, flow ranks, and the four categories of style bonuses.
 ---
 
-Moving is only half of Parkour Project. The other half is **style** — a live scoring system that
-rewards smooth, varied, risky movement and punishes standing still. It's the reason a run *feels*
-like a character-action game.
+Every stylish thing you pull off is worth points. **Bonuses** pay out, your **flow score** climbs,
+and your **flow rank** goes up with it — but the score bleeds away the whole time, and it bleeds
+faster the higher you are. Standing still is the only way to lose it.
 
-## Flow score & decay
+## Flow score
 
-As you move, you build a **flow score**. Every move you chain and every bonus you trigger adds to it.
-But the score **decays over time** — stop moving and it bleeds away. To keep a high score you have to
-keep flowing.
+Your flow score goes up in exactly one way: **triggering a bonus**. Each bonus adds its `bonus` value
+from `bonuses.yml` straight to your score. Moves on their own are worth nothing here — they matter
+because they're how you set up and land bonuses.
 
-<Callout type="info">
-  Score is driven by background tasks that **sample** your movement, **decay** your score, and apply
-  **flow effects**. The faster and more varied your movement, the faster your score climbs.
-</Callout>
+Meanwhile the score decays on its own. The decay rate is tied to your current rank: at **D** you lose
+a trickle, at **Flow State** you're bleeding 60 points per decay tick. Reaching the top rank is one
+thing, holding it is another.
 
 ## Combos
 
-Chaining moves without a break keeps a **combo** alive. Combos are what many bonuses measure — e.g.
-"end a 10+ move combo with a perfect roll." Let the chain lapse and the combo resets. Keeping a long,
-clean combo going is the key to the biggest mythic bonuses.
+The **combo** is a separate meter, and *this* is what moves feed. Every move you perform adds combo
+points and bumps the **combo multiplier**, which scales from **1× up to 8×** as the combo builds.
+Combo points drain constantly and the combo dies when they run out, so you have to keep moving to
+keep it.
+
+Two things shape how much a move is worth:
+
+- **The multiplier** — a move performed deep into a combo is worth far more than the first one.
+- **Freshness** — repeating a move you've just used is worth less than switching it up. Varied
+  movement builds the combo faster.
+
+The combo doesn't feed your score directly, but several bonuses are gated on it — **+STILL ALIVE**
+wants a 10+ move combo, for instance — so a long combo is what puts the big payouts in reach.
 
 ## Flow ranks
 
-Your current score maps to a **flow rank**, shown on your scoreboard. Ranks climb as your score rises
-and fall as it decays. From lowest to highest:
+Your score maps to a **flow rank**, shown on your scoreboard with its own animated gradient. Ranks
+climb as your score rises and drop back as it decays.
 
-| Rank | Feel |
-| --- | --- |
-| **D** | Just getting going. |
-| **C** | Basic flow established. |
-| **B** | Consistent movement. |
-| **A** | Strong, varied routing. |
-| **S** | Stylish — unlocks rank-gated bonuses like **+HIGH PROFILE**. |
-| **SS** | Excellent. |
-| **SSS** | Elite. |
-| **Flow State** | Peak flow — the top rank (`MAX` in code). Hold it to earn the **+FLOW STATE** bonus. |
+| Rank | On the scoreboard | Score needed | Decay per tick |
+| --- | --- | ---: | ---: |
+| **D** | ᴅᴜʟʟ | 0 | 1 |
+| **C** | ᴄʜɪʟʟ | 500 | 2 |
+| **B** | ʙʀɪsᴋ | 1,200 | 4 |
+| **A** | ᴀɢɪʟᴇ | 2,500 | 8 |
+| **S** | sᴡɪғᴛ | 4,500 | 15 |
+| **SS** | ssᴜᴘᴇʀsᴏɴɪᴄ | 7,000 | 25 |
+| **SSS** | sssʏɴᴄʜʀᴏɴɪᴢᴇᴅ | 10,000 | 40 |
+| **Flow State** | ғʟᴏᴡ sᴛᴀᴛᴇ | 14,000 | 60 |
 
-<Callout type="info">
-  Each rank has its own animated color gradient on the scoreboard (grey at **D**, rising through
-  green, gold and orange to a purple **S**, and shifting cyan/pink gradients at **SS**, **SSS** and
-  **Flow State**). The exact score thresholds are defined by the plugin and rise with each rank.
-</Callout>
+Rank isn't only cosmetic: **+HIGH PROFILE** only fires at **S** or above, and **+FLOW STATE** pays
+out for holding the top rank. `Flow State` is called `MAX` in code and in `minimum_rank` settings.
 
 ## Bonuses
 
-Beyond raw score, specific tricks award named **bonuses** — a burst of points and a flashy on-screen
-callout like `+NICE DROP` or `+LEAP OF FAITH`. Every bonus lives in `bonuses.yml`, where you can set
-its point value, toggle it on/off, and (for many) tune its thresholds.
+A bonus is a named trick — `+NICE DROP`, `+LEAP OF FAITH` — worth a burst of points and a callout on
+screen. Every one lives in `bonuses.yml` where you can change its value, switch it off, or retune
+what it takes to trigger.
 
-Bonuses are grouped into **four categories** of rising difficulty:
+They're split into four categories of rising difficulty:
 
 <Cards>
-  <Card title="Bread & Butter" href="/parkour/style-system/filler" description="Low-scoring, highly repeatable actions that keep your score alive and set up bigger tricks. (FILLER)" />
-  <Card title="Advanced Movement" href="/parkour/style-system/advanced" description="Precision routing, high-speed lines and clean timing chains. (ADVANCED)" />
-  <Card title="Combat Hybrid" href="/parkour/style-system/combat" description="Style that demands you engage, evade or eliminate enemies while moving. (COMBAT)" />
-  <Card title="Mythic & Clutch" href="/parkour/style-system/mythic" description="The highest tier — mechanical precision, luck, and near-death heroics. (MYTHIC)" />
+  <Card title="Basic" href="/parkour/style-system/filler" description="Small, constant payouts that keep you ahead of decay between the bigger tricks." />
+  <Card title="Advanced Movement" href="/parkour/style-system/advanced" description="Precise routing, high-speed lines and clean timing chains." />
+  <Card title="Combat Hybrid" href="/parkour/style-system/combat" description="Fighting without ever dropping out of your run." />
+  <Card title="Mythic" href="/parkour/style-system/mythic" description="Frame-perfect timing and near-death landings, paid out accordingly." />
 </Cards>
 
-<Callout title="Points are configurable" type="warn">
-  The point values on the following pages are the **shipped defaults** from `bonuses.yml`. Server
-  owners can rebalance every value, disable individual bonuses, or adjust their trigger thresholds.
-  See the [`bonuses.yml` reference](/parkour/reference/bonuses-yml).
+<Callout title="Everything here is a default" type="warn">
+  The point values and thresholds on these pages are the **shipped defaults**. Server owners can
+  rebalance any value, disable individual bonuses, or retune their triggers — so what your server
+  awards may differ. See the [`bonuses.yml` reference](/parkour/reference/bonuses-yml).
 </Callout>

@@ -15,7 +15,7 @@ the instant it starts for a *wavedash*.
 
 ### Breaching
 Slide into a **door, trapdoor, or fence gate** at sufficient speed and you'll smash straight through
-it — the obstacle bursts open (with a sound effect) and auto-closes shortly after.
+it — the obstacle bursts open and auto-closes shortly after.
 
 ### Tackling
 Slide into a **mob** at speed to knock it back and deal damage — the basis of several combat bonuses.
@@ -30,7 +30,7 @@ Slide into a **mob** at speed to knock it back and deal damage — the basis of 
 | `slide_tick_boost` | `0.2` | Additional per-tick boost (e.g. down inclines). |
 | `slide_boost_decay` | `0.75` | How fast the boost decays each tick. |
 | `down_force` | `0.1` | Downward force that keeps you pinned to the ground/slope. |
-| `flat_friction` | `0.97` | Friction applied on flat ground (closer to 1 = slides further). |
+| `flat_friction` | `0.97` | Per-tick horizontal speed multiplier on flat ground — `0.97` bleeds 3% of your speed each tick. Closer to `1` = slides further. The steeper the downhill slope, the more this is blended toward `1.0` (frictionless). |
 | `jump_cancel_force` | `0.095` | Upward force when you jump-cancel the slide. |
 | `tap_window_ticks` | `5` | Input window (ticks) for slide detection. |
 | `max_distance_from_ground` | `1.0` | Max height off the ground where a slide still applies. |
@@ -49,11 +49,24 @@ Slide into a **mob** at speed to knock it back and deal damage — the basis of 
 | `min_slide_speed_iron_trapdoor` | `0.2` | Min slide speed to breach an iron trapdoor. |
 | `min_slide_speed_fence_gate` | `0.2` | Min slide speed to breach a fence gate. |
 
-<Callout type="info">
-  Each obstacle type also has a configurable **breach sound** and **close sound** (e.g. an iron door
-  breach uses the iron golem hurt sound). The full sound list is in the
-  [`moves.yml` reference](/parkour/reference/moves-yml).
-</Callout>
+### Breach sounds
+
+Each obstacle type has its own **breach** sound (played when you smash through) and **close** sound
+(played when it swings shut). Any Minecraft sound key works, so you can swap these for your own
+flavor.
+
+| Key | Default |
+| --- | --- |
+| `wooden_door_breach_sound` | `minecraft:entity.zombie.attack_wooden_door` |
+| `wooden_door_close_sound` | `minecraft:block.wooden_door.close` |
+| `iron_door_breach_sound` | `minecraft:entity.iron_golem.hurt` |
+| `iron_door_close_sound` | `minecraft:block.iron_door.close` |
+| `wooden_trapdoor_breach_sound` | `minecraft:item.shield.break` |
+| `wooden_trapdoor_close_sound` | `minecraft:block.wooden_trapdoor.close` |
+| `iron_trapdoor_breach_sound` | `minecraft:item.shield.break` |
+| `iron_trapdoor_close_sound` | `minecraft:block.iron_trapdoor.close` |
+| `fence_gate_breach_sound` | `minecraft:entity.zombie.attack_wooden_door` |
+| `fence_gate_close_sound` | `minecraft:block.fence_gate.close` |
 
 ## Tackle tuning
 

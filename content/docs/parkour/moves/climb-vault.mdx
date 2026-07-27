@@ -8,8 +8,12 @@ climb vault pulls you up and over it. It's the move that keeps a run flowing ove
 
 ## How to perform
 
-1. Run or jump toward a **ledge / low obstacle** within interaction range.
+1. Run or jump toward a **ledge or wall** within interaction range.
 2. The climb vault fires, lifting you **up and forward** onto the top.
+
+It's most effective on **2-block-high walls** — that's the height it's tuned for. For a 1-block-high
+obstacle you don't need it at all: use the [Quick Vault](/parkour/moves/quick-vault) instead and keep
+your speed.
 
 Follow a climb vault immediately with a [Quick Vault](/parkour/moves/quick-vault) for the
 **+CATAPULT** bonus, or drop into a [Roll](/parkour/moves/roll) on the far side.
@@ -23,13 +27,7 @@ Follow a climb vault immediately with a [Quick Vault](/parkour/moves/quick-vault
 | `vault_forward` | `0.5` | Forward velocity applied by the mantle. |
 | `max_ticks` | `10` | Maximum duration of the vault motion, in ticks. |
 | `cooldown` | `50` | Cooldown after the vault, in ticks (2.5 seconds). |
-| `bossbar` | (set your name) / `YELLOW` | Boss bar name, color, overlay. Flag `PLAY_BOSS_MUSIC` is enabled. |
-
-<Callout title="Set the boss bar name" type="warn">
-  In the default `moves.yml`, the climb vault's boss bar name is a placeholder (`<green>TODO`). Set
-  it to something meaningful for your server. Its `PLAY_BOSS_MUSIC` flag also triggers boss music
-  while active — remove that flag if you don't want the dramatic soundtrack.
-</Callout>
+| `bossbar` | Climb Vault / `YELLOW` | Boss bar name, color and overlay shown while active. |
 
 <Callout title="Related bonuses" type="info">
   Climb vaults enable **+CATAPULT** (into a quick vault) and the combat bonus **+FROM ABOVE** (killing
