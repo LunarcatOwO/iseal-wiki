@@ -1,7 +1,6 @@
 {
   "title": "Moves",
   "icon": "Move",
-  "defaultOpen": true,
   "pages": [
     "index",
     "wall-run",
