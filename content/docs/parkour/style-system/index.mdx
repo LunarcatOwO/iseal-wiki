@@ -4,14 +4,15 @@ description: Flow score, combos, flow ranks, and the four categories of style bo
 ---
 
 Every stylish thing you pull off is worth points. **Bonuses** pay out, your **flow score** climbs,
-and your **flow rank** goes up with it — but the score bleeds away the whole time, and it bleeds
-faster the higher you are. Standing still is the only way to lose it.
+and your **flow rank** goes up with it. The catch is that the score bleeds away the whole time, and
+it bleeds faster the higher you are. Standing still is the only way to lose it.
 
 ## Flow score
 
-Your flow score goes up in exactly one way: **triggering a bonus**. Each bonus adds its `bonus` value
-from `bonuses.yml` straight to your score. Moves on their own are worth nothing here — they matter
-because they're how you set up and land bonuses.
+Your flow score goes up in exactly one way: **triggering a bonus**. Nothing else adds to it, and
+moves on their own are worth nothing here. What a bonus pays out is its `bonus` value from
+`bonuses.yml` **multiplied by your current combo multiplier**, so the same trick can be worth eight
+times as much depending on the combo you land it in.
 
 Meanwhile the score decays on its own. The decay rate is tied to your current rank: at **D** you lose
 a trickle, at **Flow State** you're bleeding 60 points per decay tick. Reaching the top rank is one
@@ -19,19 +20,27 @@ thing, holding it is another.
 
 ## Combos
 
-The **combo** is a separate meter, and *this* is what moves feed. Every move you perform adds combo
-points and bumps the **combo multiplier**, which scales from **1× up to 8×** as the combo builds.
+The combo is the meter that moves feed, and it's what turns a bonus from small into huge. Every move
+you perform adds combo points and pushes up the **combo multiplier**, which scales from **1× up to
+8×**. When a bonus fires, its configured value is multiplied by whatever that multiplier currently
+sits at:
+
+> A 100-point bonus landed cold is worth **100**. The same bonus landed at the top of a combo is
+> worth **800**.
+
+That's why chasing high-value bonuses on their own doesn't work. Building the combo first is what
+makes them pay.
+
 Combo points drain constantly and the combo dies when they run out, so you have to keep moving to
-keep it.
+hold the multiplier up. Two things decide how much a move contributes:
 
-Two things shape how much a move is worth:
+- **The multiplier itself.** A move performed deep into a combo adds far more than the first one, so
+  the meter accelerates as it grows.
+- **Freshness.** Repeating a move you've just used adds less than switching it up. Varied movement
+  builds the combo faster.
 
-- **The multiplier** — a move performed deep into a combo is worth far more than the first one.
-- **Freshness** — repeating a move you've just used is worth less than switching it up. Varied
-  movement builds the combo faster.
-
-The combo doesn't feed your score directly, but several bonuses are gated on it — **+STILL ALIVE**
-wants a 10+ move combo, for instance — so a long combo is what puts the big payouts in reach.
+On top of the multiplier, the combo also **gates** some bonuses outright: **+STILL ALIVE** won't fire
+at all without a 10+ move combo behind it.
 
 ## Flow ranks
 
@@ -50,12 +59,13 @@ climb as your score rises and drop back as it decays.
 | **Flow State** | ғʟᴏᴡ sᴛᴀᴛᴇ | 14,000 | 60 |
 
 Rank isn't only cosmetic: **+HIGH PROFILE** only fires at **S** or above, and **+FLOW STATE** pays
-out for holding the top rank. `Flow State` is called `MAX` in code and in `minimum_rank` settings.
+out for holding the top rank. In config, Flow State is written as `max`, which is what you'd put in a
+`minimum_rank` setting to require it.
 
 ## Bonuses
 
-A bonus is a named trick — `+NICE DROP`, `+LEAP OF FAITH` — worth a burst of points and a callout on
-screen. Every one lives in `bonuses.yml` where you can change its value, switch it off, or retune
+A bonus is a named trick like `+NICE DROP` or `+LEAP OF FAITH`, worth a burst of points and a callout
+on screen. Every one lives in `bonuses.yml` where you can change its value, switch it off, or retune
 what it takes to trigger.
 
 They're split into four categories of rising difficulty:
@@ -68,7 +78,8 @@ They're split into four categories of rising difficulty:
 </Cards>
 
 <Callout title="Everything here is a default" type="warn">
-  The point values and thresholds on these pages are the **shipped defaults**. Server owners can
-  rebalance any value, disable individual bonuses, or retune their triggers — so what your server
-  awards may differ. See the [`bonuses.yml` reference](/parkour/reference/bonuses-yml).
+  The point values on these pages are the **base values** from a stock `bonuses.yml`, before your
+  combo multiplier is applied. Server owners can rebalance any value, disable individual bonuses, or
+  retune their triggers, so what your server awards may differ. See the
+  [`bonuses.yml` reference](/parkour/reference/bonuses-yml).
 </Callout>

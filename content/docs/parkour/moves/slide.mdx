@@ -15,10 +15,11 @@ the instant it starts for a *wavedash*.
 
 ### Breaching
 Slide into a **door, trapdoor, or fence gate** at sufficient speed and you'll smash straight through
-it — the obstacle bursts open and auto-closes shortly after.
+it. The obstacle bursts open and auto-closes shortly after.
 
 ### Tackling
-Slide into a **mob** at speed to knock it back and deal damage — the basis of several combat bonuses.
+Slide into a **mob** at speed to knock it back and deal damage. This is the basis of several combat
+bonuses.
 
 ## Core tuning (`moves.yml` → `slide`)
 
@@ -30,12 +31,12 @@ Slide into a **mob** at speed to knock it back and deal damage — the basis of 
 | `slide_tick_boost` | `0.2` | Additional per-tick boost (e.g. down inclines). |
 | `slide_boost_decay` | `0.75` | How fast the boost decays each tick. |
 | `down_force` | `0.1` | Downward force that keeps you pinned to the ground/slope. |
-| `flat_friction` | `0.97` | Per-tick horizontal speed multiplier on flat ground — `0.97` bleeds 3% of your speed each tick. Closer to `1` = slides further. The steeper the downhill slope, the more this is blended toward `1.0` (frictionless). |
+| `flat_friction` | `0.97` | Per-tick horizontal speed multiplier on flat ground, so `0.97` bleeds 3% of your speed each tick. Closer to `1` = slides further. The steeper the downhill slope, the more this is blended toward `1.0` (frictionless). |
 | `jump_cancel_force` | `0.095` | Upward force when you jump-cancel the slide. |
 | `tap_window_ticks` | `5` | Input window (ticks) for slide detection. |
 | `max_distance_from_ground` | `1.0` | Max height off the ground where a slide still applies. |
 | `cooldown` | `40` | Cooldown after a slide, in ticks (2 seconds). |
-| `bossbar` | Slide / `BLUE` | Boss bar name, color and overlay shown while active. |
+| `bossbar` | Slide / `BLUE` | Boss bar name, color and overlay used for this move's cooldown display. |
 
 ## Breaching tuning
 

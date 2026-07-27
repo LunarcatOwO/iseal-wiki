@@ -1,11 +1,11 @@
 ---
 title: Roll
-description: Roll on landing to cut fall damage — and crush whatever you land on.
+description: Roll on landing to cut fall damage, and crush whatever you land on.
 ---
 
 The **Roll** is your landing tool. Time a sneak just before you hit the ground and you tuck into a
 roll that **cuts most of your fall damage** and carries your momentum forward. Land *on* a mob and
-you can crush it. The roll is the single most important move for surviving big drops — and it's the
+you can crush it. The roll is the single most important move for surviving big drops, and it's the
 gateway to the game's highest-scoring bonuses.
 
 ## How to perform
@@ -17,25 +17,25 @@ gateway to the game's highest-scoring bonuses.
 ## Timing and damage reduction
 
 How early you sneak decides how much damage you shed. A roll can cancel **at most 90%** of the fall
-damage — you always take at least a tenth of it.
+damage, so you always take at least a tenth of it.
 
 Sneak within **1 tick** of landing and you get the full 90%. Every extra tick early cuts the
 remaining reduction to **three quarters** of what it was, so the payoff falls away fast:
 
-| Ticks early | Damage reduction | Cooldown |
-| ---: | ---: | --- |
-| 0–1 (**perfect**) | 90% | `cooldown.perfect` — `10` ticks (0.5s) |
-| 2 | 67.5% | `cooldown.imperfect` — `60` ticks (3s) |
-| 3 | ~50.6% | `cooldown.imperfect` |
-| 4 | ~38.0% | `cooldown.imperfect` |
-| … | × 0.75 each tick | `cooldown.imperfect` |
-| Outside the window (**miss**) | none — you take the fall in full | `cooldown.miss` — `200` ticks (10s) |
+| Ticks early | Damage reduction | Cooldown used | Ticks |
+| ---: | ---: | --- | ---: |
+| 0 or 1 (**perfect**) | 90% | `cooldown.perfect` | `10` (0.5s) |
+| 2 | 67.5% | `cooldown.imperfect` | `60` (3s) |
+| 3 | ~50.6% | `cooldown.imperfect` | `60` (3s) |
+| 4 | ~38.0% | `cooldown.imperfect` | `60` (3s) |
+| … | × 0.75 each tick | `cooldown.imperfect` | `60` (3s) |
+| Outside the window (**miss**) | none, you take the fall in full | `cooldown.miss` | `200` (10s) |
 
 The same falloff scales the boost out of the roll, so a sloppy roll costs you momentum as well as
 health.
 
 <Callout type="warn">
-  Because a missed roll has a long cooldown, spamming sneak on the way down is punished — the roll
+  Because a missed roll has a long cooldown, spamming sneak on the way down is punished. The roll
   rewards *timing*, not mashing.
 </Callout>
 
@@ -52,10 +52,10 @@ health.
 | `min_damage` | `1.0` | Fall damage below this doesn't count as a roll opportunity. |
 | `crush_base_damage` | `4.0` | Base damage dealt to mobs you land on. |
 | `crush_radius` | `1.75` | Radius of the landing crush effect. |
-| `bossbar` | Roll / `WHITE` | Boss bar name, color and overlay shown while active. |
+| `bossbar` | Roll / `WHITE` | Boss bar name, color and overlay used for this move's cooldown display. |
 
 <Callout title="Related bonuses" type="info">
-  The roll powers the biggest scores in the game — **+SOFT LANDING**, **+CLOSE CALL**,
+  The roll powers the biggest scores in the game: **+SOFT LANDING**, **+CLOSE CALL**,
   **+PARRY THE EARTH** (a perfect, 0-tick roll), **+DEATH DEFIED**, **+RECONSTRUCT WHAT?** and the
   combat crush **+SPLATTERED**. See [Mythic](/parkour/style-system/mythic).
 </Callout>

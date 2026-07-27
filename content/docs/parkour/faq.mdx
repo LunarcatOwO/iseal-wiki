@@ -9,7 +9,7 @@ A Paper (or Folia) server on **1.21.11+**, with **SealLib** installed. See [Quic
 
 ### Does it work on Folia?
 
-Yes — Parkour Project declares Folia support. It runs on both Paper and Folia.
+Yes. Parkour Project declares Folia support, so it runs on both Paper and Folia.
 
 ### How do players unlock moves?
 
@@ -34,13 +34,14 @@ also disable individual bonuses or retune their thresholds, then `/parkour reloa
 
 ### How do I add my own moves or bonuses?
 
-Use the addon API — extend `ParkourProjectAddon` and register it through `ApiManager`. See
+Use the addon API: extend `ParkourProjectAddon` and register it through `ApiManager`. See
 [API & Addons](/parkour/api-usage).
 
 ### Does the plugin collect data?
 
-It can send **anonymous** usage metrics, controlled by `allow-metrics` in
-[`config.yml`](/parkour/configuration). Set it to `false` to opt out.
+It can send two kinds of **anonymous** data: usage metrics, and error reports when something goes
+wrong. Both are controlled by the single `allow-metrics` option in
+[`config.yml`](/parkour/configuration). Set it to `false` to opt out of both.
 
 ### Where can I get help?
 

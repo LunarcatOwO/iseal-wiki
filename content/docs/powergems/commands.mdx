@@ -7,7 +7,7 @@ PowerGems adds a small set of admin/utility commands for handing out gems, clear
 managing the plugin. Every command is gated by its own permission node (all default to **op**).
 
 <Callout type="info">
-  The `<gem>` argument is a gem's element name — e.g. `strength`, `healing`, `air`, `fire`, `iron`,
+  The `<gem>` argument is a gem's element name, e.g. `strength`, `healing`, `air`, `fire`, `iron`,
   `lightning`, `sand`, `ice`, `lava`, `water`. See [The Gems and Their abilities](/powergems/overview/the-gems-and-their-ablities).
 </Callout>
 
@@ -15,12 +15,12 @@ managing the plugin. Every command is gated by its own permission node (all defa
 
 | Command | Description | Aliases | Permission |
 | --- | --- | --- | --- |
-| `/getallgems` | Give yourself one of every gem. | — | `powergems.getallgems` |
-| `/givegem <gem>` | Give yourself a specific gem. | — | `powergems.givegem` |
-| `/giveallplayersgem <gem>` | Give every online player a gem. | — | `powergems.giveallplayersgem` |
+| `/getallgems` | Give yourself one of every gem. | None | `powergems.getallgems` |
+| `/givegem <gem>` | Give yourself a specific gem. | None | `powergems.givegem` |
+| `/giveallplayersgem <gem>` | Give every online player a gem. | None | `powergems.giveallplayersgem` |
 | `/cleargems [player] [gem/level] [level]` | Clear gems from a player's inventory (optionally filtered). | `cg` | `powergems.cleargems` |
-| `/reloadconfig` | Attempts to reload the config files (see the warning below — a restart is recommended). | `rc` | `powergems.reloadconfig` |
-| `/checkupdates` | Check for plugin updates. | — | `powergems.checkupdates` |
+| `/reloadconfig` | Attempts to reload the config files (see the warning below; a restart is recommended). | `rc` | `powergems.reloadconfig` |
+| `/checkupdates` | Check for plugin updates. | None | `powergems.checkupdates` |
 | `/pgDebug` | Debug command for diagnostics. | `pgd`, `pgdb` | `powergems.debug` |
 
 ```text
@@ -30,7 +30,7 @@ managing the plugin. Every command is gated by its own permission node (all defa
 
 <Callout title="Editing config? Restart the server" type="warn">
   `/reloadconfig` (`/rc`) does **not** reliably apply changes to the config files. After editing any
-  configuration, **fully restart your server** to be sure your changes actually take effect — don't
+  configuration, **fully restart your server** to be sure your changes actually take effect. Don't
   rely on the reload command.
 </Callout>
 
@@ -52,6 +52,6 @@ managing the plugin. Every command is gated by its own permission node (all defa
 <Callout type="warn">
   Every node defaults to **op**. On a public server, grant these explicitly to trusted staff through
   your permissions plugin instead of handing out operator status. `powergems.movegems` controls
-  whether normal players may move gems around — see `allowMovingGems` in
+  whether normal players may move gems around. See `allowMovingGems` in
   [General Config](/powergems/fundamentals/getting-set-up/configuration/general-config).
 </Callout>

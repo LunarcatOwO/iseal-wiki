@@ -3,9 +3,8 @@ title: Moves Overview
 description: The eight movement abilities of Parkour Project and the concepts they share.
 ---
 
-Parkour Project ships with **eight movement abilities**. Every move is physics-driven — there are no
-teleports or animations that lock you in place. You keep full control, and moves *combine* into
-flowing routes.
+Parkour Project ships with **eight movement abilities**. Every move is physics-driven rather than
+scripted, with no teleporting, and moves *combine* into flowing routes.
 
 ## The move roster
 
@@ -25,21 +24,22 @@ flowing routes.
 ### Enabled, unlocked & default state
 Every move has two independent switches in `moves.yml`:
 
-- **`enabled`** — whether the move exists on the server at all.
-- **`default_unlocked`** — whether players have it unlocked automatically when they first join.
+- **`enabled`** controls whether the move exists on the server at all.
+- **`default_unlocked`** controls whether players have it unlocked automatically when they first join.
 
-Admins can override these per player with `/parkour moves unlock|lock|enable|disable` — see
+Admins can override these per player with `/parkour moves unlock|lock|enable|disable`. See
 [Commands](/parkour/commands).
 
 ### Cooldowns
 Most moves have a **`cooldown`** (in ticks; 20 ticks = 1 second) to prevent spamming. Remaining
 cooldowns can be shown through one or more **cooldown UIs** (`BOSSBAR`, `CHAT`, `TOOLBAR`) that each
-player can toggle. The [Roll](/parkour/moves/roll) is special — it has *three* cooldowns depending on
+player can toggle. The [Roll](/parkour/moves/roll) is special, with *three* cooldowns depending on
 how well you time it.
 
-### Boss bar feedback
-Each move defines a **boss bar** (name, color, overlay) that provides visual feedback while the move
-is active. These are fully configurable per move in `moves.yml`.
+### Boss bars
+Each move defines its own **boss bar** (name, color, overlay) in `moves.yml`. This is what the
+`BOSSBAR` cooldown UI draws: the bar tracks that move's **remaining cooldown** and nothing else. It
+isn't an indicator that the move is currently happening.
 
 <Callout type="info">
   All the numeric values on the following pages are the **defaults**. Everything is tunable in
@@ -47,6 +47,6 @@ is active. These are fully configurable per move in `moves.yml`.
 </Callout>
 
 ### Moves feed the style system
-Chaining moves keeps your **combo** alive and grows your **flow score**, which drives your flow rank
-and unlocks named bonuses. That whole layer is documented under
+Chaining moves builds your **combo**, which multiplies what every style **bonus** pays out. The
+bonuses are what raise your flow score and your flow rank. That whole layer is documented under
 [Style System](/parkour/style-system).

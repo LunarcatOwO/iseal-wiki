@@ -6,8 +6,8 @@ description: Extend Parkour Project with your own moves, bonuses and cooldown UI
 Parkour Project exposes a small **addon API** so other plugins can contribute their own **moves**,
 **style bonuses**, and **cooldown UIs**. The two types you work with are:
 
-- `dev.iseal.parkour.api.ApiManager` — the entry point (a singleton).
-- `dev.iseal.parkour.api.types.ParkourProjectAddon` — the base class your addon extends.
+- `dev.iseal.parkour.api.ApiManager` is the entry point (a singleton).
+- `dev.iseal.parkour.api.types.ParkourProjectAddon` is the base class your addon extends.
 
 <Callout type="info">
   Addons require **SealLib** and **ParkourProject** at runtime, and target the same server versions
@@ -133,7 +133,7 @@ public class AddonMain extends JavaPlugin {
   server.
 - **Register once.** `ApiManager` rejects a second registration of the same addon (`Already loaded`).
 - **Bonuses** extend the type hierarchy in `dev.iseal.parkour.flow.bonus.types` (`FlowBonus`,
-  `AdvancedFlowBonus`, `CombatBonus`, `MythicFlowBonus`) — pick the category base that fits.
+  `AdvancedFlowBonus`, `CombatBonus`, `MythicFlowBonus`). Pick the category base that fits.
 - **Cooldown UIs** extend `AbstractCooldownUI`, alongside the built-in `BOSSBAR`, `CHAT` and
   `TOOLBAR` implementations.
 

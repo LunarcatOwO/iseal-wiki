@@ -10,7 +10,7 @@ Requirements
 - Java 17+
 - A Paper/Spigot server with PowerGems and SealLib installed
 
-Step 1 — Create a plugin project
+Step 1: Create a plugin project
 
 - Create a Maven project (jar packaging) targeting Java 17.
 - Use your own groupId/artifactId. Example below uses dev.yourname.powergemsaddon.
@@ -75,7 +75,7 @@ pom.xml
 </project>
 ```
 
-Step 2 — plugin.yml
+Step 2: plugin.yml
 
 Add a minimal plugin.yml. Ensure you depend on PowerGems and SealLib so your addon loads after them.
 
@@ -88,7 +88,7 @@ authors: ["YourName"]
 depend: [PowerGems]
 ```
 
-Step 3 — Implement a Gem
+Step 3: Implement a Gem
 
 Create a class extending `dev.iseal.powergems.misc.AbstractClasses.Gem`. Implement the required methods and behavior. You can access game state via Bukkit and plugin systems via SealLib utilities if needed.
 
@@ -148,7 +148,7 @@ public class ExampleGem extends Gem {
 }
 ```
 
-Step 4 — Register the Gem using the new API
+Step 4: Register the Gem using the new API
 
 Use the API entrypoint `dev.iseal.powergems.api.ApiManager` to register your gem class from your plugin’s onEnable.
 
@@ -173,7 +173,7 @@ public class AddonMain extends JavaPlugin {
 }
 ```
 
-Step 5 — Build and test
+Step 5: Build and test
 
 - Build your jar with Maven and drop it into your server’s plugins folder alongside PowerGems and SealLib.
 - Start the server. On first run, PowerGems will materialize configuration for each registered gem; your gem should appear in relevant configs and be usable.

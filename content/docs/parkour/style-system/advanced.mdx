@@ -1,141 +1,139 @@
 ---
 title: Advanced Movement
-description: The ADVANCED bonuses — precise routing, high-speed lines, and clean timing chains.
+description: The ADVANCED bonuses. Precise routing, high-speed lines, and clean timing chains.
 ---
 
 Advanced bonuses ask for deliberate routing rather than repetition: specific moves in a specific
 order, held speeds, and timing windows you have to actually hit. These are what separate a competent
 runner from a stylish one.
 
-They use `category: ADVANCED` in [`bonuses.yml`](/parkour/reference/bonuses-yml).
+They use `category: ADVANCED` in [`bonuses.yml`](/parkour/reference/bonuses-yml). Each table below is
+the block you'll find under that bonus's key. Points are the base value before your
+[combo multiplier](/parkour/style-system) is applied.
 
-## `+FICSIT APPROVED` — 250 pts
+## `+FICSIT APPROVED` (250 pts)
 
-`ficsit_approved` — land a run of perfectly-timed [quick vaults](/parkour/moves/quick-vault) or
-slides across identical block heights, back-to-back.
+Land a run of perfectly-timed [quick vaults](/parkour/moves/quick-vault) or slides across identical
+block heights, back-to-back.
 
-| Field | Default | Meaning |
+| `ficsit_approved` | Default | Meaning |
 | --- | --- | --- |
 | `required_streak` | `3` | How many matched vaults in a row you need. |
 | `max_time_millis` | `5000` | How long the whole streak can take. |
 
-## `+CATAPULT` — 250 pts
+## `+CATAPULT` (250 pts)
 
-`catapult` — [quick vault](/parkour/moves/quick-vault) directly out of a
+[Quick vault](/parkour/moves/quick-vault) directly out of a
 [climb vault](/parkour/moves/climb-vault).
 
-| Field | Default | Meaning |
+| `catapult` | Default | Meaning |
 | --- | --- | --- |
 | `max_chain_time_millis` | `1200` | The gap allowed between the two vaults. |
 
-## `+OVER THE RAILS` — 300 pts
+## `+OVER THE RAILS` (300 pts)
 
-`over_the_rails` — land a perfect [roll](/parkour/moves/roll) immediately after vaulting a fence.
+Land a perfect [roll](/parkour/moves/roll) immediately after vaulting a fence.
 
-| Field | Default | Meaning |
+| `over_the_rails` | Default | Meaning |
 | --- | --- | --- |
 | `max_chain_time_millis` | `5000` | How long after the vault the roll still counts. |
 | `allow_extra_moves` | `false` | Whether other moves may happen between the vault and the roll. |
 
-## `+BREACH` — 300 pts
+## `+BREACH` (300 pts)
 
-`breach` — smash through a door, trapdoor or gate with a [slide](/parkour/moves/slide). No
+Smash through a door, trapdoor or gate with a [slide](/parkour/moves/slide). `breach` has no
 thresholds; it fires on the breach itself.
 
-## `+HIGH PROFILE` — 300 pts
+## `+HIGH PROFILE` (300 pts)
 
-`high_profile` — pull off a loud or explosive move, like breaking a door, while at a high enough
-flow rank.
+Pull off a loud or explosive move, like breaking a door, while at a high enough flow rank.
 
-| Field | Default | Meaning |
+| `high_profile` | Default | Meaning |
 | --- | --- | --- |
-| `minimum_rank` | `s` | The lowest [flow rank](/parkour/style-system) that can trigger it. Use `max` for Flow State. |
+| `minimum_rank` | `s` | The lowest [flow rank](/parkour/style-system) that can trigger it. Set it to `max` to require Flow State. |
 
-## `+DEALMAKER` — 350 pts
+## `+DEALMAKER` (350 pts)
 
-`dealmaker` — land a [roll](/parkour/moves/roll) on top of a villager's workstation or a loot
-container.
+Land a [roll](/parkour/moves/roll) on top of a villager's workstation or a loot container.
 
-| Field | Default | Meaning |
+| `dealmaker` | Default | Meaning |
 | --- | --- | --- |
-| `workstation_materials` | list | Blocks that count as a workstation. Defaults cover the villager job blocks — see the [full file](/parkour/reference/bonuses-yml). |
+| `workstation_materials` | list | Blocks that count as a workstation. The defaults cover the villager job blocks; see the [full file](/parkour/reference/bonuses-yml). |
 | `loot_materials` | list | Blocks that count as loot. Defaults are `CHEST`, `TRAPPED_CHEST` and `BARREL`. |
 
-## `+REBOUND CLING` — 350 pts
+## `+REBOUND CLING` (350 pts)
 
-`rebound_cling` — [tic tac](/parkour/moves/tic-tac) into a [wall cling](/parkour/moves/wall-cling)
-without ever touching the ground.
+[Tic tac](/parkour/moves/tic-tac) into a [wall cling](/parkour/moves/wall-cling) without ever
+touching the ground.
 
-| Field | Default | Meaning |
+| `rebound_cling` | Default | Meaning |
 | --- | --- | --- |
 | `max_window_ticks` | `40` | How long after the tic tac the cling still counts. |
 
-## `+EFFICIENCY BUMP` — 350 pts
+## `+EFFICIENCY BUMP` (350 pts)
 
-`efficiency_bump` — get the perfect speed boost on two consecutive
-[quick vaults](/parkour/moves/quick-vault).
+Get the perfect speed boost on two consecutive [quick vaults](/parkour/moves/quick-vault).
 
-| Field | Default | Meaning |
+| `efficiency_bump` | Default | Meaning |
 | --- | --- | --- |
 | `speed_match_threshold` | `1.1` | How much speed you must carry out of each vault relative to what you went in with. |
 | `delay_ticks` | `2` | How long after each vault your speed is measured. |
 
-## `+LONG WAY DOWN` — 400 pts
+## `+LONG WAY DOWN` (400 pts)
 
-`long_way_down` — hold one continuous [wall run](/parkour/moves/wall-run) over a long stretch of
-wall.
+Hold one continuous [wall run](/parkour/moves/wall-run) over a long stretch of wall.
 
-| Field | Default | Meaning |
+| `long_way_down` | Default | Meaning |
 | --- | --- | --- |
 | `min_wallrun_distance` | `12.0` | How far the single wall run has to carry you, in blocks. |
 
-## `+VENTED` — 400 pts
+## `+VENTED` (400 pts)
 
-`vented` — pass through an iron trapdoor on a full-speed [slide](/parkour/moves/slide).
+Pass through an iron trapdoor on a full-speed [slide](/parkour/moves/slide).
 
-| Field | Default | Meaning |
+| `vented` | Default | Meaning |
 | --- | --- | --- |
 | `min_speed` | `0.32` | The slide speed you need at the moment you pass through. |
 
-## `+DOUBLE DOWN` — 400 pts
+## `+DOUBLE DOWN` (400 pts)
 
-`double_down` — land two perfectly-timed [rolls](/parkour/moves/roll) close together.
+Land two perfectly-timed [rolls](/parkour/moves/roll) close together.
 
-| Field | Default | Meaning |
+| `double_down` | Default | Meaning |
 | --- | --- | --- |
 | `max_window_millis` | `10000` | How far apart the two rolls can be. |
 
-## `+DEALER'S CHOICE` — 450 pts
+## `+DEALER'S CHOICE` (450 pts)
 
-`dealers_choice` — [slide](/parkour/moves/slide) into [wall run](/parkour/moves/wall-run) into
+[Slide](/parkour/moves/slide) into [wall run](/parkour/moves/wall-run) into
 [tic tac](/parkour/moves/tic-tac).
 
-| Field | Default | Meaning |
+| `dealers_choice` | Default | Meaning |
 | --- | --- | --- |
 | `max_chain_time_millis` | `3000` | How long the whole three-move chain can take. |
 
-## `+GHOST RUN` — 500 pts
+## `+GHOST RUN` (500 pts)
 
-`ghost_run` — string together a long sequence of moves without taking any damage.
+String together a long sequence of moves without taking any damage.
 
-| Field | Default | Meaning |
+| `ghost_run` | Default | Meaning |
 | --- | --- | --- |
 | `required_moves` | `30` | How many moves the damage-free run needs. |
 
-## `+SKYLINE` — 500 pts
+## `+SKYLINE` (500 pts)
 
-`skyline` — chain [wall runs](/parkour/moves/wall-run) together without touching the ground or using
-any move other than a [wall jump](/parkour/moves/wall-jump) between them.
+Chain [wall runs](/parkour/moves/wall-run) together without touching the ground or using any move
+other than a [wall jump](/parkour/moves/wall-jump) between them.
 
-| Field | Default | Meaning |
+| `skyline` | Default | Meaning |
 | --- | --- | --- |
 | `required_streak` | `3` | How many wall runs you need in the chain. |
 
-## `+CHAOS, CHAOS!` — 600 pts
+## `+CHAOS, CHAOS!` (600 pts)
 
-`chaos_chaos` — trigger several *distinct* moves in quick succession.
+Trigger several *distinct* moves in quick succession.
 
-| Field | Default | Meaning |
+| `chaos_chaos` | Default | Meaning |
 | --- | --- | --- |
 | `required_distinct_moves` | `5` | How many different moves you need. Repeats don't count. |
 | `window_millis` | `5000` | How long you have to fit them all in. |
