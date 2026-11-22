@@ -1,6 +1,10 @@
 services:
   web:
-    image: ghcr.io/lunarcatowo/iseal-wiki:latest
+    # Builds the image from this repo with the self-contained ./Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: iseal-wiki:local
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: '1'
