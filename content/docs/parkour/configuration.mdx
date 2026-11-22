@@ -47,7 +47,7 @@ they use. It works out of the box with no database setup.
 | `dev-token` | `none` | Only for development builds. Leave it as `none`. |
 | `allow-metrics` | `true` | Sends **anonymous** usage statistics and error reports that help improve the plugin. Set to `false` to opt out of both. |
 | `external-effects` | `true` | Plays the extra particles and sounds when a player earns an Advanced, Combat or Mythic bonus. Set to `false` to turn them off. |
-| `async-events` | `true` | Only matters if you run addon plugins that listen to Parkour Project's events. Leave it `true` unless an addon tells you otherwise. |
+| `async-events` | `true` | Handles bonus and flow updates in the background. Setting it to `false` makes the plugin feel more responsive and makes sure bonuses are always awarded in the right order, but it adds to your tick times, which can cause lag if your server's CPU can't keep up. |
 
 ## Applying changes
 
