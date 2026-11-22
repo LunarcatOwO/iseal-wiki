@@ -1,15 +1,15 @@
 ---
 title: Configuration
-description: Every option in config.yml, covering database connection, dev token, metrics and effects.
+description: Every option in config.yml, and how to apply changes.
 ---
 
 <Callout title="Where to find the file" type="info">
-  Open your server's file manager, go to `~/plugins/ParkourProject/`, and open `config.yml`. This
-  file holds core plugin settings. Movement tuning lives in `moves.yml` and style bonuses live in
+  Open your server's files, go to `plugins/ParkourProject/config/`, and open `config.yml`. This
+  file holds the core plugin settings. Move settings live in `moves.yml` and bonus settings live in
   `bonuses.yml`, both covered under [Reference](/parkour/reference).
 </Callout>
 
-## Full default `config.yml`
+## Default `config.yml`
 
 ```yaml
 database:
@@ -21,46 +21,44 @@ early-bird: false
 dev-token: none
 allow-metrics: true
 external-effects: true
+async-events: true
 ```
 
 ## Database
 
-Parkour Project persists player data (such as which moves are unlocked and which cooldown UIs are
-enabled) in an SQL database. It ships with an **embedded database** so it works with zero setup;
-these settings control the connection.
+Parkour Project saves player data, like which moves each player has and which cooldown displays
+they use. It works out of the box with no database setup.
 
 | Option | Default | Description |
 | --- | --- | --- |
-| `database.table.prefix` | `parkour_project` | Prefix applied to every table the plugin creates. Change this if multiple plugins or instances share one database. |
-| `database.username` | `root` | Username for the database connection. |
-| `database.password` | `password` | Password for the database connection. |
+| `database.table.prefix` | `parkour_project` | Prefix for every table the plugin creates. |
+| `database.username` | `root` | Database username. |
+| `database.password` | `password` | Database password. |
 
 <Callout type="warn">
-  The plugin does not currently support external databases
+  External databases (like MySQL) aren't supported yet, so you can leave these as they are.
 </Callout>
 
-## Plugin behavior
+## Plugin options
 
 | Option | Default | Description |
 | --- | --- | --- |
-| `early-bird` | `false` | Opts into **early access** to feature-flagged functionality before it is generally rolled out, notably the [addon API](/parkour/api-usage). Leave `false` for normal play. |
-| `dev-token` | `none` | Developer token for development builds / privileged features. Keep `none` for normal use. |
-| `allow-metrics` | `true` | Sends **anonymous** usage statistics *and* error reports that help improve the plugin. Set to `false` to opt out of both. |
-| `external-effects` | `true` | Allows Parkour Project to apply external effects tied to movement and flow (e.g. potion / visual / audio feedback). Set to `false` for purely mechanical movement. |
+| `early-bird` | `false` | Opts into early access to features that aren't fully released yet, like the [addon API](/parkour/api-usage). Leave it `false` unless you need one of them. |
+| `dev-token` | `none` | Only for development builds. Leave it as `none`. |
+| `allow-metrics` | `true` | Sends **anonymous** usage statistics and error reports that help improve the plugin. Set to `false` to opt out of both. |
+| `external-effects` | `true` | Plays the extra particles and sounds when a player earns an Advanced, Combat or Mythic bonus. Set to `false` to turn them off. |
+| `async-events` | `true` | Only matters if you run addon plugins that listen to Parkour Project's events. Leave it `true` unless an addon tells you otherwise. |
 
 ## Applying changes
 
-After editing any config file you can reload without a full restart:
+After editing `moves.yml` or `bonuses.yml`, run:
 
 ```text
 /parkour reload
 ```
 
-This re-reads `config.yml`, `moves.yml` and `bonuses.yml`. See
-[Commands & Permissions](/parkour/commands) for details.
-
-<Callout title="Not everything reloads" type="warn">
-  A reload does not re-apply every value. Database-connection settings need a full **restart**, and
-  so do some move and bonus settings, including all the `max_streak_time` values. If a change
-  doesn't seem to take effect, restart the server.
+<Callout title="When to restart" type="warn">
+  `/parkour reload` reloads `moves.yml` and `bonuses.yml`. Changes to `config.yml` need a full
+  **restart**, and so do a few move and bonus settings. If a change doesn't seem to take effect,
+  restart the server.
 </Callout>

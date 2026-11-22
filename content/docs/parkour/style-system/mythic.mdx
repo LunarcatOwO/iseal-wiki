@@ -1,41 +1,40 @@
 ---
 title: Mythic
-description: The MYTHIC bonuses. Frame-perfect timing and near-death landings, paid out accordingly.
+description: The MYTHIC bonuses. Perfect timing and near-death landings, paid out accordingly.
 ---
 
 The top tier, and the only bonuses worth four figures. Almost all of them run through the
 [roll](/parkour/moves/roll), because surviving something that should have killed you, on the exact
 tick, is the most valuable thing you can do.
 
-They use `category: MYTHIC` in [`bonuses.yml`](/parkour/reference/bonuses-yml). Each table below is
-the block you'll find under that bonus's key. Points are the base value before your
-[combo multiplier](/parkour/style-system) is applied, so a mythic landed at the top of a combo is
-worth several thousand.
+They use `category: MYTHIC` in [`bonuses.yml`](/parkour/reference/bonuses-yml). Each table below
+shows the settings under that bonus's key.
 
 ## `+CLOSE CALL` (800 pts)
 
 [Roll](/parkour/moves/roll) out of a fall that would otherwise have killed you. `close_call` has no
-thresholds; it fires on the survival itself.
+extra settings.
 
 ## `+BUT IT REFUSED` (900 pts)
 
-Survive on a sliver of health after any roll.
+Come out of any roll, perfect or not, with almost no health left.
 
 | `but_it_refused` | Default | Meaning |
 | --- | --- | --- |
-| `health_threshold` | `1.0` | How much health you can be left with, in half-hearts. |
+| `health_threshold` | `1.0` | The most health you can have left. `1.0` is half a heart. |
 
 ## `+PARRY THE EARTH` (1000 pts)
 
-Land a 0-tick roll. `parry_the_earth` has no thresholds; it fires on the perfect timing itself.
+Land a perfect roll, pressing sneak on the very last tick before you hit the ground.
+`parry_the_earth` has no extra settings.
 
 ## `+FLOW STATE` (1000 pts)
 
-Hold the top [flow rank](/parkour/style-system) without letting it decay.
+Hold the top [flow rank](/parkour/style-system) for a long time.
 
 | `flow_state` | Default | Meaning |
 | --- | --- | --- |
-| `required_ticks` | `600` | How long you have to stay at Flow State. |
+| `required_ticks` | `600` | How long you have to stay at Flow State, in ticks (30 seconds). |
 
 ## `+STILL ALIVE` (1100 pts)
 
@@ -47,45 +46,45 @@ Finish a long combo with a perfect roll.
 
 ## `+NEWTON` (1200 pts)
 
-Stay airborne for a long stretch while chaining moves the whole way.
+Stay in the air for a long time while chaining moves the whole way.
 
 | `newton` | Default | Meaning |
 | --- | --- | --- |
-| `required_airborne_ticks` | `200` | How long you have to stay off the ground. |
-| `required_move_count` | `5` | How many moves you have to perform up there. |
+| `required_airborne_ticks` | `200` | How long you have to stay off the ground, in ticks (10 seconds). |
+| `required_move_count` | `5` | How many moves you have to use while up there. |
 
 ## `+DEATH DEFIED` (1200 pts)
 
-Pull off a near-maximum roll reduction and come out of it barely alive.
+Land a roll with the full 90% damage reduction and come out of it barely alive.
 
 | `death_defied` | Default | Meaning |
 | --- | --- | --- |
-| `required_reduction` | `0.9` | The fraction of the fall damage the roll has to cancel. `0.9` is the most a roll can do, so this asks for a perfect one. |
-| `health_threshold` | `1.0` | How much health you can be left with, in half-hearts. |
+| `required_reduction` | `0.9` | How much of the fall damage the roll has to cancel. `0.9` is the most a roll can do, so this asks for a perfect one. |
+| `health_threshold` | `1.0` | The most health you can have left. `1.0` is half a heart. |
 
 ## `+SUSPICIOUS ACTIVITY` (1250 pts)
 
-[Wall run](/parkour/moves/wall-run) and [slide](/parkour/moves/slide) your way through a deep dark
+[Wall run](/parkour/moves/wall-run) and [slide](/parkour/moves/slide) your way through a Deep Dark
 biome without setting off a single sculk sensor.
 
 | `suspicious_activity` | Default | Meaning |
 | --- | --- | --- |
 | `min_traversal_distance` | `20.0` | How far you have to travel through the biome, in blocks. |
-| `sensor_trigger_radius` | `16.0` | How far around you sculk sensors are watched for. |
+| `sensor_trigger_radius` | `16.0` | How far away a sculk sensor can be and still count, in blocks. |
 
 ## `+LEAP OF FAITH` (1300 pts)
 
-[Wall jump](/parkour/moves/wall-jump) into an enormous fall and land without taking a scratch.
+[Wall jump](/parkour/moves/wall-jump) into an enormous fall and land without taking any damage.
 
 | `leap_of_faith` | Default | Meaning |
 | --- | --- | --- |
 | `min_fall_distance` | `30.0` | How far you have to fall, in blocks. |
-| `max_track_ticks` | `400` | How long the fall is tracked before it stops counting. |
+| `max_track_ticks` | `400` | How long the fall can last before it stops counting, in ticks (20 seconds). |
 
 ## `+RECONSTRUCT WHAT?` (1500 pts)
 
-Land a perfect roll against an enormous amount of incoming fall damage.
+Land a perfect roll from a fall that would have dealt an enormous amount of damage.
 
 | `reconstruct_what` | Default | Meaning |
 | --- | --- | --- |
-| `min_potential_damage` | `100.0` | How much damage the fall had to be worth before the roll. |
+| `min_potential_damage` | `100.0` | How much damage the fall would have dealt without the roll. |

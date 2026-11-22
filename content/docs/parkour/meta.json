@@ -1,6 +1,6 @@
 {
   "title": "Parkour Project",
-  "description": "Movement, flow & style scoring",
+  "description": "Free-running moves and style scoring",
   "root": true,
   "pages": [
     "index",

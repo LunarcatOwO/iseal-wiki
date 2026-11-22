@@ -1,14 +1,18 @@
 {
   "title": "PowerGems",
-  "description": "Custom ability gems for Paper servers",
+  "description": "Gems with unique abilities",
   "root": true,
   "pages": [
     "index",
     "quick-start",
-    "overview",
     "commands",
+    "---Gameplay---",
+    "overview",
+    "---Setup---",
     "fundamentals",
+    "---Developers---",
     "api-usage",
+    "---Help---",
     "faq"
   ]
 }

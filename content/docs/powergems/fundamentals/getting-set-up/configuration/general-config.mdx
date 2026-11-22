@@ -1,98 +1,94 @@
 ---
 title: General Config
-description: Key configuration options in config.yml and what they do.
+description: Every option in config.yml, with its default and what it does.
 ---
 
 <Callout title="Where to find the file" type="idea">
-  Open your server's file manager, go to `~/plugins/PowerGems`, and open `config.yml`. This file
-  holds the general configuration below.
+  Open your server's files, go to `plugins/PowerGems/`, and open `config.yml`.
 </Callout>
 
 <Callout title="Restart after editing" type="warn">
-  After changing any option, **fully restart your server**. `/reloadconfig` (`/rc`) does not reliably
-  apply config changes, so don't count on it.
+  After changing any option, **fully restart your server**. `/reloadconfig` (`/rc`) doesn't reliably
+  apply config changes, and many options are only read on startup.
 </Callout>
 
-These are the core gameplay toggles and values. Each option is listed with its effect; most are
-booleans (`true` / `false`) unless noted otherwise.
+Most options are `true` / `false`. Times are in seconds unless noted otherwise.
 
-## Basics
+## Getting and keeping gems
 
-| Option | Description |
-| --- | --- |
-| `allowOnlyOneGem` | If true, restrict each player to a single gem. |
-| `canDropGems` | If false, players cannot drop gems. |
-| `giveGemOnFirstLogin` | If true, first-time players receive a random gem on their first join. |
-| `canUpgradeGems` | If false, gem upgrading is disabled. |
-| `canCraftGems` | If false, crafting new gems is disabled. |
-| `keepGemsOnDeath` | If false, gems drop when a player dies. |
-| `gemsHaveDescriptions` | If true, new gems include descriptive lore. |
+| Option | Default | Description |
+| --- | --- | --- |
+| `giveGemOnFirstLogin` | `true` | Give players a random gem the first time they join. |
+| `gemStartingLevel` | `1` | The level new gems start at. |
+| `allowOnlyOneGem` | `false` | Limit each player to a single gem. |
+| `canDropGems` | `false` | Let players drop their gems. |
+| `keepGemsOnDeath` | `true` | Let players keep their gems when they die. |
+| `doGemDecay` | `true` | Gems kept on death lose 1 level. |
+| `doGemDecayOnLevel1` | `false` | With `doGemDecay` on, also decay level 1 gems, which destroys them. |
+| `allowMovingGems` | `false` | Let players put gems into chests and other containers. Players with `powergems.movegems` can always do this. |
+| `gemsHaveDescriptions` | `true` | Show ability descriptions in the gem's lore. |
+| `gemCreationAttempts` | `10` | How many times to try picking a random gem that's turned on. Raise this if you've turned off lots of gems and players sometimes get none. |
 
-## Gameplay & safety
+## Crafting and upgrading
 
-| Option | Description |
-| --- | --- |
-| `explosionDamageAllowed` | If false, destructive abilities are softened (reduced block damage). |
-| `preventGemPowerTampering` | If true, players can't interact with projectiles or entities spawned by gems (e.g. no fireball deflects). |
-| `doGemDecay` | If true, when a player dies their gem(s) lose 1 level. |
-| `doGemDecayOnLevel1` | When `doGemDecay` is true, allow decay from level 1 (this destroys the gem). |
-| `dragonEggHalfCooldown` | If true, carrying a dragon egg halves gem cooldowns. |
-| `randomizedColors` | If true, a gem's displayed name color may be randomized (visual only). |
+| Option | Default | Description |
+| --- | --- | --- |
+| `canCraftGems` | `true` | Allow crafting new gems. |
+| `canUpgradeGems` | `true` | Allow upgrading gems with the upgrade recipe. |
+| `allowGemCraftingUsage` | `false` | Allow gems to be used as ingredients in normal recipes (for example, gems that look like emeralds being used to craft emerald blocks). |
+| `maxGemLevel` | `5` | The highest level a gem can reach. |
+| `upgradeGemOnKill` | `false` | Level up a player's gem when they get a kill. |
 
-## Timing & performance
+## Abilities
 
-| Option | Description |
-| --- | --- |
-| `cooldownBoostPerLevelInSeconds` | Time reduced from ability cooldown per gem level. |
-| `delayToUseGemsOnJoin` | Seconds to wait before allowing gem use after login. |
-| `gemCreationAttempts` | Attempts to generate a valid gem before giving up (raise if many gems are disabled and users get none). |
-| `blockedReplacingBlocks` | [Materials](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html) that abilities are not allowed to overwrite. |
-| `allowMovingGems` | Enable moving gems between containers (experimental). |
+| Option | Default | Description |
+| --- | --- | --- |
+| `unlockNewAbilitiesOnLevelX` | `3` | The level that unlocks extra gem features. By default the passive effect starts once a gem is above this level. |
+| `giveGemPermanentEffectOnLevelX` | `true` | Give the gem's passive effect once it passes the unlock level. |
+| `unlockShiftAbilityOnLevelX` | `false` | Lock the Shift Click ability until the gem reaches the unlock level. |
+| `cooldownBoostPerLevelInSeconds` | `2` | Seconds taken off every cooldown per gem level. |
+| `delayToUseGemsOnJoin` | `30` | Seconds players have to wait after joining before they can use gems. |
+| `dragonEggHalfCooldown` | `true` | Carrying a dragon egg halves your gem cooldowns. |
+| `explosionDamageAllowed` | `true` | Let gem explosions break blocks and start fires. Set to `false` to keep the world intact. |
+| `preventGemPowerTampering` | `true` | Stop players from interfering with things gems create, like deflecting fireballs. |
+| `blockedReplacingBlocks` | `BEDROCK`, `WATER`, `NETHERITE_BLOCK` | [Blocks](https://jd.papermc.io/paper/1.21/org/bukkit/Material.html) that abilities are never allowed to replace. |
+| `doDebuffForTemperature` | `true` | Slow down players carrying a gem that clashes with the biome: Fire or Lava gems in cold biomes, Water or Ice gems in hot ones. |
 
-## Progression & unlocks
+## Looks
 
-| Option | Description |
-| --- | --- |
-| `maxGemLevel` | Maximum level reachable via upgrades. |
-| `unlockNewAbilitiesOnLevelX` | The level at which new abilities become available for a gem. |
-| `giveGemPermanentEffectOnLevelX` | If true, grants the gem's permanent effect once the unlock level is reached. |
-| `unlockShiftAbilityOnLevelX` | If true, unlock the Shift ability at the configured unlock level. |
-| `upgradeGemOnKill` | If true, killing entities can upgrade/level up your gem. |
-
-## Cosmetics
-
-| Option | Description |
-| --- | --- |
-| `allowCosmeticParticleEffects` | If true, show ambient particles related to held gems. |
-| `cosmeticParticleEffectInterval` | Ticks between cosmetic particle spawns (lower = more frequent, heavier). |
+| Option | Default | Description |
+| --- | --- | --- |
+| `randomizedColors` | `false` | Give every gem name a random color instead of the colors in `GemNames.yml`. |
+| `allowCosmeticParticleEffects` | `true` | Show particles around players holding gems. |
+| `cosmeticParticleEffectInterval` | `5` | Ticks between cosmetic particles. Lower is more frequent but heavier on the server. |
 
 ## Integrations
 
-| Option | Description |
-| --- | --- |
-| `isWorldGuardSupportEnabled` | If true, respects WorldGuard region flags for abilities. |
-| `isCombatLogXSupportEnabled` | If true, integrates with CombatLogX to prevent abuse during combat. |
+| Option | Default | Description |
+| --- | --- | --- |
+| `isWorldGuardSupportEnabled` | `true` | Respect WorldGuard regions that block gem use. |
+| `isCombatLogXSupportEnabled` | `true` | Tag players as in combat when they use gems on each other. |
 
-## Telemetry & updates
+## Language
 
-| Option | Description |
-| --- | --- |
-| `allowMetrics` | If true, sends anonymous usage stats to help improve the plugin. |
-| `runUpdater` | If true, notifies admins when updates are available. |
-| `AA-ID` | Analytics identifier used for telemetry; do not change unless instructed. |
+| Option | Default | Description |
+| --- | --- | --- |
+| `languageCode` | `en` | Language of the plugin's messages. |
+| `countryCode` | `US` | Country or region of the language. |
 
-## Localization & diagnostics
+Together these pick the language, for example `en` + `US`. Available languages are English
+(`en_US`), German (`de_DE`), French (`fr_FR`), Hungarian (`hu_HU`), Italian (`it_IT`), Turkish
+(`tr_TR`), Chinese (`zh_CN`), Hindi (`hi_IN`) and Hinglish (`hg_IN`), plus a few joke ones: Pirate
+(`pi_US`), Shakespearean (`sp_US`) and UwU (`hm_US`).
 
-| Option | Description |
-| --- | --- |
-| `languageCode` | Two-letter language code (e.g. `en`). |
-| `countryCode` | Two-letter country/region code (e.g. `US`). |
-| `debugMode` | If true, enables extra logging to help diagnose issues (may be noisy). |
-| `attemptFixOldGems` | If true, attempts to auto-fix or migrate gems created by older plugin versions. |
+## Updates, metrics and troubleshooting
 
-## Misc
-
-| Option | Description |
-| --- | --- |
-| `doDebuffForTemperature` | Apply debuffs when a gem's element clashes with environment temperature (e.g. ice in the Nether). |
-| `gemCacheExpireTime` | How long to keep computed gem data cached (balance CPU vs. RAM usage). |
+| Option | Default | Description |
+| --- | --- | --- |
+| `runUpdater` | `true` | Tell admins when a new version is available. |
+| `allowMetrics` | `true` | Send anonymous usage statistics that help improve the plugin. |
+| `analyticsID` | random | An anonymous ID for your server's statistics. Created automatically; don't change it. |
+| `debugMode` | `false` | Log extra information to help track down problems. Can be noisy. |
+| `attemptFixOldGems` | `true` | Automatically update gems created by older versions of the plugin. |
+| `gemCacheExpireTime` | `5` | Seconds that information about a player's gems is remembered before being checked again. |
+| `configVersion` | | Set by the plugin. Don't change it. |

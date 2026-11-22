@@ -1,14 +1,14 @@
 ---
 title: Combat Hybrid
-description: The COMBAT bonuses. Fighting without ever dropping out of your run.
+description: The COMBAT bonuses. Fighting without ever stopping your run.
 ---
 
-Combat bonuses only pay out if you engage, evade or kill *while still moving*. Stopping to fight
-scores nothing; the whole category exists to make a fight part of the route instead of a break in it.
+Combat bonuses only pay out if you fight, dodge or kill *while still moving*. Stopping to fight
+scores nothing; the whole category is about making a fight part of the route instead of a break in
+it. Only **hostile mobs** count.
 
-They use `category: COMBAT` in [`bonuses.yml`](/parkour/reference/bonuses-yml). Each table below is
-the block you'll find under that bonus's key. Points are the base value before your
-[combo multiplier](/parkour/style-system) is applied.
+They use `category: COMBAT` in [`bonuses.yml`](/parkour/reference/bonuses-yml). Each table below
+shows the settings under that bonus's key.
 
 ## `+CLOSE QUARTERS` (300 pts)
 
@@ -16,12 +16,11 @@ the block you'll find under that bonus's key. Points are the base value before y
 
 | `close_quarters` | Default | Meaning |
 | --- | --- | --- |
-| `mob_radius` | `2.0` | How close a hostile mob has to be to the wall, in blocks. |
+| `mob_radius` | `2.0` | How close the mob has to be, in blocks. |
 
 ## `+SWEEP THE LEG` (350 pts)
 
-Knock back or damage a mob by [sliding](/parkour/moves/slide) straight into it. `sweep_the_leg` has
-no thresholds; it fires on the tackle itself.
+Hit a mob by [sliding](/parkour/moves/slide) into it. `sweep_the_leg` has no extra settings.
 
 ## `+DISRESPECT` (400 pts)
 
@@ -29,72 +28,70 @@ Punch a mob with an empty hand while sliding or clinging.
 
 | `disrespect` | Default | Meaning |
 | --- | --- | --- |
-| `tackle_guard_window_ticks` | `4` | Hits landed this soon after a slide tackle are ignored, so the tackle itself can't count as the punch. |
+| `tackle_guard_window_ticks` | `4` | Punches this soon after a slide tackle don't count, so the tackle itself isn't mistaken for a punch. |
 
 ## `+EMERGENCY MEETING` (400 pts)
 
-Drop out of a [wall cling](/parkour/moves/wall-cling) or a [roll](/parkour/moves/roll) into the
-middle of a pack of mobs.
+Drop out of a [wall cling](/parkour/moves/wall-cling), or land a [roll](/parkour/moves/roll), right
+in the middle of a group of mobs.
 
 | `emergency_meeting` | Default | Meaning |
 | --- | --- | --- |
-| `mob_radius` | `3.0` | How far around your landing point mobs are counted, in blocks. |
-| `min_mobs` | `3` | How many have to be in that radius. |
+| `mob_radius` | `3.0` | How far around your landing spot mobs are counted, in blocks. |
+| `min_mobs` | `3` | How many mobs have to be there. |
 
 ## `+CRITICAL DROP` (400 pts)
 
-Land a critical melee hit right after releasing a [wall cling](/parkour/moves/wall-cling).
+Land a critical hit right after letting go of a [wall cling](/parkour/moves/wall-cling).
 
 | `critical_drop` | Default | Meaning |
 | --- | --- | --- |
-| `window_ticks` | `20` | How long after letting go of the wall the hit still counts. |
+| `window_ticks` | `20` | How long after letting go the hit still counts, in ticks. |
 
 ## `+SPLATTERED` (450 pts)
 
-Crush a mob with a [roll](/parkour/moves/roll). `splattered` has no thresholds; it fires on the crush
-itself.
+Crush a mob by landing a [roll](/parkour/moves/roll) on it. `splattered` has no extra settings.
 
 ## `+BIG SHOT` (500 pts)
 
-Land a bow shot while [sliding](/parkour/moves/slide). `big_shot` has no thresholds; it fires on the
-hit itself.
+Fire a bow while [sliding](/parkour/moves/slide). `big_shot` has no extra settings.
 
 ## `+HIT & RUN` (500 pts)
 
-Kill an enemy with a [tic tac](/parkour/moves/tic-tac).
+Kill a mob by [tic tacking](/parkour/moves/tic-tac) off it.
 
 | `hit_and_run` | Default | Meaning |
 | --- | --- | --- |
-| `window_ticks` | `20` | How long after the tic tac the kill still counts. |
+| `window_ticks` | `20` | How long after the tic tac the kill still counts, in ticks. |
 
 ## `+FROM ABOVE` (500 pts)
 
-Kill an enemy while dropping out of a [climb vault](/parkour/moves/climb-vault).
+Kill a mob while you're still in the air after a [climb vault](/parkour/moves/climb-vault).
 
 | `from_above` | Default | Meaning |
 | --- | --- | --- |
-| `window_ticks` | `20` | How long after the vault the kill still counts. |
+| `window_ticks` | `20` | How long after the vault the kill still counts, in ticks. |
 
 ## `+FLYBY` (600 pts)
 
-Kill something mid [wall run](/parkour/moves/wall-run). `flyby` has no thresholds; it fires on the
-kill itself.
+Kill a mob in the middle of a [wall run](/parkour/moves/wall-run). `flyby` has no extra settings.
 
 ## `+BLUE HEART` (650 pts)
 
-[Tic tac](/parkour/moves/tic-tac) to reverse your horizontal direction and dodge an incoming
+[Tic tac](/parkour/moves/tic-tac) (off a wall or a mob) to reverse direction and dodge an incoming
 projectile.
 
 | `blue_heart` | Default | Meaning |
 | --- | --- | --- |
-| `opposite_direction_threshold` | `-0.3` | How sharp the reversal has to be, as a dot product of your direction before and after. More negative means a harder turn is required. |
+| `opposite_direction_threshold` | `-0.3` | How sharply you have to turn. Lower (more negative) values need a harder turn; `-1` is a full reversal. |
 
 ## `+NEO` (700 pts)
 
-Dodge or slide under several projectiles in quick succession.
+Dodge several projectiles in a short time, either by sliding under them or by getting out of the way
+in mid-air with a tic tac or wall jump.
 
 | `neo` | Default | Meaning |
 | --- | --- | --- |
-| `required_dodges` | `3` | How many projectiles you have to evade. |
-| `window_millis` | `10000` | How long you have to evade them all. |
-| `slide_poll_interval_ticks` | `4` | How often a slide is checked against nearby projectiles. |
+| `required_dodges` | `3` | How many projectiles you have to dodge. |
+| `window_millis` | `10000` | How long you have to dodge them all, in milliseconds. |
+| `slide_poll_interval_ticks` | `4` | How often (in ticks) a slide checks for projectiles passing over you. |

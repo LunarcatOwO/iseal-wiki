@@ -1,38 +1,48 @@
 ---
 title: Wall Cling
-description: Grab and hang on a wall, then leap off when you're ready.
+description: Grab a ledge and hang on it, then climb up, jump off or drop down.
 ---
 
-The **Wall Cling** lets you grab a wall and hang there instead of falling. From a cling you can catch
-your breath mid-combo and then push off with a [Wall Jump](/parkour/moves/wall-jump). It's the "pause
-and reposition" tool of the move set.
+The **Wall Cling** lets you grab the edge of a wall and hang there instead of falling. From a cling
+you can pull yourself up with a [Climb Vault](/parkour/moves/climb-vault), launch off with a
+[Wall Jump](/parkour/moves/wall-jump), or just let go.
 
 ## How to perform
 
-1. Approach a **wall** while airborne and press toward it (within interaction range).
-2. You latch on. While clinging you slowly drift downward.
-3. Release by jumping off, or let the cling time out.
+1. Face a wall whose top edge is between your feet and your head, with open space above it.
+2. **Right-click the side of the block** while not sneaking.
+3. You grab on and hang there, slowly slipping down.
 
-A cling can be ended early by admins or by the [`/parkour reset`](/parkour/commands) command if a
-player ever gets stuck.
+While clinging:
 
-## Tuning (`moves.yml` → `wall_cling`)
+- Your **experience bar** shows how much grip you have left. After 5 seconds you let go.
+- **Right-click** again to climb up onto the ledge.
+- **Double-tap jump** to wall jump off.
+- **Sneak** to let go and drop.
+
+Getting knocked away from the wall (by a hit or an explosion) makes you lose your grip.
+
+## Settings (`moves.yml` → `wall_cling`)
 
 | Key | Default | Meaning |
 | --- | --- | --- |
-| `interaction_range` | `1.5` | How close to a wall you must be to grab it. |
-| `lateral_speed` | `0.18` | Sideways movement speed along the wall. ( currently unused ) |
-| `gravity_drift` | `0.005` | Slow downward drift while clinging. |
-| `max_cling_ticks` | `100` | Maximum cling duration, in ticks (5 seconds). |
-| `corner_threshold` | `0.35` | Sensitivity for detecting and handling wall corners. ( currently unused ) |
-| `wall_offset` | `0.9` | Distance the player is held from the wall face. |
-| `initial_height_offset` | `0.6` | Vertical offset applied when the cling begins. |
-| `cling_walk_speed` | `0.05` | Movement speed while walking during a cling. ( currently unused ) |
-| `cooldown_ticks` | `60` | Cooldown after releasing, in ticks (3 seconds). |
-| `bossbar` | Wall Cling / `GREEN` | Boss bar name, color and overlay used for this move's cooldown display. |
+| `interaction_range` | `1.5` | How close you need to be to grab a wall, in blocks. |
+| `gravity_drift` | `0.005` | How fast you slip down while clinging. |
+| `max_cling_ticks` | `100` | How long you can hang on, in ticks (5 seconds). |
+| `wall_offset` | `0.9` | How far from the wall you hang. |
+| `initial_height_offset` | `0.6` | How high you hang relative to the ledge. |
+| `correction_gain` | `0.2` | How firmly you're pulled back into place if you drift. |
+| `max_correction_step` | `0.15` | Strongest pull back into place in one tick. |
+| `hold_deadzone` | `0.02` | Drift smaller than this is ignored. |
+| `break_distance` | `1.5` | How far you can be pushed from the wall before you lose your grip, in blocks. |
+| `lateral_speed` | `0.18` | Not used in this version. |
+| `corner_threshold` | `0.35` | Not used in this version. |
+| `cling_walk_speed` | `0.05` | Not used in this version. |
+| `cooldown` | `60` | Cooldown after letting go, in ticks (3 seconds). |
+| `bossbar` | Wall Cling / `GREEN` | Name, color and style of this move's cooldown boss bar. |
 
 <Callout title="Related bonuses" type="info">
-  Short, deliberate clings drive **+CHECKPOINT**, **+TOUCH AND GO**, **+SMOOTH TRANSITION** and
-  **+REBOUND CLING**. Dropping from a cling into a fight feeds combat bonuses like **+CRITICAL DROP**
-  and **+EMERGENCY MEETING**.
+  Short, deliberate clings drive **+CHECKPOINT**, **+TOUCH AND GO**, **+WALL TO WALL** and
+  **+REBOUND CLING**. Dropping from a cling into a fight feeds **+CRITICAL DROP** and
+  **+EMERGENCY MEETING**.
 </Callout>

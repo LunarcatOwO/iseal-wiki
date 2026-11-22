@@ -1,55 +1,56 @@
 ---
 title: Style System
-description: Flow score, combos, flow ranks, and the four categories of style bonuses.
+description: Flow score, combos, flow ranks and their perks, and the four categories of style bonuses.
 ---
 
 Every stylish thing you pull off is worth points. **Bonuses** pay out, your **flow score** climbs,
-and your **flow rank** goes up with it. The catch is that the score bleeds away the whole time, and
-it bleeds faster the higher you are. Standing still is the only way to lose it.
+and your **flow rank** goes up with it. The catch is that your score drains the whole time, and it
+drains faster the higher you are, so you have to keep moving to stay on top.
 
 ## Flow score
 
-Your flow score goes up in exactly one way: **triggering a bonus**. Nothing else adds to it, and
-moves on their own are worth nothing here. What a bonus pays out is its `bonus` value from
-`bonuses.yml` **multiplied by your current combo multiplier**, so the same trick can be worth eight
-times as much depending on the combo you land it in.
+Your flow score goes up in one way: **triggering a bonus**. Each bonus adds its points (its `bonus`
+value in `bonuses.yml`) to your score. Moves on their own don't add score.
 
-Meanwhile the score decays on its own. The decay rate is tied to your current rank: at **D** you lose
-a trickle, at **Flow State** you're bleeding 60 points per decay tick. Reaching the top rank is one
-thing, holding it is another.
+Your score also drains on its own, and the higher your rank, the faster it goes: a trickle at **D**,
+60 points per tick at **Flow State**. Reaching the top rank is one thing; holding it is another.
+
+**Dying** resets your score and your combo to zero.
+
+## Your scoreboard
+
+As soon as you have any flow score, a scoreboard appears on the side of your screen showing:
+
+- your current **rank**,
+- a **progress bar** toward the next rank,
+- your **last five bonuses**,
+- your **combo multiplier**.
+
+Your flow score also shows **under your name** for other players. When your score drains back to
+zero, the scoreboard disappears.
 
 ## Combos
 
-The combo is the meter that moves feed, and it's what turns a bonus from small into huge. Every move
-you perform adds combo points and pushes up the **combo multiplier**, which scales from **1× up to
-8×**. When a bonus fires, its configured value is multiplied by whatever that multiplier currently
-sits at:
+Every move you perform adds to your **combo** and pushes up its **multiplier**, which goes from
+**1× up to 8×**. Two things decide how much a move adds:
 
-> A 100-point bonus landed cold is worth **100**. The same bonus landed at the top of a combo is
-> worth **800**.
-
-That's why chasing high-value bonuses on their own doesn't work. Building the combo first is what
-makes them pay.
-
-Combo points drain constantly and the combo dies when they run out, so you have to keep moving to
-hold the multiplier up. Two things decide how much a move contributes:
-
-- **The multiplier itself.** A move performed deep into a combo adds far more than the first one, so
-  the meter accelerates as it grows.
-- **Freshness.** Repeating a move you've just used adds less than switching it up. Varied movement
+- **The multiplier itself.** A move made deep into a combo adds more than the first one, so the meter
+  speeds up as it grows.
+- **Freshness.** Repeating a move you just used adds less than switching it up. Varied movement
   builds the combo faster.
 
-On top of the multiplier, the combo also **gates** some bonuses outright: **+STILL ALIVE** won't fire
-at all without a 10+ move combo behind it.
+The combo drains constantly and ends when it runs out, so you have to keep moving to hold it up. It
+also ends if your flow score drops to zero. Some bonuses need a combo going: **+CHECKPOINT** only
+pays out mid-combo, and **+STILL ALIVE** needs a combo of 10 or more moves.
 
 ## Flow ranks
 
-Your score maps to a **flow rank**, shown on your scoreboard with its own animated gradient. Ranks
-climb as your score rises and drop back as it decays.
+Your score decides your **flow rank**, shown at the top of your scoreboard with its own animated
+gradient. Ranks go up as your score rises and drop back as it drains.
 
-| Rank | On the scoreboard | Score needed | Decay per tick |
+| Rank | On the scoreboard | Score needed | Drain per tick |
 | --- | --- | ---: | ---: |
-| **D** | ᴅᴜʟʟ | 0 | 1 |
+| **D** | ᴅᴜʟʟ | 1 | 1 |
 | **C** | ᴄʜɪʟʟ | 500 | 2 |
 | **B** | ʙʀɪsᴋ | 1,200 | 4 |
 | **A** | ᴀɢɪʟᴇ | 2,500 | 8 |
@@ -58,28 +59,45 @@ climb as your score rises and drop back as it decays.
 | **SSS** | sssʏɴᴄʜʀᴏɴɪᴢᴇᴅ | 10,000 | 40 |
 | **Flow State** | ғʟᴏᴡ sᴛᴀᴛᴇ | 14,000 | 60 |
 
-Rank isn't only cosmetic: **+HIGH PROFILE** only fires at **S** or above, and **+FLOW STATE** pays
-out for holding the top rank. In config, Flow State is written as `max`, which is what you'd put in a
-`minimum_rank` setting to require it.
+### Rank perks
+
+While you hold a rank you get its potion effects, plus particles around you that get flashier the
+higher you go. A sound plays whenever your rank changes.
+
+| Rank | Effects |
+| --- | --- |
+| **D** | None |
+| **C** | Speed I |
+| **B** | Speed I, Jump Boost I |
+| **A** | Speed II, Jump Boost I |
+| **S** | Speed II, Jump Boost II, Regeneration I |
+| **SS** | Speed III, Jump Boost II, Regeneration I |
+| **SSS** | Speed III, Jump Boost III, Regeneration II, Fire Resistance |
+| **Flow State** | Speed III, Jump Boost III, Regeneration II, Fire Resistance, Glowing |
+
+Rank also matters for some bonuses: **+HIGH PROFILE** only fires at **S** or above, and
+**+FLOW STATE** pays out for holding the top rank. In config files, Flow State is written as `max`.
 
 ## Bonuses
 
-A bonus is a named trick like `+NICE DROP` or `+LEAP OF FAITH`, worth a burst of points and a callout
-on screen. Every one lives in `bonuses.yml` where you can change its value, switch it off, or retune
-what it takes to trigger.
+A bonus is a named trick like `+NICE DROP` or `+LEAP OF FAITH`. It adds points to your score and
+shows up on your scoreboard. Every bonus is listed in `bonuses.yml`, where you can change its points,
+turn it off, or change what it takes to trigger.
 
 They're split into four categories of rising difficulty:
 
 <Cards>
-  <Card title="Basic" href="/parkour/style-system/filler" description="Small, constant payouts that keep you ahead of decay between the bigger tricks." />
+  <Card title="Basic" href="/parkour/style-system/filler" description="Small, frequent payouts that keep you ahead of the drain between bigger tricks." />
   <Card title="Advanced Movement" href="/parkour/style-system/advanced" description="Precise routing, high-speed lines and clean timing chains." />
-  <Card title="Combat Hybrid" href="/parkour/style-system/combat" description="Fighting without ever dropping out of your run." />
-  <Card title="Mythic" href="/parkour/style-system/mythic" description="Frame-perfect timing and near-death landings, paid out accordingly." />
+  <Card title="Combat Hybrid" href="/parkour/style-system/combat" description="Fighting without ever stopping your run." />
+  <Card title="Mythic" href="/parkour/style-system/mythic" description="Perfect timing and near-death landings, paid out accordingly." />
 </Cards>
 
-<Callout title="Everything here is a default" type="warn">
-  The point values on these pages are the **base values** from a stock `bonuses.yml`, before your
-  combo multiplier is applied. Server owners can rebalance any value, disable individual bonuses, or
-  retune their triggers, so what your server awards may differ. See the
-  [`bonuses.yml` reference](/parkour/reference/bonuses-yml).
+Advanced, Combat and Mythic bonuses also play a burst of particles and a sound when you earn them
+(server owners can turn this off with `external-effects` in [`config.yml`](/parkour/configuration)).
+
+<Callout title="These are the defaults" type="warn">
+  The points on these pages come from a fresh `bonuses.yml`. Server owners can change any value, turn
+  off individual bonuses, or change their triggers, so your server may award different amounts. See
+  the [`bonuses.yml` reference](/parkour/reference/bonuses-yml).
 </Callout>

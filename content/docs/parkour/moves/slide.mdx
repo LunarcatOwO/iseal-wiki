@@ -1,60 +1,61 @@
 ---
 title: Slide
-description: Drop into a sliding baseline that breaches doors, slips under gaps, and tackles mobs.
+description: Slide along the ground, smash through doors and tackle mobs.
 ---
 
-The **Slide** is the most feature-rich move. Sprint into a slide to gain a burst of speed, slip under
-low gaps, **breach through doors and gates**, and **tackle** mobs out of your way. Jump-cancel a slide
-the instant it starts for a *wavedash*.
+The **Slide** is the most versatile move. Slide to get a burst of speed, slip under low gaps,
+**smash through doors and gates**, and **tackle** mobs out of your way. Jump out of a slide the
+instant it starts for a *wavedash*.
 
 ## How to perform
 
-1. **Sprint** to build speed (above `min_start_speed`).
-2. **Sneak** to drop into the slide. You accelerate, then gradually lose speed to friction.
-3. The slide ends when you slow below `min_slide_speed`, or you can **jump** out of it early.
+1. **Sprint** on the ground.
+2. **Tap sneak** (press and release quickly). You drop into a slide and speed up, then slowly lose
+   speed.
+3. The slide ends when you slow down too much. To end it early, **tap sneak again** or **jump**.
+
+Downhill slopes keep you sliding further.
 
 ### Breaching
-Slide into a **door, trapdoor, or fence gate** at sufficient speed and you'll smash straight through
-it. The obstacle bursts open and auto-closes shortly after.
+Slide into a **door, trapdoor or fence gate** fast enough and you smash straight through it. It
+bursts open and swings shut again a moment later.
 
 ### Tackling
-Slide into a **mob** at speed to knock it back and deal damage. This is the basis of several combat
-bonuses.
+Slide into a **mob** fast enough to knock it back and damage it.
 
-## Core tuning (`moves.yml` → `slide`)
+## Main settings (`moves.yml` → `slide`)
 
 | Key | Default | Meaning |
 | --- | --- | --- |
-| `min_start_speed` | `0.05` | Minimum speed to begin a slide. |
-| `min_slide_speed` | `0.1` | Slide ends once you drop below this speed. |
-| `slide_boost` | `0.3` | Initial speed boost when the slide starts. |
-| `slide_tick_boost` | `0.2` | Additional per-tick boost (e.g. down inclines). |
-| `slide_boost_decay` | `0.75` | How fast the boost decays each tick. |
-| `down_force` | `0.1` | Downward force that keeps you pinned to the ground/slope. |
-| `flat_friction` | `0.97` | Per-tick horizontal speed multiplier on flat ground, so `0.97` bleeds 3% of your speed each tick. Closer to `1` = slides further. The steeper the downhill slope, the more this is blended toward `1.0` (frictionless). |
-| `jump_cancel_force` | `0.095` | Upward force when you jump-cancel the slide. |
-| `tap_window_ticks` | `5` | Input window (ticks) for slide detection. |
-| `max_distance_from_ground` | `1.0` | Max height off the ground where a slide still applies. |
+| `min_start_speed` | `0.05` | Speed you need to start a slide. |
+| `min_slide_speed` | `0.1` | The slide ends when you drop below this speed. |
+| `slide_boost` | `0.3` | Speed boost when the slide starts. |
+| `slide_tick_boost` | `0.2` | Extra boost during the slide. |
+| `slide_boost_decay` | `0.75` | How fast the boost fades. |
+| `down_force` | `0.1` | How strongly you're kept on the ground and on slopes. |
+| `flat_friction` | `0.97` | How much speed you keep each tick on flat ground. `0.97` loses 3% per tick; closer to `1` slides further. Slopes slide further automatically. |
+| `jump_cancel_force` | `0.095` | Upward boost when you jump out of a slide. |
+| `tap_window_ticks` | `5` | How quickly you have to release sneak for it to count as a tap, in ticks. |
+| `max_distance_from_ground` | `1.0` | How far off the ground you can be and still slide. |
 | `cooldown` | `40` | Cooldown after a slide, in ticks (2 seconds). |
-| `bossbar` | Slide / `BLUE` | Boss bar name, color and overlay used for this move's cooldown display. |
+| `bossbar` | Slide / `BLUE` | Name, color and style of this move's cooldown boss bar. |
 
-## Breaching tuning
+## Breaching settings
 
 | Key | Default | Meaning |
 | --- | --- | --- |
-| `max_breach_distance` | `1.5` | Reach for breaching an obstacle ahead. |
-| `door_open_time` | `20` | Ticks a breached door/gate stays open before auto-closing. |
-| `min_slide_speed_wooden_door` | `0.2` | Min slide speed to breach a wooden door. |
-| `min_slide_speed_iron_door` | `0.2` | Min slide speed to breach an iron door. |
-| `min_slide_speed_wooden_trapdoor` | `0.2` | Min slide speed to breach a wooden trapdoor. |
-| `min_slide_speed_iron_trapdoor` | `0.2` | Min slide speed to breach an iron trapdoor. |
-| `min_slide_speed_fence_gate` | `0.2` | Min slide speed to breach a fence gate. |
+| `max_breach_distance` | `1.5` | How far ahead a door can be to breach it, in blocks. |
+| `door_open_time` | `20` | Ticks a breached door or gate stays open before shutting. |
+| `min_slide_speed_wooden_door` | `0.2` | Speed needed to breach a wooden door. |
+| `min_slide_speed_iron_door` | `0.2` | Speed needed to breach an iron door. |
+| `min_slide_speed_wooden_trapdoor` | `0.2` | Speed needed to breach a wooden trapdoor. |
+| `min_slide_speed_iron_trapdoor` | `0.2` | Speed needed to breach an iron trapdoor. |
+| `min_slide_speed_fence_gate` | `0.2` | Speed needed to breach a fence gate. |
 
 ### Breach sounds
 
-Each obstacle type has its own **breach** sound (played when you smash through) and **close** sound
-(played when it swings shut). Any Minecraft sound key works, so you can swap these for your own
-flavor.
+Each obstacle type has a **breach** sound (when you smash through) and a **close** sound (when it
+swings shut). Any Minecraft sound key works.
 
 | Key | Default |
 | --- | --- |
@@ -69,18 +70,18 @@ flavor.
 | `fence_gate_breach_sound` | `minecraft:entity.zombie.attack_wooden_door` |
 | `fence_gate_close_sound` | `minecraft:block.fence_gate.close` |
 
-## Tackle tuning
+## Tackle settings
 
 | Key | Default | Meaning |
 | --- | --- | --- |
 | `tackle_damage` | `3.0` | Damage dealt to a tackled mob. |
-| `tackle_min_speed` | `0.15` | Minimum slide speed to tackle. |
-| `tackle_radius_x` | `1.5` | Tackle hitbox half-width (X). |
-| `tackle_radius_y` | `1.0` | Tackle hitbox half-height (Y). |
-| `tackle_radius_z` | `1.5` | Tackle hitbox half-depth (Z). |
+| `tackle_min_speed` | `0.15` | Speed needed to tackle. |
+| `tackle_radius_x` | `1.5` | Tackle reach to the sides, in blocks. |
+| `tackle_radius_y` | `1.0` | Tackle reach up and down, in blocks. |
+| `tackle_radius_z` | `1.5` | Tackle reach forward and back, in blocks. |
 
 <Callout title="Related bonuses" type="info">
-  Slides drive a huge range of bonuses: **+WAVEDASH**, **+CONVEYOR BELT**, **+VENTED**, **+BREACH**,
-  **+DEALER'S CHOICE** (movement) and **+SWEEP THE LEG**, **+BIG SHOT**, **+NEO** (combat). See the
+  Slides drive lots of bonuses: **+WAVEDASH**, **+CONVEYOR BELT**, **+VENTED**, **+BREACH**,
+  **+DEALER'S CHOICE**, and in combat **+SWEEP THE LEG**, **+BIG SHOT** and **+NEO**. See the
   [Style System](/parkour/style-system).
 </Callout>

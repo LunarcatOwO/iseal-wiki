@@ -1,29 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isMarkdownPreferred, rewritePath } from 'fumadocs-core/negotiation';
-import { docsContentRoute, docsRoute } from '@/lib/shared';
 
-const { rewrite: rewriteDocs } = rewritePath(
-  `${docsRoute}{/*path}`,
-  `${docsContentRoute}{/*path}/content.md`,
-);
-const { rewrite: rewriteSuffix } = rewritePath(
-  `${docsRoute}{/*path}.md`,
-  `${docsContentRoute}{/*path}/content.md`,
-);
+// The docs live at the site root, so `/powergems/faq` maps to `/powergems/faq.md`,
+// which the rewrites in the Next.js config then serve.
+const { rewrite: rewriteDocs } = rewritePath('/{*path}', '/{*path}.md');
 
 export default function proxy(request: NextRequest) {
-  const result = rewriteSuffix(request.nextUrl.pathname);
+  const { pathname } = request.nextUrl;
+  const result =
+    isMarkdownPreferred(request) &&
+    !/\.(md|txt)$/.test(pathname) &&
+    (pathname === '/' ? '/index.md' : rewriteDocs(pathname));
+
   if (result) {
-    return NextResponse.rewrite(new URL(result, request.nextUrl));
-  }
-
-  if (isMarkdownPreferred(request)) {
-    const result = rewriteDocs(request.nextUrl.pathname);
-
-    if (result) {
-      return NextResponse.rewrite(new URL(result, request.nextUrl));
-    }
+    return NextResponse.rewrite(new URL(result, request.nextUrl), {
+      // this URL has two representations, selected by `Accept`
+      headers: { Vary: 'Accept' },
+    });
   }
 
   return NextResponse.next();
 }
+
+export const config = {
+  // skip Next.js internals, API/OG/LLM routes and static files
+  matcher: ['/((?!_next|api|og|llms\\.mdx|images|.*\\..*).*)'],
+};

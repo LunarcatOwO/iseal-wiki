@@ -1,39 +1,36 @@
 ---
 title: Config Reference
-description: Complete, annotated reference for every Parkour Project configuration file.
+description: Complete reference for every Parkour Project configuration file.
 ---
 
-Parkour Project generates three configuration files under `~/plugins/ParkourProject/`. This section
-is the complete reference for each.
+Parkour Project creates three configuration files in `plugins/ParkourProject/config/`. This section
+covers each one in full.
 
 <Cards>
-  <Card title="config.yml" href="/parkour/configuration" description="Database connection, dev token, metrics and effects." />
-  <Card title="moves.yml" href="/parkour/reference/moves-yml" description="Full tuning for all eight movement abilities." />
-  <Card title="bonuses.yml" href="/parkour/reference/bonuses-yml" description="Every style bonus: points, category, thresholds and display names." />
+  <Card title="config.yml" href="/parkour/configuration" description="Database, metrics, effects and early access." />
+  <Card title="moves.yml" href="/parkour/reference/moves-yml" description="Every setting for all eight moves." />
+  <Card title="bonuses.yml" href="/parkour/reference/bonuses-yml" description="Every style bonus: points, category, triggers and display names." />
 </Cards>
 
-## Common conventions
+## Things to know
 
-- **Ticks:** Minecraft runs at 20 ticks per second. A `cooldown` of `40` = 2 seconds.
-- **Velocity values** (e.g. `0.5`) are in blocks-per-tick and are deliberately small; treat them as
-  relative dials rather than real-world units.
-- **`enabled`** turns a feature on or off entirely.
-- **Colors** use Bukkit boss-bar colors (`PURPLE`, `GREEN`, `BLUE`, `YELLOW`, `WHITE`, …).
-- **Display names** use [MiniMessage](https://docs.advntr.dev/minimessage/format.html) formatting:
-  gradients, colors and decorations like `<bold>` and `<gradient:#a:#b>`.
+- **Ticks:** Minecraft runs at 20 ticks per second, so a `cooldown` of `40` is 2 seconds.
+- **Speeds and forces** (like `0.5`) are small on purpose. Treat them as dials: raise them for more,
+  lower them for less.
+- **`enabled`** turns a move or bonus on or off entirely.
+- **Boss bar colors** are `PINK`, `BLUE`, `RED`, `GREEN`, `YELLOW`, `PURPLE` and `WHITE`.
+- **Names** use [MiniMessage](https://docs.advntr.dev/minimessage/format.html) formatting, so tags
+  like `<bold>`, `<green>` and `<gradient:#a:#b>` work.
 
 ## Applying changes
 
-After editing any file, run:
+After editing `moves.yml` or `bonuses.yml`, run:
 
 ```text
 /parkour reload
 ```
 
-to re-read `config.yml`, `moves.yml` and `bonuses.yml` without a restart.
-
-<Callout title="Not everything reloads" type="warn">
-  A reload does not re-apply every value. Some move and bonus settings, including all the
-  `max_streak_time` values, are only picked up on startup, as are database settings. **Restart the
-  server** if a change doesn't seem to take effect.
+<Callout title="When to restart" type="warn">
+  `/parkour reload` doesn't pick up `config.yml` or every single setting. **Restart the server** if a
+  change doesn't seem to take effect.
 </Callout>

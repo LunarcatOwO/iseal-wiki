@@ -1,47 +1,61 @@
 ---
 title: Frequently Asked Questions
-description: Common questions about the Parkour Project plugin and quick answers.
+description: Common questions about Parkour Project and quick answers.
 ---
 
 ### What server software do I need?
 
-A Paper (or Folia) server on **1.21.11+**, with **SealLib** installed. See [Quick Start](/parkour/quick-start).
+A Paper or Folia server on **1.21.11+**, with **SealLib** installed. See
+[Quick Start](/parkour/quick-start).
 
 ### Does it work on Folia?
 
-Yes. Parkour Project declares Folia support, so it runs on both Paper and Folia.
+Yes, Parkour Project runs on both Paper and Folia.
 
-### How do players unlock moves?
+### Moves aren't working for me. Why?
 
-By default every move has `default_unlocked: true`, so new players start with the full move set.
-Admins can change this per player with `/parkour moves unlock|lock` and per move in
+Check that:
+
+- you're in **Survival** or **Adventure** mode (moves are off in Creative and Spectator),
+- your main hand is **empty** (several moves need it),
+- the move is unlocked and enabled for you (`/parkour moves list`),
+- the move isn't on cooldown.
+
+### How do players get moves?
+
+By default every move has `default_unlocked: true`, so new players start with all of them. Admins
+can change this per player with `/parkour moves unlock|lock`, or per move in
 [`moves.yml`](/parkour/reference/moves-yml). See [Commands](/parkour/commands).
 
-### A player is stuck flying or has weird physics. How do I fix it?
+### A player is stuck flying or moving strangely. How do I fix it?
 
-Run `/parkour reset [player]`. It force-resets their state and physical attributes (gravity, flight,
-walk speed) back to vanilla defaults.
+Run `/parkour reset [player]`. It stops any move in progress and puts their gravity, flight and walk
+speed back to normal.
 
-### How do I see remaining cooldowns?
+### How do I see my cooldowns?
 
-Toggle a cooldown UI with `/parkour ui cooldowns enable <BOSSBAR|CHAT|TOOLBAR>`. You can enable more
-than one at a time. `/parkour cooldowns get` also lists active cooldowns.
+Turn on a cooldown display with `/parkour ui cooldowns enable <BOSSBAR|CHAT|TOOLBAR>`. You can have
+more than one on at a time. `/parkour cooldowns get` also lists your active cooldowns.
+
+### Why did my flow score reset?
+
+Your score drains over time and resets to zero when you die. See
+[Style System](/parkour/style-system).
 
 ### Can I change how many points a trick is worth?
 
-Yes. Every bonus's `bonus` value lives in [`bonuses.yml`](/parkour/reference/bonuses-yml). You can
-also disable individual bonuses or retune their thresholds, then `/parkour reload`.
+Yes. Every bonus's `bonus` value is in [`bonuses.yml`](/parkour/reference/bonuses-yml). You can also
+turn bonuses off or change what they take to trigger, then run `/parkour reload`.
 
 ### How do I add my own moves or bonuses?
 
-Use the addon API: extend `ParkourProjectAddon` and register it through `ApiManager`. See
-[API & Addons](/parkour/api-usage).
+With the addon API. See [API & Addons](/parkour/api-usage).
 
 ### Does the plugin collect data?
 
-It can send two kinds of **anonymous** data: usage metrics, and error reports when something goes
-wrong. Both are controlled by the single `allow-metrics` option in
-[`config.yml`](/parkour/configuration). Set it to `false` to opt out of both.
+It can send two kinds of **anonymous** data: usage statistics, and error reports when something goes
+wrong. Both are controlled by `allow-metrics` in [`config.yml`](/parkour/configuration). Set it to
+`false` to opt out of both.
 
 ### Where can I get help?
 

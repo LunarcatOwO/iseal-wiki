@@ -3,31 +3,60 @@ title: Frequently Asked Questions
 description: Common questions about PowerGems and quick answers.
 ---
 
-### Where can I get the resource pack?
+### What server software do I need?
 
-You can find it on [Modrinth](https://modrinth.com/collection/wGK8f7HI)!
+A Paper server on **1.20.1** or newer, with **SealLib** installed. See
+[Quick Start](/powergems/quick-start).
+
+### Where can I get the resource packs?
+
+On [Modrinth](https://modrinth.com/collection/wGK8f7HI)!
 
 ### I edited the config but nothing changed. Why?
 
-`/reloadconfig` (`/rc`) does not reliably apply config changes. After editing `config.yml` or any file
-in the `config` folder, **fully restart your server** for the changes to take effect.
+`/reloadconfig` (`/rc`) doesn't reliably apply config changes. After editing `config.yml` or any file
+in the `config` folder, **fully restart your server**.
+
+### `/givegem fire` says the gem is invalid. Why?
+
+Gem names are case sensitive: use `/givegem Fire`. Tab completion shows the right names.
+
+### My gem's passive effect isn't working. Why?
+
+By default the passive effect only starts once the gem is **above level 3**. Upgrade the gem, or
+lower `unlockNewAbilitiesOnLevelX` in [`config.yml`](/powergems/fundamentals/getting-set-up/configuration/general-config).
 
 ### What are the default recipes?
 
-Defaults are shown on the [Crafting](/powergems/overview/crafting) page. Server owners can customize them.
+See the [Crafting](/powergems/overview/crafting) page. Server owners can change them in `recipes.yml`.
+
+### Can I turn off some gems?
+
+Yes. Set the gem to `false` in `activeGems.yml`. See
+[Advanced Configs](/powergems/fundamentals/getting-set-up/configuration/advanced-configs).
+
+### Can I block gems in certain areas?
+
+Yes, with WorldGuard. Keep `isWorldGuardSupportEnabled` on and block gem use in the regions you want.
 
 ### Is there a Bedrock edition pack?
 
-Not officially. Community-made packs may exist on [Discord](https://discord.iseal.dev); use at your own discretion.
+Not officially. Community-made packs may be shared on [Discord](https://discord.iseal.dev); use them
+at your own discretion.
 
-### Where do I see all gem abilities?
+### Where can I see what every gem does?
 
-See [The Gems and Their abilities](/powergems/overview/the-gems-and-their-ablities) for a full overview. Addons can extend abilities via the API.
+See [The Gems and Their Abilities](/powergems/overview/the-gems-and-their-ablities).
 
-### How can I add new gems or abilities?
+### How can I add my own gems?
 
-Use the plugin’s API to add new content. Documentation will be expanded here.
+With the API. See [API Usage](/powergems/api-usage).
 
-### Is there a single “best” gem?
+### Is there a single "best" gem?
 
-On a tuned server, balance should prevent a single best pick. Some configuration is expected.
+The gems are meant to be balanced against each other, and every cooldown and passive effect can be
+tuned in the config files to suit your server.
+
+### Where can I get help?
+
+Join the community [Discord](https://discord.iseal.dev).

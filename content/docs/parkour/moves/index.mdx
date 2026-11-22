@@ -1,52 +1,58 @@
 ---
 title: Moves Overview
-description: The eight movement abilities of Parkour Project and the concepts they share.
+description: The eight movement abilities of Parkour Project and what they have in common.
 ---
 
-Parkour Project ships with **eight movement abilities**. Every move is physics-driven rather than
-scripted, with no teleporting, and moves *combine* into flowing routes.
+Parkour Project has **eight moves**. Each one is useful on its own, but they're built to be chained
+into one continuous route.
 
-## The move roster
+## The moves
 
 <Cards>
-  <Card title="Wall Run" href="/parkour/moves/wall-run" description="Sprint along and up vertical walls." />
+  <Card title="Wall Run" href="/parkour/moves/wall-run" description="Run along vertical walls." />
   <Card title="Wall Jump" href="/parkour/moves/wall-jump" description="Kick off a wall to gain height and distance." />
-  <Card title="Wall Cling" href="/parkour/moves/wall-cling" description="Grab and hang on a wall instead of falling." />
-  <Card title="Climb Vault" href="/parkour/moves/climb-vault" description="Mantle up and over ledges and obstacles." />
-  <Card title="Quick Vault" href="/parkour/moves/quick-vault" description="Hurdle low obstacles without losing speed." />
-  <Card title="Slide" href="/parkour/moves/slide" description="Drop into a slide, breach doors, tackle mobs." />
+  <Card title="Wall Cling" href="/parkour/moves/wall-cling" description="Grab a ledge and hang there instead of falling." />
+  <Card title="Climb Vault" href="/parkour/moves/climb-vault" description="Pull yourself up and over taller ledges." />
+  <Card title="Quick Vault" href="/parkour/moves/quick-vault" description="Hop over low obstacles without losing speed." />
+  <Card title="Slide" href="/parkour/moves/slide" description="Slide along the ground, smash through doors and tackle mobs." />
   <Card title="Roll" href="/parkour/moves/roll" description="Roll on landing to cut fall damage." />
-  <Card title="Tic Tac" href="/parkour/moves/tic-tac" description="Kick off a wall to redirect in mid-air." />
+  <Card title="Tic Tac" href="/parkour/moves/tic-tac" description="Kick off a wall or a mob in mid-air to change direction." />
 </Cards>
 
-## Shared concepts
+## Before you start
 
-### Enabled, unlocked & default state
-Every move has two independent switches in `moves.yml`:
+- Moves only work in **Survival** and **Adventure** mode.
+- Several moves (wall jump, quick vault and others) need an **empty main hand**.
+- Sneaking blocks most moves, except the ones that use sneak (slide and roll).
 
-- **`enabled`** controls whether the move exists on the server at all.
-- **`default_unlocked`** controls whether players have it unlocked automatically when they first join.
+## Things every move shares
 
-Admins can override these per player with `/parkour moves unlock|lock|enable|disable`. See
-[Commands](/parkour/commands).
+### Unlocked and enabled
+Each move has two settings in `moves.yml`:
+
+- **`enabled`** decides whether the move exists on the server at all.
+- **`default_unlocked`** decides whether new players get the move automatically.
+
+Admins can change this per player with `/parkour moves unlock|lock`, and players can switch their own
+moves on and off with `/parkour moves enable|disable`. See [Commands](/parkour/commands).
 
 ### Cooldowns
-Most moves have a **`cooldown`** (in ticks; 20 ticks = 1 second) to prevent spamming. Remaining
-cooldowns can be shown through one or more **cooldown UIs** (`BOSSBAR`, `CHAT`, `TOOLBAR`) that each
-player can toggle. The [Roll](/parkour/moves/roll) is special, with *three* cooldowns depending on
-how well you time it.
+Most moves have a **cooldown** (in ticks; 20 ticks = 1 second) before you can use them again. The
+[Roll](/parkour/moves/roll) has three different cooldowns depending on how well you time it, and the
+[Tic Tac](/parkour/moves/tic-tac) uses charges instead.
+
+Players choose how cooldowns are shown with `/parkour ui cooldowns`: a **boss bar**, a line in the
+**action bar**, or **chat** messages.
 
 ### Boss bars
-Each move defines its own **boss bar** (name, color, overlay) in `moves.yml`. This is what the
-`BOSSBAR` cooldown UI draws: the bar tracks that move's **remaining cooldown** and nothing else. It
-isn't an indicator that the move is currently happening.
+Each move has its own boss bar name, color and style in `moves.yml`. The boss bar only shows the
+move's **remaining cooldown**.
 
 <Callout type="info">
-  All the numeric values on the following pages are the **defaults**. Everything is tunable in
-  `moves.yml`; see the [full reference](/parkour/reference/moves-yml) for the complete file.
+  The numbers on the following pages are the **defaults**. Everything can be changed in
+  `moves.yml`; see the [full reference](/parkour/reference/moves-yml).
 </Callout>
 
 ### Moves feed the style system
-Chaining moves builds your **combo**, which multiplies what every style **bonus** pays out. The
-bonuses are what raise your flow score and your flow rank. That whole layer is documented under
-[Style System](/parkour/style-system).
+Every move adds to your **combo**, and chaining moves in the right ways triggers style **bonuses**
+that raise your flow score and rank. See [Style System](/parkour/style-system).

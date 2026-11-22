@@ -1,14 +1,19 @@
 ---
-title: The Gems and Their abilities
+title: The Gems and Their Abilities
 description: Overview of every gem and what each of its abilities does.
 ---
 
-Every gem has four abilities: a **Right Click**, a **Left Click**, a **Shift Click**, and a **Passive**
-effect that is always active while the gem is held.
+Every gem has three active abilities, used by clicking with the gem in your hand, plus a **Passive**
+effect:
 
-<Callout title="How to use Shift Click abilities" type="idea">
-  A gem's **Shift Click** ability is used by holding **sneak** and pressing either mouse button.
-</Callout>
+- **Right Click** and **Left Click** each trigger an ability.
+- **Shift Click** triggers the third ability: hold **sneak** and press either mouse button.
+- The **Passive** is a potion effect you get while the gem is in your inventory. By default it
+  starts once the gem is **above level 3** (set by `unlockNewAbilitiesOnLevelX`).
+
+Each ability has its own cooldown, which gets shorter as the gem levels up. Higher levels also make
+most abilities stronger. The descriptions below are the defaults; server owners can change the
+passive effects and cooldowns.
 
 export const GemArt = ({ gem, name }) => (
   <figure style={{ margin: '0.5rem 0' }}>
@@ -27,9 +32,9 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Provides Saturation, Strength and Resistance potion effects. |
-| **Left Click** | A shockwave that sends nearby entities flying and damages them. |
-| **Shift Click** | Creates an area around the user that prevents anyone from entering it. |
+| **Right Click** | Gives you Strength and Saturation. |
+| **Left Click** | A shockwave that knocks nearby players away, damages them and gives them Weakness. |
+| **Shift Click** | Creates an arena around you that nobody else can enter, and gives you Strength. Useful for healing up. |
 | **Passive** | Haste. |
 
 ## Healing Gem
@@ -38,9 +43,9 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Parry attacks. |
-| **Left Click** | Slowly regenerate with 1 minute of Regeneration II. |
-| **Shift Click** | Instantly heals the user. |
+| **Right Click** | Parry: blocks almost all damage for a split second. |
+| **Left Click** | Gives you Regeneration. |
+| **Shift Click** | Instantly heals you and gives you Saturation. |
 | **Passive** | Regeneration. |
 
 ## Air Gem
@@ -49,10 +54,10 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Creates a wind that pulls the target toward the user. |
-| **Left Click** | Unleashes a burst of wind, launching everything nearby into the air. |
-| **Shift Click** | Creates a smoke cloud, granting temporary invisibility and propelling the user forward. Also works with elytras. |
-| **Passive** | Slow Falling. |
+| **Right Click** | Creates a tether of wind to the player you're looking at, pulling them toward you, damaging and slowing them. |
+| **Left Click** | A burst of wind that launches everything nearby into the air and damages players. |
+| **Shift Click** | Creates a cloud of smoke, makes you invisible for a few seconds and propels you forward. Also works with elytras. |
+| **Passive** | Speed. |
 
 ## Fire Gem
 
@@ -60,9 +65,9 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Creates a fiery aura around the user, granting temporary fire resistance and setting nearby blocks on fire. |
-| **Left Click** | Launches a fireball after a charge-up in the direction faced, causing a powerful explosion on impact. |
-| **Shift Click** | Creates an explosion around the user, damaging nearby entities and setting them on fire. |
+| **Right Click** | Creates a fiery aura around you: gives you Fire Resistance and sets the area around you on fire. |
+| **Left Click** | Creates an explosion around you that damages nearby entities, while protecting you from the blast. |
+| **Shift Click** | Launches a fireball where you're looking that explodes on impact. |
 | **Passive** | Fire Resistance. |
 
 ## Iron Gem
@@ -71,9 +76,9 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Temporarily grants increased absorption and knockback resistance. |
-| **Left Click** | Fires a barrage of spectral arrows in a circle. |
-| **Shift Click** | Temporarily increases the player's armor and armor toughness. |
+| **Right Click** | Gives you extra absorption and knockback resistance for a while. |
+| **Left Click** | Fires a barrage of spectral arrows in a circle around you. |
+| **Shift Click** | Raises your armor and armor toughness for a while. |
 | **Passive** | Resistance. |
 
 ## Lightning Gem
@@ -82,9 +87,9 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Strikes lightning at the aimed position and any nearby entities, damaging them. |
-| **Left Click** | Launches the user forward in the direction they are looking. Also works with elytras. |
-| **Shift Click** | Emits a thunder sound and applies Glowing to nearby entities, excluding the user. |
+| **Right Click** | Strikes lightning where you're looking and at nearby entities. |
+| **Left Click** | Launches you forward in the direction you're looking. Also works with elytras. |
+| **Shift Click** | Plays a thunder sound and makes nearby entities (except you) glow. |
 | **Passive** | Speed. |
 
 ## Sand Gem
@@ -93,9 +98,9 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Gives the target player Weakness. |
-| **Left Click** | Temporarily creates a sand block that slows anything passing over it. |
-| **Shift Click** | Gives the target player a temporary Blindness effect. |
+| **Right Click** | Fires a beam of sand that drains the hunger of players it hits and slows them. |
+| **Left Click** | Fires a beam that blinds players it hits with Darkness and slows them, with stronger bursts along the way. |
+| **Shift Click** | Turns the ground around you into a sand trap that slows enemies walking over it. |
 | **Passive** | Haste. |
 
 ## Ice Gem
@@ -104,9 +109,9 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Throws an ice block, dealing damage to anything it hits. |
-| **Left Click** | Gives the target player a temporary Slowness effect. |
-| **Shift Click** | Spawns snow golems to fight for the user. |
+| **Right Click** | Throws a block of ice that damages whatever it hits. |
+| **Left Click** | Freezes the player you're looking at, giving them Slowness. |
+| **Shift Click** | Spawns snow golems that fight for you. |
 | **Passive** | Instant Health. |
 
 ## Lava Gem
@@ -115,9 +120,9 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Creates a ring of lava around the user. |
-| **Left Click** | Provides the user with temporary Fire Resistance. |
-| **Shift Click** | Spawns blazes to fight for the user. |
+| **Right Click** | Surrounds you with a square ring of lava for a while. Higher levels add more rings. |
+| **Left Click** | Gives you 1 minute of Fire Resistance. |
+| **Shift Click** | Spawns blazes that fight for you. |
 | **Passive** | Fire Resistance. |
 
 ## Water Gem
@@ -126,7 +131,7 @@ export const GemArt = ({ gem, name }) => (
 
 | Trigger | Effect |
 | --- | --- |
-| **Right Click** | Propel yourself forward in water, creating bubbles. |
-| **Left Click** | Moisturize farmland blocks around you. |
-| **Shift Click** | Create a temporary water cube around you, granting Dolphin's Grace. |
+| **Right Click** | Propels you forward while you're in water. |
+| **Left Click** | Waters the farmland around you. |
+| **Shift Click** | Creates a temporary cube of water around you and gives you Dolphin's Grace. |
 | **Passive** | Conduit Power. |

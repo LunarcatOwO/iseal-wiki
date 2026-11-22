@@ -1,25 +1,24 @@
 ---
 title: moves.yml
-description: The complete moves.yml file with every field for all eight movement abilities.
+description: Every setting in moves.yml for all eight moves, with their defaults.
 ---
 
-`moves.yml` tunes the eight movement abilities. Each move shares a common `bossbar` block plus its own
-physics fields. For a gameplay-focused explanation of each value, see the individual
-[move pages](/parkour/moves).
+`moves.yml` holds the settings for the eight moves. Every move has the same few shared settings plus
+its own. For what each value does in play, see the individual [move pages](/parkour/moves).
 
-## Shared fields
+## Shared settings
 
-| Field | Meaning |
+| Setting | Meaning |
 | --- | --- |
 | `enabled` | Whether the move exists on the server. |
-| `default_unlocked` | Whether new players start with the move unlocked. |
-| `cooldown` | Cooldown after use, in ticks (20 ticks = 1s). Roll uses a nested cooldown block instead. |
-| `bossbar.name` | Boss-bar title (MiniMessage supported). |
-| `bossbar.color` | Boss-bar color: `PINK`, `BLUE`, `RED`, `GREEN`, `YELLOW`, `PURPLE`, `WHITE`. |
-| `bossbar.overlay` | Boss-bar style: `PROGRESS`, `NOTCHED_6`, `NOTCHED_10`, `NOTCHED_12`, `NOTCHED_20`. |
-| `bossbar.flags` | Extra flags, e.g. `PLAY_BOSS_MUSIC`, `DARKEN_SCREEN`, `CREATE_WORLD_FOG`. |
+| `default_unlocked` | Whether new players get the move automatically. |
+| `cooldown` | Cooldown after use, in ticks (20 ticks = 1 second). The roll has three cooldowns instead, and the tic tac uses charges. |
+| `bossbar.name` | Name shown on the cooldown boss bar (MiniMessage supported). |
+| `bossbar.color` | Boss bar color: `PINK`, `BLUE`, `RED`, `GREEN`, `YELLOW`, `PURPLE` or `WHITE`. |
+| `bossbar.overlay` | Boss bar style: `PROGRESS`, `NOTCHED_6`, `NOTCHED_10`, `NOTCHED_12` or `NOTCHED_20`. |
+| `bossbar.flags` | Extra boss bar effects: `PLAY_BOSS_MUSIC`, `DARKEN_SCREEN` or `CREATE_WORLD_FOG`. |
 
-## Full default file
+## Defaults
 
 ```yaml
 wall_run:
@@ -31,10 +30,12 @@ wall_run:
    initial_speed: 0.6
    decay_rate: 0.05
    max_fall_speed: 0.18
-   max_duration: 100
+   max_duration: 100.0
    grace_period_ticks: 6
    cooldown: 20
+   min_start_speed: 0.25
    vertical_booster: 0.05
+   wall_push: 0.06
    enabled: true
    default_unlocked: true
 wall_jump:
@@ -43,7 +44,7 @@ wall_jump:
       color: GREEN
       overlay: PROGRESS
       flags: []
-   max_angle: 90.0
+   max_angle: 120.0
    jump_y: 0.45
    jump_multiplier: 0.7
    cooldown: 60
@@ -67,14 +68,13 @@ quick_vault:
    default_unlocked: true
 climb_vault:
    bossbar:
-      name: Climb Vault
+      name: <green>Climb Vault
       color: YELLOW
       overlay: PROGRESS
-      flags:
-      - PLAY_BOSS_MUSIC
+      flags: []
    interaction_range: 1.0
    vault_up: 0.5
-   vault_forward: 0.5
+   vault_forward: 0.35
    max_ticks: 10
    cooldown: 50
    enabled: true
@@ -89,11 +89,15 @@ wall_cling:
    lateral_speed: 0.18
    gravity_drift: 0.005
    max_cling_ticks: 100
-   cooldown_ticks: 60
+   cooldown: 60
    corner_threshold: 0.35
    wall_offset: 0.9
    initial_height_offset: 0.6
    cling_walk_speed: 0.05
+   correction_gain: 0.2
+   max_correction_step: 0.15
+   hold_deadzone: 0.02
+   break_distance: 1.5
    enabled: true
    default_unlocked: true
 slide:
@@ -165,9 +169,19 @@ tic_tac:
    push_away_force: 0.6
    forward_force: 0.4
    max_distance: 2.0
-   cooldown: 40
+   max_charges: 3
+   charge_cooldown: 5
+   max_charge_window: 60
+   long_cooldown: 80
+   reset_on_ground: true
    mob_push_multiplier: 0.6
    mob_impact_damage: 2.0
    enabled: true
    default_unlocked: true
 ```
+
+<Callout title="Updating from an older version" type="info">
+  Some settings were renamed or added in newer versions: `wall_cling.cooldown_ticks` is now
+  `wall_cling.cooldown`, and the tic tac's single `cooldown` was replaced by charges. If your file is
+  missing a setting, it's added with its default the next time the server starts.
+</Callout>

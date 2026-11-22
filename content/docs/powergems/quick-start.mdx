@@ -1,21 +1,39 @@
 ---
 title: Quick Start
-description: Install the plugin on a Paper server and perform first-time configuration.
+description: Install PowerGems on a Paper server and get it set up.
 ---
+
 <Callout type="warn">
-Before you begin, make sure your server supports plugins. We recommend [PaperMC](https://papermc.io/downloads/paper).
+  Make sure your server can run plugins. We recommend [PaperMC](https://papermc.io/downloads/paper)
+  1.20.1 or newer.
 </Callout>
+
 <div className='fd-steps [&_h3]:fd-step'>
 
-### Download the plugin
-Download it from the only from the official source which is [Modrinth](https://modrinth.com/plugin/powergems)
+### Download PowerGems
+Download it from [Modrinth](https://modrinth.com/plugin/powergems), the only official source.
 
-### Download the dependency plugin
-Download it from the only from the official source which is [Modrinth](https://modrinth.com/plugin/seallib)
+### Download SealLib
+PowerGems needs **SealLib**. Download it from [Modrinth](https://modrinth.com/plugin/seallib).
 
-### Installing the plugin
-Open your server panel, navigate to the file manager, go to `~/plugins/`, upload the plugin there, and **restart** the server.
+### Install both plugins
+Open your server's files, go to the `plugins/` folder, upload both jars, and **restart** the server.
 
-### Configure the Plugin
-Configuration can be challenging sometimes. For detailed instructions and an explanation of each option go to the [configuration section](/powergems/fundamentals/getting-set-up/configuration). If you are having trouble, feel free to contact us on [Discord](https://discord.iseal.dev); we will be happy to help!
+### Configure the plugin (optional)
+PowerGems creates `config.yml` and a `config` folder in `plugins/PowerGems/`. The defaults work out
+of the box. For an explanation of every option, see the
+[configuration section](/powergems/fundamentals/getting-set-up/configuration). Stuck? Ask on
+[Discord](https://discord.iseal.dev) and we'll be happy to help!
+
+### Get a gem
+New players get a random gem when they first join. As an admin you can also run `/givegem` for a
+random gem, or `/getallgems` for one of each.
+
 </div>
+
+## Optional extras
+
+- **Resource packs** give the gems custom textures. Find them on
+  [Modrinth](https://modrinth.com/collection/wGK8f7HI).
+- **WorldGuard** lets you block gem use in specific regions.
+- **CombatLogX** tags players in combat when they use gems on each other.

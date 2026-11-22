@@ -11,7 +11,7 @@
 # The Next.js build is plain, architecture-independent JavaScript (verified: no
 # native .node binaries in the standalone trace), so the SAME prebuilt artifacts
 # are reused for every target platform. CI runs `next build` once natively on
-# amd64 and this image just copies the result — no expensive QEMU rebuild.
+# amd64 and this image just copies the result, so there is no slow QEMU rebuild.
 #
 # For a fully self-contained build (local dev), use ./Dockerfile instead.
 

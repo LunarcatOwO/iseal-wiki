@@ -1,35 +1,40 @@
 ---
 title: Climb Vault
-description: Mantle up and over ledges and obstacles that are too tall to simply jump.
+description: Pull yourself up and over ledges that are too tall to jump onto.
 ---
 
-The **Climb Vault** is a mantle: when you reach a ledge or obstacle that's too tall to jump onto, the
-climb vault pulls you up and over it. It's the move that keeps a run flowing over uneven terrain.
+The **Climb Vault** pulls you up onto a ledge that's too tall to jump onto. It keeps a run flowing
+over uneven terrain and is the way up from a [Wall Cling](/parkour/moves/wall-cling).
 
 ## How to perform
 
-1. Run or jump toward a **ledge or wall** within interaction range.
-2. The climb vault fires, lifting you **up and forward** onto the top.
+**From the ground:**
 
-It's most effective on **2-block-high walls**, which is the height it's tuned for. For a 1-block-high
-obstacle you don't need it at all: use the [Quick Vault](/parkour/moves/quick-vault) instead and keep
-your speed.
+1. Stand right in front of a ledge (within 1 block).
+2. **Right-click the block.**
+3. You're lifted up and forward onto the top.
 
-Follow a climb vault immediately with a [Quick Vault](/parkour/moves/quick-vault) for the
-**+CATAPULT** bonus, or drop into a [Roll](/parkour/moves/roll) on the far side.
+**From a wall cling:** **right-click** while clinging to pull yourself up.
 
-## Tuning (`moves.yml` → `climb_vault`)
+Either way, you need two blocks of open space on top of the ledge to land in, and room above your
+head. For low obstacles you don't need it at all: use the [Quick Vault](/parkour/moves/quick-vault)
+instead and keep your speed.
+
+Follow a climb vault straight into a [Quick Vault](/parkour/moves/quick-vault) for **+CATAPULT**, or
+into a [Slide](/parkour/moves/slide) for **+SMOOTH TRANSITION**.
+
+## Settings (`moves.yml` → `climb_vault`)
 
 | Key | Default | Meaning |
 | --- | --- | --- |
-| `interaction_range` | `1.0` | Reach for detecting a climbable ledge. |
-| `vault_up` | `0.5` | Upward velocity applied by the mantle. |
-| `vault_forward` | `0.5` | Forward velocity applied by the mantle. |
-| `max_ticks` | `10` | Maximum duration of the vault motion, in ticks. |
+| `interaction_range` | `1.0` | How close you need to be to the ledge, in blocks. |
+| `vault_up` | `0.5` | Upward strength of the vault. |
+| `vault_forward` | `0.35` | Forward strength of the vault. |
+| `max_ticks` | `10` | Longest the vault motion lasts, in ticks. |
 | `cooldown` | `50` | Cooldown after the vault, in ticks (2.5 seconds). |
-| `bossbar` | Climb Vault / `YELLOW` | Boss bar name, color and overlay used for this move's cooldown display. |
+| `bossbar` | Climb Vault / `YELLOW` | Name, color and style of this move's cooldown boss bar. |
 
 <Callout title="Related bonuses" type="info">
-  Climb vaults enable **+CATAPULT** (into a quick vault) and the combat bonus **+FROM ABOVE** (killing
-  a mob while dropping out of a climb vault). See [Style System](/parkour/style-system).
+  Climb vaults set up **+CATAPULT**, **+SMOOTH TRANSITION** and the combat bonus **+FROM ABOVE**
+  (a kill while dropping out of a climb vault). See [Style System](/parkour/style-system).
 </Callout>

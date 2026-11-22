@@ -1,38 +1,36 @@
 ---
 title: Quick Vault
-description: Hurdle low obstacles at speed without breaking stride.
+description: Hop over low obstacles at speed without breaking stride.
 ---
 
-The **Quick Vault** is a speed-preserving hurdle. Where the [Climb Vault](/parkour/moves/climb-vault)
-mantles taller walls, the quick vault skims *over low obstacles* like fences, railings and single
-blocks without slowing you down. Nail the timing and you keep (or even gain) momentum.
+The **Quick Vault** is a fast hurdle. Where the [Climb Vault](/parkour/moves/climb-vault) pulls you
+up taller ledges, the quick vault skims over **low obstacles** like fences, railings and single blocks
+without slowing you down. Time it well and you can even come out faster.
 
 ## How to perform
 
-1. Approach a **low obstacle** at speed, on the ground, with an **empty main hand** and **not
-   sneaking**.
-2. **Left-click the obstacle**, either the block itself or the block directly above it, while you're
-   within `interaction_range` of it.
-3. You hop up and forward over the obstacle.
+1. Run at a **low obstacle** on the ground, with an **empty main hand** and **not sneaking**.
+2. **Left-click the obstacle** (the block itself or the block just above it) when you're close.
+3. You hop up and forward over it.
 
-The vault's direction blends where you're **moving** and where you're **looking**, so aim through the
-obstacle in the direction you want to exit.
+The direction of the vault mixes where you're **moving** and where you're **looking**, so look
+through the obstacle toward where you want to land.
 
-## Tuning (`moves.yml` → `quick_vault`)
+## Settings (`moves.yml` → `quick_vault`)
 
 | Key | Default | Meaning |
 | --- | --- | --- |
-| `speed_threshold` | `0.05` | Minimum speed required to trigger the vault. |
-| `interaction_range` | `3.0` | Reach for detecting a vaultable obstacle ahead. |
-| `quick_vault_up` | `0.5` | Upward velocity applied by the vault. |
-| `quick_vault_forward` | `0.45` | Forward velocity applied by the vault. |
-| `dir_velocity_weight` | `0.7` | Weight of your current movement direction in the exit vector. |
-| `dir_look_weight` | `0.3` | Weight of your look direction in the exit vector. |
+| `speed_threshold` | `0.05` | Speed you need to vault. |
+| `interaction_range` | `3.0` | How far ahead an obstacle can be, in blocks. |
+| `quick_vault_up` | `0.5` | Upward strength of the vault. |
+| `quick_vault_forward` | `0.45` | Forward strength of the vault. |
+| `dir_velocity_weight` | `0.7` | How much your movement direction counts toward the vault direction. |
+| `dir_look_weight` | `0.3` | How much your look direction counts toward the vault direction. |
 | `cooldown` | `10` | Cooldown after the vault, in ticks (0.5 seconds). |
-| `bossbar` | Quick Vault / `GREEN` | Boss bar name, color and overlay used for this move's cooldown display. |
+| `bossbar` | Quick Vault / `GREEN` | Name, color and style of this move's cooldown boss bar. |
 
 <Callout title="Related bonuses" type="info">
-  Perfectly-timed quick vaults are worth a lot of style: **+MOMENTUM CONSERVATION**,
-  **+EFFICIENCY BUMP**, **+FICSIT APPROVED** (three matched vaults in a row), and **+CATAPULT**. See
-  [Advanced Movement](/parkour/style-system/advanced).
+  Well-timed quick vaults are worth a lot of style: **+MOMENTUM CONSERVATION**,
+  **+EFFICIENCY BUMP**, **+FICSIT APPROVED** (several matched vaults in a row), **+CATAPULT** and
+  **+OVER THE RAILS**. See [Advanced Movement](/parkour/style-system/advanced).
 </Callout>

@@ -8,8 +8,8 @@ export function baseOptions(): BaseLayoutProps {
       // JSX supported
       title: appName,
     },
-    // Download links are scoped to their wiki — each only appears on its own
-    // pages. SealLib is a dependency of both plugins, so it shows on both.
+    // Each download link only shows on its own wiki's pages. SealLib is needed
+    // by both plugins, so it shows on both.
     links: [
       {
         type: 'custom',

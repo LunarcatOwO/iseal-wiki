@@ -1,7 +1,6 @@
 # syntax=docker.io/docker/dockerfile:1
 
-# Multi-stage Dockerfile based on Next.js example and Fumadocs guidance
-# Ensures source.config.ts is available during install/build for Fumadocs MDX
+# Multi-stage Dockerfile based on the Next.js example and Fumadocs guidance
 
 FROM node:24-alpine AS base
 # libc6-compat is sometimes needed on alpine for native modules
@@ -10,8 +9,7 @@ WORKDIR /app
 
 # 1) Install dependencies only when needed
 FROM base AS deps
-# Include source.config.ts in the workdir per Fumadocs Docker guide
-COPY package.json package-lock.json* pnpm-lock.yaml* yarn.lock* .npmrc* source.config.ts next.config.mjs ./
+COPY package.json package-lock.json* pnpm-lock.yaml* yarn.lock* .npmrc* ./
 ENV NPM_CONFIG_FETCH_RETRIES=5 \
   NPM_CONFIG_FETCH_RETRY_MINTIMEOUT=20000 \
   NPM_CONFIG_FETCH_RETRY_MAXTIMEOUT=120000 \

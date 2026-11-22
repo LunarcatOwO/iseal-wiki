@@ -1,37 +1,40 @@
 ---
 title: Wall Run
-description: Sprint horizontally along and up vertical walls to carry momentum across gaps.
+description: Run along vertical walls to cross gaps and carry your speed.
 ---
 
-The **Wall Run** lets a sprinting player run along (and slightly up) a vertical wall instead of
-sliding off it. It is the backbone of vertical routing: string wall runs together to scale buildings
-or cross gaps that have no floor.
+The **Wall Run** lets you run along the side of a wall instead of falling past it. It's the backbone
+of vertical routes: chain wall runs together to cross gaps that have no floor.
 
 ## How to perform
 
 1. Build up speed by **sprinting**.
-2. Move into a **vertical wall** at an angle while airborne or right against it.
-3. Keep holding forward and you'll run along the surface. The **Wall Run** boss bar tracks the
-   cooldown.
+2. **Jump** so you're moving alongside a wall, with the wall to your left or right.
+3. Keep moving forward and you run along the wall, sliding down slowly as you lose speed.
 
-Wall runs pair naturally with the [Wall Jump](/parkour/moves/wall-jump) (to launch off) and the
-[Tic Tac](/parkour/moves/tic-tac) (to redirect).
+You need to be moving at roughly sprinting speed to start a wall run, and you can't be sneaking. A
+single wall run lasts up to 5 seconds.
 
-## Tuning (`moves.yml` → `wall_run`)
+Wall runs pair naturally with the [Wall Jump](/parkour/moves/wall-jump) to launch off and the
+[Tic Tac](/parkour/moves/tic-tac) to change direction.
+
+## Settings (`moves.yml` → `wall_run`)
 
 | Key | Default | Meaning |
 | --- | --- | --- |
-| `initial_speed` | `0.6` | Speed granted at the start of the run. |
-| `decay_rate` | `0.05` | How quickly wall-run speed bleeds off each tick. |
-| `max_fall_speed` | `0.18` | Caps downward speed while wall-running, so you slide down gently. |
-| `max_duration` | `100` | Maximum length of a single wall run, in ticks (5 seconds). |
-| `grace_period_ticks` | `6` | Brief window after leaving a wall where you can re-attach or chain. |
-| `vertical_booster` | `0.05` | Small upward push applied during the run, letting you gain height. |
+| `initial_speed` | `0.6` | Speed you get at the start of the run. |
+| `decay_rate` | `0.05` | How quickly you lose speed during the run. |
+| `max_fall_speed` | `0.18` | How fast you can slide down the wall. |
+| `max_duration` | `100` | Longest a single wall run can last, in ticks (5 seconds). |
+| `grace_period_ticks` | `6` | How long you can lose contact with the wall without the run ending. |
+| `min_start_speed` | `0.25` | Speed you need to start a wall run. Walking is about `0.22` and sprinting about `0.28`. |
+| `vertical_booster` | `0.05` | Small upward push during the run. |
+| `wall_push` | `0.06` | How strongly you're kept against the wall. `0` turns it off. |
 | `cooldown` | `20` | Cooldown after the run ends, in ticks (1 second). |
-| `bossbar` | Wall Run / `PURPLE` | Boss bar name, color and overlay used for this move's cooldown display. |
+| `bossbar` | Wall Run / `PURPLE` | Name, color and style of this move's cooldown boss bar. |
 
 <Callout title="Related bonuses" type="info">
-  Long, clean wall runs and chains feed bonuses like **+LONG WAY DOWN**, **+SKYLINE**, and (in
-  combat) **+FLYBY**. See [Advanced Movement](/parkour/style-system/advanced) and
+  Long, clean wall runs and chains feed **+LONG WAY DOWN**, **+SKYLINE** and **+DEALER'S CHOICE**,
+  and the combat bonus **+FLYBY**. See [Advanced Movement](/parkour/style-system/advanced) and
   [Combat Hybrid](/parkour/style-system/combat).
 </Callout>

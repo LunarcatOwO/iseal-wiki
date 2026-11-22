@@ -1,58 +1,57 @@
 ---
 title: Quick Start
-description: Install Parkour Project on a Paper or Folia server and perform first-time setup.
+description: Install Parkour Project on a Paper or Folia server and try it out.
 ---
 
 <Callout type="warn">
-  Parkour Project requires a plugin-capable server. We recommend [PaperMC](https://papermc.io/downloads/paper)
+  Parkour Project needs a plugin-capable server. We recommend [PaperMC](https://papermc.io/downloads/paper)
   (1.21.11+). [Folia](https://papermc.io/software/folia) is also supported.
 </Callout>
 
 <div className='fd-steps [&_h3]:fd-step'>
 
-### Install the dependency
-Parkour Project depends on **SealLib**. Download it from the official source on
-[Modrinth](https://modrinth.com/plugin/seallib) and place it in your `~/plugins/` folder.
+### Install SealLib
+Parkour Project needs **SealLib**. Download it from [Modrinth](https://modrinth.com/plugin/seallib)
+and put it in your server's `plugins/` folder.
 
 ### Install Parkour Project
-Download `ParkourProject-x.x.x.x.jar`, upload it to `~/plugins/`, and make sure SealLib is present
-alongside it.
+Download Parkour Project from [Modrinth](https://modrinth.com/plugin/parkourproject) and put the jar in
+`plugins/` next to SealLib.
 
 ### Start the server
-Boot the server once. Parkour Project will generate its configuration files under
-`~/plugins/ParkourProject/`:
+Start the server once. Parkour Project creates its configuration files in
+`plugins/ParkourProject/config/`:
 
-- `config.yml` holds core plugin settings (database, tokens, metrics).
-- `moves.yml` holds the tuning for each movement ability.
-- `bonuses.yml` holds the tuning for every style bonus.
+- `config.yml` holds the core plugin settings.
+- `moves.yml` holds the settings for each move.
+- `bonuses.yml` holds the settings for every style bonus.
 
 ### Configure (optional)
-The defaults are playable out of the box. To customize anything, edit the files and run
-`/parkour reload` to pick up the changes, or edit them with the server stopped and let the next
-startup load them. Some settings only apply on startup, so restart if a change doesn't take effect.
-See [Configuration](/parkour/configuration) for a full breakdown.
+The defaults are playable out of the box. To change something, edit the file and run
+`/parkour reload`, or restart the server. See [Configuration](/parkour/configuration) for details.
 
 ### Try it in-game
-Join the server and start moving:
+Join in **Survival** or **Adventure** mode (moves are turned off in Creative and Spectator) with an
+empty hand, and start moving:
 
-- **Sprint** into a wall and hold toward it to **wall run**.
-- **Sneak** just before you hit the ground from a fall to **roll**.
-- **Sprint + sneak** on flat ground to **slide**.
+- **Sprint and jump** alongside a wall to **wall run** on it.
+- While sprinting, **tap sneak** to **slide**.
+- Press **sneak** just before you land from a big fall to **roll**.
 
-Run `/parkour moves list` to see which moves you currently have unlocked.
+Run `/parkour moves list` to see which moves you have.
 
 </div>
 
-## Verify the install
+## Check the install
 
 ```text
 /parkour moves list
 ```
 
-You should see the list of unlocked moves. If the command isn't found, check the server console for
-a SealLib version mismatch or a missing dependency.
+You should see your list of moves. If the command isn't found, check the server console for a
+missing SealLib or a SealLib version mismatch.
 
 <Cards>
-  <Card title="Configuration" href="/parkour/configuration" description="Every option in config.yml explained." />
+  <Card title="Moves" href="/parkour/moves" description="How to perform every move." />
   <Card title="Commands & Permissions" href="/parkour/commands" description="Admin tools for managing moves and cooldowns." />
 </Cards>

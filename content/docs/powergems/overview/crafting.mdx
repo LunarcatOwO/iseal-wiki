@@ -1,35 +1,51 @@
 ---
-title: Crafting The gems
+title: Crafting the Gems
 description: How to craft new gems and upgrade existing ones.
 ---
 
-The following recipes are the defaults and can be customized by server owners. For details on changing them, see [Configuration](/powergems/fundamentals/getting-set-up/configuration).
+These are the default recipes. Server owners can change them in `recipes.yml`; see
+[Advanced Configs](/powergems/fundamentals/getting-set-up/configuration/advanced-configs).
 
-## Crafting a New Gem
+## Crafting a new gem
 
-Follow the default recipe shown below (or your customized variant in `recipes.yml`).
+The default recipe gives you a **random gem**:
+
+- **Corners:** Netherite Block
+- **Edges:** Diamond Block
+- **Center:** Nether Star
 
 <figure>
-	<img src="/images/new_gem.png" alt="Default New Gem recipe diagram (Default)" />
-	<figcaption>Default New Gem Recipe. Update this image if you customize recipes.</figcaption>
+	<img src="/images/new_gem.png" alt="Default new gem recipe" />
+	<figcaption>The default new gem recipe.</figcaption>
 </figure>
 
 <Callout type="idea">
-  If you change the shape or materials in `recipes.yml`, share the updated recipe with your players
-  (for example, by replacing the image above) so they know how to craft it.
+  If you change this recipe in `recipes.yml`, let your players know (for example by replacing the
+  image above) so they know how to craft it.
 </Callout>
 
-## Upgrading Gems
+## Upgrading gems
 
-Gems can be upgraded using a universal pattern by level. The exact materials per level are configurable.
+Put a gem in the middle of the crafting grid with the upgrade materials around it to raise it one
+level. By default every level uses the same recipe:
+
+- **Corners:** Netherite Ingot
+- **Edges:** Bottle o' Enchanting
+- **Center:** the gem you're upgrading
+
+Each level's recipe can be changed separately in `recipes.yml`. Gems go up to level 5 by default
+(`maxGemLevel`).
 
 <Callout type="warn">
-  The Emerald in the middle is the gem you are upgrading, not an emerald.
+  The emerald in the middle of the picture stands for the gem you're upgrading, not an actual emerald.
 </Callout>
 
 <figure>
-	<img src="/images/gem_upgrade.png" alt="Gem Upgrade recipe diagram (Default)" />
-	<figcaption>Gem Upgrade Recipe (Default). Adjust based on your server’s settings. The emerald in the middle is a gem</figcaption>
+	<img src="/images/gem_upgrade.png" alt="Default gem upgrade recipe" />
+	<figcaption>The default gem upgrade recipe. The emerald in the middle is your gem.</figcaption>
 </figure>
 
-Hint: Base cooldowns decrease with levels (see `cooldown.yml`) and `cooldownBoostPerLevelInSeconds`.
+<Callout title="What upgrading gets you" type="info">
+  Every level makes most abilities stronger and takes `cooldownBoostPerLevelInSeconds` (2 seconds by
+  default) off each cooldown. By default the gem's passive effect starts once it's above level 3.
+</Callout>

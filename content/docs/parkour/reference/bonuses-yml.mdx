@@ -3,22 +3,27 @@ title: bonuses.yml
 description: The complete bonuses.yml file, with every style bonus, its points, category, thresholds and display name.
 ---
 
-`bonuses.yml` defines every style bonus. For how these are earned in play, see the
+`bonuses.yml` lists every style bonus. For how each one is earned in play, see the
 [Style System](/parkour/style-system).
 
-## Common fields
+## Shared settings
 
-| Field | Meaning |
+| Setting | Meaning |
 | --- | --- |
 | `enabled` | Whether the bonus can trigger. |
-| `bonus` | Points awarded when it triggers. |
-| `category` | One of `FILLER`, `ADVANCED`, `COMBAT`, `MYTHIC`. |
-| `display_name` | The on-screen callout, in [MiniMessage](https://docs.advntr.dev/minimessage/format.html) format (gradients, `<bold>`, etc.). |
+| `bonus` | Points added to your flow score when it triggers. |
+| `category` | One of `FILLER`, `ADVANCED`, `COMBAT` or `MYTHIC`. |
+| `display_name` | How the bonus appears on the scoreboard, in [MiniMessage](https://docs.advntr.dev/minimessage/format.html) format (gradients, `<bold>` and so on). |
 
-Any remaining fields on a bonus are its **trigger thresholds** (time windows, distances, radii, move
-counts). Those are documented per-bonus on the [Style System](/parkour/style-system) pages.
+Any other settings on a bonus control what it takes to trigger (time windows, distances, mob
+counts). Those are explained per bonus on the [Style System](/parkour/style-system) pages.
 
-## Full default file
+<Callout type="info">
+  In this version, `+NICE DROP` always awards 60 points and always shows as bold gold text, whatever
+  its `bonus` and `display_name` are set to.
+</Callout>
+
+## Defaults
 
 ```yaml
 double_down:

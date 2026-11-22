@@ -1,46 +1,83 @@
 ---
 title: Advanced Configs
-description: Files for recipes, cooldowns, enabled gems, lore, and materials.
+description: The files for recipes, cooldowns, enabled gems, names, lore, materials, particles and passive effects.
 ---
 
 <Callout title="Where to find the files" type="idea">
-  Open your server's file manager, go to `~/plugins/PowerGems`, and open the `config` folder. It
-  contains the files for advanced configuration below.
+  Open your server's files, go to `plugins/PowerGems/`, and open the `config` folder. It holds the
+  files below.
 </Callout>
 
 <Callout title="Restart after editing" type="warn">
-  After changing any of these files, **fully restart your server**. `/reloadconfig` (`/rc`) does not
-  reliably apply config changes, so don't count on it.
+  After changing any of these files, **fully restart your server**. `/reloadconfig` (`/rc`) doesn't
+  reliably apply config changes.
 </Callout>
 
 ## Files at a glance
 
 | File | What it controls |
 | --- | --- |
-| `recipes.yml` | Shaped crafting recipes for gems (see details below). |
-| `cooldown.yml` | Base cooldown (seconds) for each ability at level 1. |
-| `activeGems.yml` | Enable or disable specific gems server-wide. |
-| `GemLore.yml` | The lore text applied to newly created gems. Supports MiniMessage formatting. |
-| `gemMaterials.yml` | The visual item/[material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html) used for each gem. |
-| `GemPermanentEffects.yml` | The permanent (passive) effect of each gem. |
-| `GemPermanentEffectLevels.yml` | The level of each gem's permanent effect. |
-| `GemParticles.yml` | The particles a gem emits around the player. |
+| `recipes.yml` | Crafting recipes for new gems and for each upgrade level. |
+| `cooldowns.yml` | The starting cooldown of every ability. |
+| `activeGems.yml` | Turn individual gems on or off. |
+| `GemNames.yml` | The display name of each gem. |
+| `GemLore.yml` | The lore (description) on each gem. |
+| `gemMaterials.yml` | The item each gem is based on ([material list](https://jd.papermc.io/paper/1.21/org/bukkit/Material.html)). |
+| `GemParticles.yml` | The particles each gem shows. |
+| `GemPermanentEffects.yml` | Each gem's passive effect. |
+| `GemPermanentEffectLevels.yml` | The level of each gem's passive effect. |
 
-<Callout title="Names & lore support MiniMessage" type="idea">
-  Gem **names** and **lore** support [MiniMessage](https://docs.advntr.dev/minimessage/format.html)
-  formatting, so you can use tags like `<gradient:#ff5555:#55ff55>`, `<bold>`, and color names to
-  style them.
+<Callout title="Names and lore support MiniMessage" type="idea">
+  Gem **names** and **lore** use [MiniMessage](https://docs.advntr.dev/minimessage/format.html)
+  formatting, so tags like `<gradient:#ff5555:#55ff55>`, `<bold>` and color names work. Names aren't
+  italic unless you ask for it with `<italic>`.
 </Callout>
 
 ## recipes.yml
 
-For advanced users, define shaped recipes:
+Each recipe has a **shape** and **ingredients**:
 
-- **Shape:** rows of letters separated by commas.
-- **Ingredients:** map each letter to a Bukkit material name
-  ([see the Bukkit Material list](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)).
+- **`shape`** is the 3×3 grid as three rows of letters, separated by commas.
+- **`ingredients`** maps each letter to a [material name](https://jd.papermc.io/paper/1.21/org/bukkit/Material.html).
 
-## cooldown.yml
+The new gem recipe is `gem_craft_recipe`. Upgrade recipes are named `<gem>_<level>_upgrade`, where
+`<level>` is the level the gem is upgraded *to*, and the letter `g` in the shape is the gem itself.
 
-Set the base cooldown (in seconds) for abilities at **level 1**. Higher levels reduce the cooldown
-according to `cooldownBoostPerLevelInSeconds` in [`config.yml`](/powergems/fundamentals/getting-set-up/configuration/general-config).
+```yaml
+gem_craft_recipe:
+  shape: ndn,dgd,ndn
+  ingredients:
+    n: NETHERITE_BLOCK
+    d: DIAMOND_BLOCK
+    g: NETHER_STAR
+fire_2_upgrade:
+  shape: nen,ege,nen
+  ingredients:
+    n: NETHERITE_INGOT
+    e: EXPERIENCE_BOTTLE
+```
+
+## cooldowns.yml
+
+The cooldown of each ability, in seconds, before level reductions. Every level takes
+`cooldownBoostPerLevelInSeconds` off this (see [General Config](/powergems/fundamentals/getting-set-up/configuration/general-config)).
+
+There's one entry per ability, named `<Gem>Gem<Left|Right|Shift>Cooldown`. All of them default to
+`60`:
+
+```yaml
+FireGemLeftCooldown: 60
+FireGemRightCooldown: 60
+FireGemShiftCooldown: 60
+```
+
+With the defaults, a level 3 gem has a cooldown of 60 − (2 × 3) = 54 seconds.
+
+## activeGems.yml
+
+Turn gems on or off, like `FireGemActive: true`. Turned off gems aren't handed out at random or crafted.
+
+## GemNames.yml
+
+The display name of each gem, like `FireGemName: <green>Fire Gem`. Ignored when `randomizedColors`
+is on in `config.yml`.

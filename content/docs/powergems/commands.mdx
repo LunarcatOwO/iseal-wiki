@@ -1,57 +1,64 @@
 ---
 title: Commands & Permissions
-description: Every PowerGems command, its usage and aliases, and the permission nodes that gate them.
+description: Every PowerGems command, its usage and aliases, and the permissions that gate them.
 ---
 
-PowerGems adds a small set of admin/utility commands for handing out gems, clearing them, and
-managing the plugin. Every command is gated by its own permission node (all default to **op**).
+PowerGems has a small set of admin commands for handing out gems, clearing them, and managing the
+plugin. Every command has its own permission, and all of them default to **op**.
 
 <Callout type="info">
-  The `<gem>` argument is a gem's element name, e.g. `strength`, `healing`, `air`, `fire`, `iron`,
-  `lightning`, `sand`, `ice`, `lava`, `water`. See [The Gems and Their abilities](/powergems/overview/the-gems-and-their-ablities).
+  Gem names are `Air`, `Fire`, `Healing`, `Ice`, `Iron`, `Lava`, `Lightning`, `Sand`, `Strength`
+  and `Water`. They're **case sensitive**, so use tab completion. See
+  [The Gems](/powergems/overview/the-gems-and-their-ablities).
 </Callout>
 
 ## Commands
 
 | Command | Description | Aliases | Permission |
 | --- | --- | --- | --- |
+| `/givegem [gem] [level] [player]` | Give a gem. Leave out the gem for a random one. `level` can be a number or `default` (the starting level). Leave out the player to give it to yourself. | None | `powergems.givegem` |
 | `/getallgems` | Give yourself one of every gem. | None | `powergems.getallgems` |
-| `/givegem <gem>` | Give yourself a specific gem. | None | `powergems.givegem` |
-| `/giveallplayersgem <gem>` | Give every online player a gem. | None | `powergems.giveallplayersgem` |
-| `/cleargems [player] [gem/level] [level]` | Clear gems from a player's inventory (optionally filtered). | `cg` | `powergems.cleargems` |
-| `/reloadconfig` | Attempts to reload the config files (see the warning below; a restart is recommended). | `rc` | `powergems.reloadconfig` |
+| `/giveallplayersgem [id]` | Give every online player a gem. Leave out the ID for a random gem each. | None | `powergems.giveallplayersgem` |
+| `/cleargems [player] [gem or level] [level]` | Remove gems from a player's inventory, optionally only one gem type or level. | `cg` | `powergems.cleargems` |
+| `/reloadconfig` | Try to reload the config files (a restart is more reliable, see below). | `rc` | `powergems.reloadconfig` |
 | `/checkupdates` | Check for plugin updates. | None | `powergems.checkupdates` |
-| `/pgDebug` | Debug command for diagnostics. | `pgd`, `pgdb` | `powergems.debug` |
+| `/pgDebug` | Debug information for troubleshooting. | `pgd`, `pgdb` | `powergems.debug` |
 
 ```text
-# Give yourself a fire gem
-/givegem fire
+# Give yourself a level 3 Fire gem
+/givegem Fire 3
+
+# Give yourself a random gem
+/givegem
 ```
 
-<Callout title="Editing config? Restart the server" type="warn">
-  `/reloadconfig` (`/rc`) does **not** reliably apply changes to the config files. After editing any
-  configuration, **fully restart your server** to be sure your changes actually take effect. Don't
-  rely on the reload command.
+<Callout title="Gem IDs" type="info">
+  `/giveallplayersgem` takes a number instead of a name. The built-in gems are numbered in
+  alphabetical order starting from 0: `0` Air, `1` Fire, `2` Healing, `3` Ice, `4` Iron, `5` Lava,
+  `6` Lightning, `7` Sand, `8` Strength, `9` Water.
+</Callout>
+
+<Callout title="Edited the config? Restart the server" type="warn">
+  `/reloadconfig` (`/rc`) doesn't reliably apply every change. After editing any configuration,
+  **fully restart your server** to be sure your changes take effect.
 </Callout>
 
 ## Permissions
 
 | Permission | Grants | Default |
 | --- | --- | --- |
-| `powergems.getallgems` | Use `/getallgems`. | op |
 | `powergems.givegem` | Use `/givegem`. | op |
+| `powergems.getallgems` | Use `/getallgems`. | op |
 | `powergems.giveallplayersgem` | Use `/giveallplayersgem`. | op |
 | `powergems.cleargems` | Use `/cleargems`. | op |
 | `powergems.reloadconfig` | Use `/reloadconfig`. | op |
 | `powergems.checkupdates` | Use `/checkupdates`. | op |
 | `powergems.debug` | Use `/pgDebug`. | op |
-| `powergems.movegems` | Move gems between inventory slots / containers. | op |
-| `powergems.admin` | Receive admin messages (e.g. update notifications). | op |
+| `powergems.movegems` | Move gems into chests and other containers even when `allowMovingGems` is off. | op |
+| `powergems.admin` | Receive admin messages, like update notifications. | op |
 | `powergems.*` | All of the above. | op |
 
 <Callout type="warn">
-  Every node defaults to **op**. On a public server, grant these explicitly to trusted staff through
-  your permissions plugin instead of handing out operator status. `powergems.movegems` controls
-  whether normal players may move gems around. See `allowMovingGems` in
-  [General Config](/powergems/fundamentals/getting-set-up/configuration/general-config).
+  Every permission defaults to **op**. On a public server, give them to trusted staff with a
+  permissions plugin instead of handing out operator status.
 </Callout>

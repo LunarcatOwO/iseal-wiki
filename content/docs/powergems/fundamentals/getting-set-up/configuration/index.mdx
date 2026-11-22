@@ -1,12 +1,18 @@
 ---
 title: Configuration
-description: Entry point for PowerGems configuration docs.
+description: Where PowerGems keeps its settings and what each file does.
 ---
 
-Select a section to configure:
+PowerGems keeps its settings in `plugins/PowerGems/`:
 
+- `config.yml` holds the general gameplay options.
+- The `config` folder holds the files for recipes, cooldowns, gem names, lore and more.
+
+<Callout title="Restart after editing" type="warn">
+  After editing any of these files, **fully restart your server** so the changes take effect.
+</Callout>
 
 <Cards>
-  <Card title="General Config" href="/powergems/fundamentals/getting-set-up/configuration/general-config" />
-  <Card title="Advanced Configs" href="/powergems/fundamentals/getting-set-up/configuration/advanced-configs" />
+  <Card title="General Config" href="/powergems/fundamentals/getting-set-up/configuration/general-config" description="Every option in config.yml." />
+  <Card title="Advanced Configs" href="/powergems/fundamentals/getting-set-up/configuration/advanced-configs" description="Recipes, cooldowns, enabled gems, names, lore and more." />
 </Cards>
