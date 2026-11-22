@@ -23,84 +23,45 @@ counts). Those are explained per bonus on the [Style System](/parkour/style-syst
   its `bonus` and `display_name` are set to.
 </Callout>
 
-## Defaults
+## Full default file
 
 ```yaml
-double_down:
-   max_window_millis: 10000
-   enabled: true
-   bonus: 400
-   category: ADVANCED
-   display_name: <bold><gradient:#ff4da6:#9b30ff>+DOUBLE DOWN</gradient></bold>
-dealers_choice:
-   max_chain_time_millis: 3000
-   enabled: true
-   bonus: 450
-   category: ADVANCED
-   display_name: <bold><gradient:#8e0e00:#ffd700>+DEALER'S CHOICE</gradient></bold>
-efficiency_bump:
-   speed_match_threshold: 1.1
-   delay_ticks: 2
-   enabled: true
-   bonus: 350
-   category: ADVANCED
-   display_name: <bold><gradient:#00e676:#00bfa5>+EFFICIENCY BUMP</gradient></bold>
-rebound_cling:
-   max_window_ticks: 40
-   enabled: true
-   bonus: 350
-   category: ADVANCED
-   display_name: <bold><gradient:#a1c4fd:#c2e9fb>+REBOUND CLING</gradient></bold>
-over_the_rails:
-   max_chain_time_millis: 5000
-   allow_extra_moves: false
-   enabled: true
-   bonus: 300
-   category: ADVANCED
-   display_name: <bold><gradient:#c0c0c0:#4a90d9>+OVER THE RAILS</gradient></bold>
-ghost_run:
-   required_moves: 30
-   enabled: true
-   bonus: 500
-   category: ADVANCED
-   display_name: <bold><gradient:#e0eafc:#cfdef3>+GHOST RUN</gradient></bold>
-long_way_down:
-   min_wallrun_distance: 12.0
-   enabled: true
-   bonus: 400
-   category: ADVANCED
-   display_name: <bold><gradient:#6a11cb:#2575fc>+LONG WAY DOWN</gradient></bold>
-chaos_chaos:
-   window_millis: 5000
-   required_distinct_moves: 5
-   enabled: true
-   bonus: 600
-   category: ADVANCED
-   display_name: <bold><gradient:#ff0000:#ff00ff>+CHAOS, CHAOS!</gradient></bold>
-catapult:
-   max_chain_time_millis: 1200
-   enabled: true
-   bonus: 250
-   category: ADVANCED
-   display_name: <bold><gradient:#ff9500:#ff3d00>+CATAPULT</gradient></bold>
-high_profile:
-   minimum_rank: s
-   enabled: true
-   bonus: 300
-   category: ADVANCED
-   display_name: <bold><gradient:#ffd700:#ff8f00>+HIGH PROFILE</gradient></bold>
 skyline:
    required_streak: 3
    enabled: true
    bonus: 500
    category: ADVANCED
    display_name: <bold><gradient:#ff512f:#f09819>+SKYLINE</gradient></bold>
-vented:
-   min_speed: 0.32
+high_profile:
+   minimum_rank: s
+   enabled: true
+   bonus: 300
+   category: ADVANCED
+   display_name: <bold><gradient:#ffd700:#ff8f00>+HIGH PROFILE</gradient></bold>
+rebound_cling:
+   max_window_ticks: 40
+   enabled: true
+   bonus: 350
+   category: ADVANCED
+   display_name: <bold><gradient:#a1c4fd:#c2e9fb>+REBOUND CLING</gradient></bold>
+long_way_down:
+   min_wallrun_distance: 12.0
    enabled: true
    bonus: 400
    category: ADVANCED
-   display_name: <bold><gradient:#00e5ff:#37474f>+VENTED</gradient></bold>
+   display_name: <bold><gradient:#6a11cb:#2575fc>+LONG WAY DOWN</gradient></bold>
+dealers_choice:
+   max_chain_time_millis: 3000
+   enabled: true
+   bonus: 450
+   category: ADVANCED
+   display_name: <bold><gradient:#8e0e00:#ffd700>+DEALER'S CHOICE</gradient></bold>
+catapult:
+   max_chain_time_millis: 1200
+   enabled: true
+   bonus: 250
+   category: ADVANCED
+   display_name: <bold><gradient:#ff9500:#ff3d00>+CATAPULT</gradient></bold>
 ficsit_approved:
    required_streak: 3
    max_time_millis: 5000
@@ -108,32 +69,96 @@ ficsit_approved:
    bonus: 250
    category: ADVANCED
    display_name: <bold><gradient:#ff6f00:#ffca28>+FICSIT APPROVED</gradient></bold>
-still_alive:
-   required_move_count: 10
+efficiency_bump:
+   speed_match_threshold: 1.1
+   delay_ticks: 2
    enabled: true
-   bonus: 1100
-   category: MYTHIC
-   display_name: <bold><gradient:#ffd700:#ffffff>+STILL ALIVE</gradient></bold>
-death_defied:
-   required_reduction: 0.9
-   health_threshold: 1.0
+   bonus: 350
+   category: ADVANCED
+   display_name: <bold><gradient:#00e676:#00bfa5>+EFFICIENCY BUMP</gradient></bold>
+double_down:
+   max_window_millis: 10000
    enabled: true
-   bonus: 1200
-   category: MYTHIC
-   display_name: <bold><gradient:#ffd700:#ffffff>+DEATH DEFIED</gradient></bold>
-leap_of_faith:
-   min_fall_distance: 30.0
-   max_track_ticks: 400
+   bonus: 400
+   category: ADVANCED
+   display_name: <bold><gradient:#ff4da6:#9b30ff>+DOUBLE DOWN</gradient></bold>
+vented:
+   min_speed: 0.32
    enabled: true
-   bonus: 1300
-   category: MYTHIC
-   display_name: <bold><gradient:#ffd700:#ffffff>+LEAP OF FAITH</gradient></bold>
-but_it_refused:
-   health_threshold: 1.0
+   bonus: 400
+   category: ADVANCED
+   display_name: <bold><gradient:#00e5ff:#37474f>+VENTED</gradient></bold>
+chaos_chaos:
+   window_millis: 5000
+   required_distinct_moves: 5
    enabled: true
-   bonus: 900
-   category: MYTHIC
-   display_name: <bold><gradient:#ffd700:#ffffff>+BUT IT REFUSED</gradient></bold>
+   bonus: 600
+   category: ADVANCED
+   display_name: <bold><gradient:#ff0000:#ff00ff>+CHAOS, CHAOS!</gradient></bold>
+ghost_run:
+   required_moves: 30
+   enabled: true
+   bonus: 500
+   category: ADVANCED
+   display_name: <bold><gradient:#e0eafc:#cfdef3>+GHOST RUN</gradient></bold>
+over_the_rails:
+   max_chain_time_millis: 5000
+   allow_extra_moves: false
+   enabled: true
+   bonus: 300
+   category: ADVANCED
+   display_name: <bold><gradient:#c0c0c0:#4a90d9>+OVER THE RAILS</gradient></bold>
+emergency_meeting:
+   mob_radius: 3.0
+   min_mobs: 3
+   enabled: true
+   bonus: 400
+   category: COMBAT
+   display_name: <bold><gradient:#8b0000:#ff8c00>+EMERGENCY MEETING</gradient></bold>
+blue_heart:
+   opposite_direction_threshold: -0.3
+   enabled: true
+   bonus: 650
+   category: COMBAT
+   display_name: <bold><gradient:#1e90ff:#00bfff>+BLUE HEART</gradient></bold>
+hit_and_run:
+   window_ticks: 20
+   enabled: true
+   bonus: 500
+   category: COMBAT
+   display_name: <bold><gradient:#8b0000:#ff8c00>+HIT & RUN</gradient></bold>
+from_above:
+   window_ticks: 20
+   enabled: true
+   bonus: 500
+   category: COMBAT
+   display_name: <bold><gradient:#8b0000:#ff8c00>+FROM ABOVE</gradient></bold>
+close_quarters:
+   mob_radius: 2.0
+   enabled: true
+   bonus: 300
+   category: COMBAT
+   display_name: <bold><gradient:#8b0000:#ff8c00>+CLOSE QUARTERS</gradient></bold>
+neo:
+   window_millis: 10000
+   required_dodges: 3
+   slide_poll_interval_ticks: 4
+   enabled: true
+   bonus: 700
+   category: COMBAT
+   display_name: <bold><gradient:#00ffea:#0077ff>+NEO</gradient></bold>
+critical_drop:
+   window_ticks: 20
+   enabled: true
+   bonus: 400
+   category: COMBAT
+   display_name: <bold><gradient:#8b0000:#ff8c00>+CRITICAL DROP</gradient></bold>
+disrespect:
+   tackle_guard_window_ticks: 4
+   enabled: true
+   bonus: 400
+   category: COMBAT
+   display_name: <bold><gradient:#8b0000:#ff8c00>+DISRESPECT</gradient></bold>
 newton:
    required_airborne_ticks: 200
    required_move_count: 5
@@ -141,18 +166,12 @@ newton:
    bonus: 1200
    category: MYTHIC
    display_name: <bold><gradient:#ffd700:#ffffff>+NEWTON</gradient></bold>
-flow_state:
-   required_ticks: 600
+still_alive:
+   required_move_count: 10
    enabled: true
-   bonus: 1000
+   bonus: 1100
    category: MYTHIC
-   display_name: <bold><gradient:#ffd700:#ffffff>+FLOW STATE</gradient></bold>
-reconstruct_what:
-   min_potential_damage: 100.0
-   enabled: true
-   bonus: 1500
-   category: MYTHIC
-   display_name: <bold><gradient:#ffd700:#ffffff>+RECONSTRUCT WHAT?</gradient></bold>
+   display_name: <bold><gradient:#ffd700:#ffffff>+STILL ALIVE</gradient></bold>
 suspicious_activity:
    min_traversal_distance: 20.0
    sensor_trigger_radius: 16.0
@@ -160,13 +179,63 @@ suspicious_activity:
    bonus: 1250
    category: MYTHIC
    display_name: <bold><gradient:#ffd700:#ffffff>+SUSPICIOUS ACTIVITY</gradient></bold>
-wavedash:
-   max_chain_time_millis: 50
-   min_y: 0.2
+death_defied:
+   required_reduction: 0.9
+   health_threshold: 1.0
+   enabled: true
+   bonus: 1200
+   category: MYTHIC
+   display_name: <bold><gradient:#ffd700:#ffffff>+DEATH DEFIED</gradient></bold>
+reconstruct_what:
+   min_potential_damage: 100.0
+   enabled: true
+   bonus: 1500
+   category: MYTHIC
+   display_name: <bold><gradient:#ffd700:#ffffff>+RECONSTRUCT WHAT?</gradient></bold>
+but_it_refused:
+   health_threshold: 1.0
+   enabled: true
+   bonus: 900
+   category: MYTHIC
+   display_name: <bold><gradient:#ffd700:#ffffff>+BUT IT REFUSED</gradient></bold>
+flow_state:
+   required_ticks: 600
+   enabled: true
+   bonus: 1000
+   category: MYTHIC
+   display_name: <bold><gradient:#ffd700:#ffffff>+FLOW STATE</gradient></bold>
+leap_of_faith:
+   min_fall_distance: 30.0
+   max_track_ticks: 400
+   enabled: true
+   bonus: 1300
+   category: MYTHIC
+   display_name: <bold><gradient:#ffd700:#ffffff>+LEAP OF FAITH</gradient></bold>
+momentum_conservation:
+   speed_match_threshold: 1.2
+   delay_ticks: 10
+   enabled: true
+   bonus: 100
+   category: FILLER
+   display_name: <yellow>+MOMENTUM CONSERVATION
+keep_up:
+   max_streak_time_millis: 1300
+   enabled: true
+   bonus: 30
+   category: FILLER
+   display_name: <green>+KEEP UP
+conveyor_belt:
+   min_downhill_distance: 5.0
    enabled: true
    bonus: 150
    category: FILLER
-   display_name: <blue>+WAVEDASH
+   display_name: <dark_aqua>+CONVEYOR BELT
+touch_and_go:
+   max_cling_time_millis: 500
+   enabled: true
+   bonus: 100
+   category: FILLER
+   display_name: <yellow>+TOUCH AND GO
 staying_airborne:
    required_airborne_ticks: 60
    enabled: true
@@ -179,100 +248,31 @@ smooth_transition:
    bonus: 100
    category: FILLER
    display_name: <aqua>+SMOOTH TRANSITION
-conveyor_belt:
-   min_downhill_distance: 5.0
-   enabled: true
-   bonus: 150
-   category: FILLER
-   display_name: <dark_aqua>+CONVEYOR BELT
-nice_drop:
-   min_blocks_fallen: 4
-   enabled: true
-   bonus: 60
-   category: FILLER
-   display_name: <gold>+NICE DROP
-keep_up:
-   max_streak_time_millis: 1300
-   enabled: true
-   bonus: 30
-   category: FILLER
-   display_name: <green>+KEEP UP
-checkpoint:
-   max_cling_time_millis: 1000
-   enabled: true
-   bonus: 100
-   category: FILLER
-   display_name: <green>+CHECKPOINT
 wall_to_wall:
    max_chain_time_millis: 10000
    enabled: true
    bonus: 120
    category: FILLER
    display_name: <aqua>+WALL TO WALL
-touch_and_go:
-   max_cling_time_millis: 500
+checkpoint:
+   max_cling_time_millis: 1000
    enabled: true
    bonus: 100
    category: FILLER
-   display_name: <yellow>+TOUCH AND GO
-momentum_conservation:
-   speed_match_threshold: 1.2
-   delay_ticks: 10
+   display_name: <green>+CHECKPOINT
+nice_drop:
+   min_blocks_fallen: 4
    enabled: true
-   bonus: 100
+   bonus: 60
    category: FILLER
-   display_name: <yellow>+MOMENTUM CONSERVATION
-neo:
-   window_millis: 10000
-   required_dodges: 3
-   slide_poll_interval_ticks: 4
+   display_name: <gold>+NICE DROP
+wavedash:
+   max_chain_time_millis: 50
+   min_y: 0.2
    enabled: true
-   bonus: 700
-   category: COMBAT
-   display_name: <bold><gradient:#00ffea:#0077ff>+NEO</gradient></bold>
-close_quarters:
-   mob_radius: 2.0
-   enabled: true
-   bonus: 300
-   category: COMBAT
-   display_name: <bold><gradient:#8b0000:#ff8c00>+CLOSE QUARTERS</gradient></bold>
-emergency_meeting:
-   mob_radius: 3.0
-   min_mobs: 3
-   enabled: true
-   bonus: 400
-   category: COMBAT
-   display_name: <bold><gradient:#8b0000:#ff8c00>+EMERGENCY MEETING</gradient></bold>
-from_above:
-   window_ticks: 20
-   enabled: true
-   bonus: 500
-   category: COMBAT
-   display_name: <bold><gradient:#8b0000:#ff8c00>+FROM ABOVE</gradient></bold>
-disrespect:
-   tackle_guard_window_ticks: 4
-   enabled: true
-   bonus: 400
-   category: COMBAT
-   display_name: <bold><gradient:#8b0000:#ff8c00>+DISRESPECT</gradient></bold>
-blue_heart:
-   opposite_direction_threshold: -0.3
-   enabled: true
-   bonus: 650
-   category: COMBAT
-   display_name: <bold><gradient:#1e90ff:#00bfff>+BLUE HEART</gradient></bold>
-critical_drop:
-   window_ticks: 20
-   enabled: true
-   bonus: 400
-   category: COMBAT
-   display_name: <bold><gradient:#8b0000:#ff8c00>+CRITICAL DROP</gradient></bold>
-hit_and_run:
-   window_ticks: 20
-   enabled: true
-   bonus: 500
-   category: COMBAT
-   display_name: <bold><gradient:#8b0000:#ff8c00>+HIT & RUN</gradient></bold>
+   bonus: 150
+   category: FILLER
+   display_name: <blue>+WAVEDASH
 soft_landing:
    enabled: true
    bonus: 75

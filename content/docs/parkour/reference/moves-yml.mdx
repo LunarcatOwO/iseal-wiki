@@ -18,7 +18,7 @@ its own. For what each value does in play, see the individual [move pages](/park
 | `bossbar.overlay` | Boss bar style: `PROGRESS`, `NOTCHED_6`, `NOTCHED_10`, `NOTCHED_12` or `NOTCHED_20`. |
 | `bossbar.flags` | Extra boss bar effects: `PLAY_BOSS_MUSIC`, `DARKEN_SCREEN` or `CREATE_WORLD_FOG`. |
 
-## Defaults
+## Full default file
 
 ```yaml
 wall_run:
@@ -30,7 +30,7 @@ wall_run:
    initial_speed: 0.6
    decay_rate: 0.05
    max_fall_speed: 0.18
-   max_duration: 100.0
+   max_duration: 100
    grace_period_ticks: 6
    cooldown: 20
    min_start_speed: 0.25
@@ -112,7 +112,7 @@ slide:
    slide_tick_boost: 0.2
    slide_boost_decay: 0.75
    down_force: 0.1
-   flat_friction: 0.97
+   flat_friction: 0.995
    jump_cancel_force: 0.095
    tap_window_ticks: 5
    cooldown: 40
@@ -173,11 +173,11 @@ tic_tac:
    charge_cooldown: 5
    max_charge_window: 60
    long_cooldown: 80
-   reset_on_ground: true
    mob_push_multiplier: 0.6
    mob_impact_damage: 2.0
    enabled: true
    default_unlocked: true
+   reset_on_ground: true
 ```
 
 <Callout title="Updating from an older version" type="info">
