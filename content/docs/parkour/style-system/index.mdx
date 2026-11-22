@@ -9,8 +9,10 @@ drains faster the higher you are, so you have to keep moving to stay on top.
 
 ## Flow score
 
-Your flow score goes up in one way: **triggering a bonus**. Each bonus adds its points (its `bonus`
-value in `bonuses.yml`) to your score. Moves on their own don't add score.
+Your flow score goes up in one way: **triggering a bonus**. Moves on their own don't add score. What
+a bonus pays out is its `bonus` value from `bonuses.yml` **multiplied by your current combo
+multiplier**, so the same trick can be worth up to eight times as much depending on the combo you
+land it in.
 
 Your score also drains on its own, and the higher your rank, the faster it goes: a trickle at **D**,
 60 points per tick at **Flow State**. Reaching the top rank is one thing; holding it is another.
@@ -32,7 +34,14 @@ zero, the scoreboard disappears.
 ## Combos
 
 Every move you perform adds to your **combo** and pushes up its **multiplier**, which goes from
-**1× up to 8×**. Two things decide how much a move adds:
+**1× up to 8×**. When a bonus fires, its points are multiplied by whatever the multiplier is at that
+moment:
+
+> A 100 point bonus landed cold is worth **100**. The same bonus landed at the top of a combo is
+> worth **800**.
+
+That's why building the combo first matters more than chasing big bonuses on their own. Two things
+decide how much a move adds to the combo:
 
 - **The multiplier itself.** A move made deep into a combo adds more than the first one, so the meter
   speeds up as it grows.
@@ -97,7 +106,8 @@ Advanced, Combat and Mythic bonuses also play a burst of particles and a sound w
 (server owners can turn this off with `external-effects` in [`config.yml`](/parkour/configuration)).
 
 <Callout title="These are the defaults" type="warn">
-  The points on these pages come from a fresh `bonuses.yml`. Server owners can change any value, turn
+  The points on these pages are the base values from a fresh `bonuses.yml`, before your combo
+multiplier is applied. Server owners can change any value, turn
   off individual bonuses, or change their triggers, so your server may award different amounts. See
   the [`bonuses.yml` reference](/parkour/reference/bonuses-yml).
 </Callout>
